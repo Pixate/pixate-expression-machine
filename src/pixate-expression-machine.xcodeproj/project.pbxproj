@@ -902,6 +902,11 @@
 				DSTROOT = /tmp/pixate_expression_machine.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExpressionMachine/pixate-expression-machine-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					YY_NO_INPUT,
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -914,6 +919,7 @@
 				DSTROOT = /tmp/pixate_expression_machine.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExpressionMachine/pixate-expression-machine-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = YY_NO_INPUT;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
