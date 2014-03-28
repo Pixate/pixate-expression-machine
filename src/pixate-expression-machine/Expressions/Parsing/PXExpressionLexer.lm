@@ -1,0 +1,145 @@
+%option noyywrap
+%option nodefault
+%option yylineno
+%option prefix="expr"
+%s EM EMA
+
+%{
+
+#import "PXExpressionLexeme.h"
+#import "PXExpressionLexemeType.h"
+
+%}
+
+%%
+
+[ \t]+                      { /* ignore whitespace */ }
+\r\n?|\n                    { /* ignore line endings */ }
+\/\/.*                      { /* ignore comments */ }
+
+(0|[1-9][0-9]*)(\.[0-9]+)?  { return EM_NUMBER; }
+
+"lt"                        { return EM_LT; }
+"le"                        { return EM_LE; }
+"eq"                        { return EM_EQ; }
+"ne"                        { return EM_NE; }
+"ge"                        { return EM_GE; }
+"gt"                        { return EM_GT; }
+
+"and"                       { return EM_AND; }
+"false"                     { return EM_FALSE; }
+"not"                       { return EM_NOT; }
+"or"                        { return EM_OR; }
+"true"                      { return EM_TRUE; }
+
+"if"                        { return EM_IF; }
+"else"                      { return EM_ELSE; }
+
+"null"                      { return EM_NULL; }
+"undefined"                 { return EM_UNDEFINED; }
+
+<EM>"func"                  { return EM_FUNC; }
+<EM>"this"                  { return EM_THIS; }
+<EM>"elsif"                 { return EM_ELSIF; }
+<EM>"sym"                   { return EM_SYM; }
+<EM>"π"                     { return EM_IDENTIFIER; }
+<EM>"√"                     { return EM_IDENTIFIER; }
+
+<EMA>"apply"                { return EMA_APPLY; }
+<EMA>"asmfunc"              { return EMA_FUNC; }
+<EMA>"createArray"          { return EMA_CREATE_ARRAY; }
+<EMA>"createObject"         { return EMA_CREATE_OBJECT; }
+<EMA>"dup"                  { return EMA_DUP; }
+<EMA>"exec"                 { return EMA_EXEC; }
+<EMA>"getElement"           { return EMA_GET_ELEMENT; }
+<EMA>"getProperty"          { return EMA_GET_PROPERTY; }
+<EMA>"getSymbol"            { return EMA_GET_SYMBOL; }
+<EMA>"global"               { return EMA_GLOBAL; }
+<EMA>"ifelse"               { return EMA_IF_ELSE; }
+<EMA>"invoke"               { return EMA_INVOKE; }
+<EMA>"pop"                  { return EMA_POP; }
+<EMA>"push"                 { return EMA_PUSH; }
+<EMA>"setSymbol"            { return EMA_SET_SYMBOL; }
+<EMA>"swap"                 { return EMA_SWAP; }
+
+<EMA>"add"                  { return EMA_ADD; }
+<EMA>"sub"                  { return EMA_SUB; }
+<EMA>"mul"                  { return EMA_MUL; }
+<EMA>"div"                  { return EMA_DIV; }
+<EMA>"neg"                  { return EMA_NEG; }
+
+<EMA>"mark"                 { return EMA_MARK; }
+
+[_a-zA-Z][_a-zA-Z0-9]*      { return EM_IDENTIFIER; }
+
+"("                         { return EM_LPAREN; }
+")"                         { return EM_RPAREN; }
+"["                         { return EM_LBRACKET; }
+"]"                         { return EM_RBRACKET; }
+"{"                         { return EM_LCURLY; }
+"}"                         { return EM_RCURLY; }
+"<"                         { return EM_LESS_THAN; }
+">"                         { return EM_GREATER_THAN; }
+"."                         { return EM_DOT; }
+","                         { return EM_COMMA; }
+"="                         { return EM_ASSIGN; }
+
+<EM>"<="                    { return EM_LESS_THAN_EQUAL; }
+<EM>"=="                    { return EM_EQUAL; }
+<EM>"!="                    { return EM_NOT_EQUAL; }
+<EM>">="                    { return EM_GREATER_THAN_EQUAL; }
+
+<EM>"!"                     { return EM_LOGICAL_NOT; }
+<EM>"||"                    { return EM_LOGICAL_OR; }
+<EM>"&&"                    { return EM_LOGICAL_AND; }
+
+<EM>"+"                     { return EM_PLUS; }
+<EM>"-"                     { return EM_MINUS; }
+<EM>"*"                     { return EM_TIMES; }
+<EM>"/"                     { return EM_DIVIDE; }
+
+<EM>"?"                     { return EM_QUESTION; }
+<EM>";"                     { return EM_SEMICOLON; }
+<EM>":"                     { return EM_COLON; }
+
+<EMA>"{["                   { return EMA_LCURLY_BRACKET; }
+<EMA>"]}"                   { return EMA_RBRACKET_CURLY; }
+
+<EMA>"^"                    { return EMA_CARET; }
+<EMA>"^="                   { return EMA_CARET_ASSIGN; }
+
+\"[^\"\r\n]*\"              { return EM_STRING; }
+\'[^\'\r\n]*\'              { return EM_STRING; }
+
+.                           { return EM_ERROR; }
+
+%%
+
+void expr_lexer_set_source(NSString *source, BOOL forEma)
+{
+    if (forEma)
+    {
+        BEGIN EMA;
+    }
+    else
+    {
+        BEGIN EM;
+    }
+    
+    const char *cSource = [source cStringUsingEncoding:NSUTF8StringEncoding];
+
+    yy_scan_string(cSource);
+}
+
+void expr_lexer_delete_buffer()
+{
+    yy_delete_buffer(YY_CURRENT_BUFFER);
+}
+
+PXExpressionLexeme *expr_lexer_get_lexeme()
+{
+    int tok = yylex();
+    NSString *text = [NSString stringWithCString:yytext encoding:NSUTF8StringEncoding];
+
+    return [[PXExpressionLexeme alloc] initWithType:tok text:text];
+}
