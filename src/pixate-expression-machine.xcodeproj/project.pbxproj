@@ -259,6 +259,7 @@
 		0A4D1E9B18E5AA8800200629 /* PXStringValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXStringValue.m; sourceTree = "<group>"; };
 		0A4D1E9C18E5AA8800200629 /* PXUndefinedValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXUndefinedValue.h; sourceTree = "<group>"; };
 		0A4D1E9D18E5AA8800200629 /* PXUndefinedValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXUndefinedValue.m; sourceTree = "<group>"; };
+		9C475B1B18E6114200283A43 /* PXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXParser.h; sourceTree = "<group>"; };
 		9CF979D918E4EED900B442DE /* libpixate-expression-machine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libpixate-expression-machine.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF979DC18E4EED900B442DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9CF979E918E4EED900B442DE /* pixate-expression-machineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pixate-expression-machineTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -373,6 +374,7 @@
 		0A4D1E0F18E5AA5900200629 /* Parsing */ = {
 			isa = PBXGroup;
 			children = (
+				9C475B1B18E6114200283A43 /* PXParser.h */,
 				0A4D1E1018E5AA5900200629 /* PXLexeme.h */,
 				0A4D1E1118E5AA5900200629 /* PXParserBase.h */,
 				0A4D1E1218E5AA5900200629 /* PXParserBase.m */,
