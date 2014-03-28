@@ -1,6 +1,6 @@
 //
-//  pixate_expression_engine_macTests.m
-//  pixate-expression-engine-macTests
+//  pixate_expression_machine_macTests.m
+//  pixate-expression-machine-macTests
 //
 //  Created by Paul Colton on 3/28/14.
 //  Copyright (c) 2014 Pixate, Inc. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface pixate_expression_engine_macTests : XCTestCase
+@interface pixate_expression_machine_macTests : XCTestCase
 
 @end
 
-@implementation pixate_expression_engine_macTests
+@implementation pixate_expression_machine_macTests
 
 - (void)setUp
 {
