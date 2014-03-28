@@ -107,7 +107,7 @@
         case EM_INSTRUCTION_FLOW_IF_ELSE: return @"FLOW_IF_ELSE";
 
         default:
-            return [NSString stringWithFormat:@"Unknown instruction type: %ld", _type];
+            return [NSString stringWithFormat:@"Unknown instruction type: %ld", (long) _type];
     }
 }
 

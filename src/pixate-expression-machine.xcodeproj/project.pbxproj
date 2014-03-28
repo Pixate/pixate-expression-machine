@@ -70,10 +70,6 @@
 		9CF97ABF18E4EF5000B442DE /* PXExpressionNodeCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF97A8518E4EF5000B442DE /* PXExpressionNodeCompiler.m */; };
 		9CF97AC018E4EF5000B442DE /* PXExpressionNodeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF97A8718E4EF5000B442DE /* PXExpressionNodeUtils.m */; };
 		9CF97AC118E4EF5000B442DE /* PXExpressionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF97A8918E4EF5000B442DE /* PXExpressionParser.m */; };
-		9CF97C0A18E4F50800B442DE /* PXCharacterMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF97BFC18E4F50800B442DE /* PXCharacterMatcher.m */; };
-		9CF97C0B18E4F50800B442DE /* PXNumberMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF97BFF18E4F50800B442DE /* PXNumberMatcher.m */; };
-		9CF97C0C18E4F50800B442DE /* PXPatternMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF97C0118E4F50800B442DE /* PXPatternMatcher.m */; };
-		9CF97C0D18E4F50800B442DE /* PXWordMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF97C0318E4F50800B442DE /* PXWordMatcher.m */; };
 		9CF97C0E18E4F50800B442DE /* PXParserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF97C0618E4F50800B442DE /* PXParserBase.m */; };
 		9CF97C0F18E4F50800B442DE /* PXSourceWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF97C0918E4F50800B442DE /* PXSourceWriter.m */; };
 /* End PBXBuildFile section */
@@ -230,15 +226,6 @@
 		9CF97A8718E4EF5000B442DE /* PXExpressionNodeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXExpressionNodeUtils.m; sourceTree = "<group>"; };
 		9CF97A8818E4EF5000B442DE /* PXExpressionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXExpressionParser.h; sourceTree = "<group>"; };
 		9CF97A8918E4EF5000B442DE /* PXExpressionParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXExpressionParser.m; sourceTree = "<group>"; };
-		9CF97BFB18E4F50800B442DE /* PXCharacterMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXCharacterMatcher.h; sourceTree = "<group>"; };
-		9CF97BFC18E4F50800B442DE /* PXCharacterMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXCharacterMatcher.m; sourceTree = "<group>"; };
-		9CF97BFD18E4F50800B442DE /* PXLexemeCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXLexemeCreator.h; sourceTree = "<group>"; };
-		9CF97BFE18E4F50800B442DE /* PXNumberMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXNumberMatcher.h; sourceTree = "<group>"; };
-		9CF97BFF18E4F50800B442DE /* PXNumberMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXNumberMatcher.m; sourceTree = "<group>"; };
-		9CF97C0018E4F50800B442DE /* PXPatternMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXPatternMatcher.h; sourceTree = "<group>"; };
-		9CF97C0118E4F50800B442DE /* PXPatternMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXPatternMatcher.m; sourceTree = "<group>"; };
-		9CF97C0218E4F50800B442DE /* PXWordMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXWordMatcher.h; sourceTree = "<group>"; };
-		9CF97C0318E4F50800B442DE /* PXWordMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXWordMatcher.m; sourceTree = "<group>"; };
 		9CF97C0418E4F50800B442DE /* PXLexeme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXLexeme.h; sourceTree = "<group>"; };
 		9CF97C0518E4F50800B442DE /* PXParserBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXParserBase.h; sourceTree = "<group>"; };
 		9CF97C0618E4F50800B442DE /* PXParserBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXParserBase.m; sourceTree = "<group>"; };
@@ -577,7 +564,6 @@
 		9CF97BF918E4F50800B442DE /* Parsing */ = {
 			isa = PBXGroup;
 			children = (
-				9CF97BFA18E4F50800B442DE /* Matchers */,
 				9CF97C0418E4F50800B442DE /* PXLexeme.h */,
 				9CF97C0518E4F50800B442DE /* PXParserBase.h */,
 				9CF97C0618E4F50800B442DE /* PXParserBase.m */,
@@ -586,22 +572,6 @@
 				9CF97C0918E4F50800B442DE /* PXSourceWriter.m */,
 			);
 			path = Parsing;
-			sourceTree = "<group>";
-		};
-		9CF97BFA18E4F50800B442DE /* Matchers */ = {
-			isa = PBXGroup;
-			children = (
-				9CF97BFB18E4F50800B442DE /* PXCharacterMatcher.h */,
-				9CF97BFC18E4F50800B442DE /* PXCharacterMatcher.m */,
-				9CF97BFD18E4F50800B442DE /* PXLexemeCreator.h */,
-				9CF97BFE18E4F50800B442DE /* PXNumberMatcher.h */,
-				9CF97BFF18E4F50800B442DE /* PXNumberMatcher.m */,
-				9CF97C0018E4F50800B442DE /* PXPatternMatcher.h */,
-				9CF97C0118E4F50800B442DE /* PXPatternMatcher.m */,
-				9CF97C0218E4F50800B442DE /* PXWordMatcher.h */,
-				9CF97C0318E4F50800B442DE /* PXWordMatcher.m */,
-			);
-			path = Matchers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -708,11 +678,9 @@
 				9CF97AA318E4EF5000B442DE /* PXInstructionDisassembler.m in Sources */,
 				9CF97AC118E4EF5000B442DE /* PXExpressionParser.m in Sources */,
 				9CF97AB918E4EF5000B442DE /* PXBlockNode.m in Sources */,
-				9CF97C0D18E4F50800B442DE /* PXWordMatcher.m in Sources */,
 				9CF97AB018E4EF5000B442DE /* PXBooleanValue.m in Sources */,
 				9CF97AA118E4EF5000B442DE /* PXExpressionInstruction.m in Sources */,
 				9CF97AA818E4EF5000B442DE /* PXExpressionEnvironment.m in Sources */,
-				9CF97C0C18E4F50800B442DE /* PXPatternMatcher.m in Sources */,
 				9CF97AAA18E4EF5000B442DE /* PXBuiltInScope.m in Sources */,
 				9CF97ABD18E4EF5000B442DE /* PXExpressionLexer.lm in Sources */,
 				9CF97A9018E4EF5000B442DE /* PXArrayPopMethod.m in Sources */,
@@ -723,7 +691,6 @@
 				9CF97ABA18E4EF5000B442DE /* PXGenericNode.m in Sources */,
 				9CF97A9C18E4EF5000B442DE /* PXSinFunction.m in Sources */,
 				9CF97ABF18E4EF5000B442DE /* PXExpressionNodeCompiler.m in Sources */,
-				9CF97C0B18E4F50800B442DE /* PXNumberMatcher.m in Sources */,
 				9CF97A9A18E4EF5000B442DE /* PXCosFunction.m in Sources */,
 				9CF97AB418E4EF5000B442DE /* PXMarkValue.m in Sources */,
 				9CF97A9F18E4EF5000B442DE /* PXObjectLengthMethod.m in Sources */,
@@ -734,7 +701,6 @@
 				9CF97AAE18E4EF5000B442DE /* PXArrayValue.m in Sources */,
 				9CF97AA218E4EF5000B442DE /* PXInstructionCounter.m in Sources */,
 				9CF97A9418E4EF5000B442DE /* PXArrayShiftMethod.m in Sources */,
-				9CF97C0A18E4F50800B442DE /* PXCharacterMatcher.m in Sources */,
 				9CF97AA718E4EF5000B442DE /* PXExpressionByteCode.m in Sources */,
 				9CF97A9718E4EF5000B442DE /* PXParameter.m in Sources */,
 				9CF97AB218E4EF5000B442DE /* PXExpressionValueBase.m in Sources */,

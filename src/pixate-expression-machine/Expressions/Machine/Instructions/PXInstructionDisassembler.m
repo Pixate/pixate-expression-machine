@@ -197,7 +197,7 @@
             return @"ifelse";
             
         default:
-            NSLog(@"Unknown instruction type: %ld", instruction.type);
+            NSLog(@"Unknown instruction type: %ld", (long) instruction.type);
             return @"";
     }
 }

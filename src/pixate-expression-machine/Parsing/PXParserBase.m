@@ -23,7 +23,7 @@
 //
 
 #import "PXParserBase.h"
-#import "PixateFreestyle.h"
+//#import "PixateFreestyle.h"
 
 @implementation PXParserBase
 {
@@ -66,7 +66,7 @@
 
     [self internalAddError:ammendedError];
 
-    [PixateFreestyle.configuration sendParseMessage:ammendedError];
+//    [PixateFreestyle.configuration sendParseMessage:ammendedError];
 }
 
 - (void)clearErrors
