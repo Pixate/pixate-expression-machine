@@ -79,6 +79,69 @@
 		0A4D1ED218E5AA8800200629 /* PXObjectValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E9918E5AA8800200629 /* PXObjectValue.m */; };
 		0A4D1ED318E5AA8800200629 /* PXStringValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E9B18E5AA8800200629 /* PXStringValue.m */; };
 		0A4D1ED418E5AA8800200629 /* PXUndefinedValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E9D18E5AA8800200629 /* PXUndefinedValue.m */; };
+		9C475B3118E61E4600283A43 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C475B3018E61E4600283A43 /* Cocoa.framework */; };
+		9C475B4118E61E4600283A43 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF979EA18E4EED900B442DE /* XCTest.framework */; };
+		9C475B4218E61E4600283A43 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C475B3018E61E4600283A43 /* Cocoa.framework */; };
+		9C475B4518E61E4600283A43 /* libpixate-expression-engine-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C475B2F18E61E4600283A43 /* libpixate-expression-engine-mac.a */; };
+		9C475B4B18E61E4600283A43 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C475B4918E61E4600283A43 /* InfoPlist.strings */; };
+		9C475B4D18E61E4600283A43 /* pixate_expression_engine_macTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C475B4C18E61E4600283A43 /* pixate_expression_engine_macTests.m */; };
+		9C475B5518E61EAA00283A43 /* PXDoubleProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E1A18E5AA8800200629 /* PXDoubleProperty.m */; };
+		9C475B5618E61EAA00283A43 /* PXObjectValueWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E1D18E5AA8800200629 /* PXObjectValueWrapper.m */; };
+		9C475B5718E61EAA00283A43 /* PXArrayForEachMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E2118E5AA8800200629 /* PXArrayForEachMethod.m */; };
+		9C475B5818E61EAA00283A43 /* PXArrayLengthMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E2318E5AA8800200629 /* PXArrayLengthMethod.m */; };
+		9C475B5918E61EAA00283A43 /* PXArrayMapMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E2518E5AA8800200629 /* PXArrayMapMethod.m */; };
+		9C475B5A18E61EAA00283A43 /* PXArrayPopMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E2718E5AA8800200629 /* PXArrayPopMethod.m */; };
+		9C475B5B18E61EAA00283A43 /* PXArrayPushMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E2918E5AA8800200629 /* PXArrayPushMethod.m */; };
+		9C475B5C18E61EAA00283A43 /* PXArrayReduceMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E2B18E5AA8800200629 /* PXArrayReduceMethod.m */; };
+		9C475B5D18E61EAA00283A43 /* PXArrayReverseMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E2D18E5AA8800200629 /* PXArrayReverseMethod.m */; };
+		9C475B5E18E61EAA00283A43 /* PXArrayShiftMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E2F18E5AA8800200629 /* PXArrayShiftMethod.m */; };
+		9C475B5F18E61EAA00283A43 /* PXArrayUnshiftMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E3118E5AA8800200629 /* PXArrayUnshiftMethod.m */; };
+		9C475B6018E61EAA00283A43 /* PXByteCodeFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E3418E5AA8800200629 /* PXByteCodeFunction.m */; };
+		9C475B6118E61EAA00283A43 /* PXParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E3618E5AA8800200629 /* PXParameter.m */; };
+		9C475B6218E61EAA00283A43 /* PXLogFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E3918E5AA8800200629 /* PXLogFunction.m */; };
+		9C475B6318E61EAA00283A43 /* PXShowTopFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E3B18E5AA8800200629 /* PXShowTopFunction.m */; };
+		9C475B6418E61EAA00283A43 /* PXCosFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E3E18E5AA8800200629 /* PXCosFunction.m */; };
+		9C475B6518E61EAA00283A43 /* PXPowerFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E4018E5AA8800200629 /* PXPowerFunction.m */; };
+		9C475B6618E61EAA00283A43 /* PXSinFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E4218E5AA8800200629 /* PXSinFunction.m */; };
+		9C475B6718E61EAA00283A43 /* PXSquareRootFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E4418E5AA8800200629 /* PXSquareRootFunction.m */; };
+		9C475B6818E61EAA00283A43 /* PXObjectForEachMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E4718E5AA8800200629 /* PXObjectForEachMethod.m */; };
+		9C475B6918E61EAA00283A43 /* PXObjectLengthMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E4918E5AA8800200629 /* PXObjectLengthMethod.m */; };
+		9C475B6A18E61EAA00283A43 /* PXObjectReverseMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E4B18E5AA8800200629 /* PXObjectReverseMethod.m */; };
+		9C475B6B18E61EAA00283A43 /* PXParserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E1218E5AA5900200629 /* PXParserBase.m */; };
+		9C475B6C18E61EAA00283A43 /* PXSourceWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E1518E5AA5900200629 /* PXSourceWriter.m */; };
+		9C475B6D18E61EAA00283A43 /* PXByteCodeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E4E18E5AA8800200629 /* PXByteCodeBuilder.m */; };
+		9C475B6E18E61EAA00283A43 /* PXExpressionByteCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E5018E5AA8800200629 /* PXExpressionByteCode.m */; };
+		9C475B6F18E61EAA00283A43 /* PXExpressionInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E5218E5AA8800200629 /* PXExpressionInstruction.m */; };
+		9C475B7018E61EAA00283A43 /* PXInstructionCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E5518E5AA8800200629 /* PXInstructionCounter.m */; };
+		9C475B7118E61EAA00283A43 /* PXInstructionDisassembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E5718E5AA8800200629 /* PXInstructionDisassembler.m */; };
+		9C475B7218E61EAA00283A43 /* PXInstructionProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E5918E5AA8800200629 /* PXInstructionProcessor.m */; };
+		9C475B7318E61EAA00283A43 /* PXPushValueInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E5B18E5AA8800200629 /* PXPushValueInstruction.m */; };
+		9C475B7418E61EAA00283A43 /* PXBlockNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E5F18E5AA8800200629 /* PXBlockNode.m */; };
+		9C475B7518E61EAA00283A43 /* PXGenericNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E6218E5AA8800200629 /* PXGenericNode.m */; };
+		9C475B7618E61EAA00283A43 /* PXExpressionAssembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E6418E5AA8800200629 /* PXExpressionAssembler.m */; };
+		9C475B7718E61EAA00283A43 /* PXExpressionLexeme.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E6618E5AA8800200629 /* PXExpressionLexeme.m */; };
+		9C475B7818E61EAA00283A43 /* PXExpressionNodeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E6A18E5AA8800200629 /* PXExpressionNodeBuilder.m */; };
+		9C475B7918E61EAA00283A43 /* PXExpressionNodeCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E6C18E5AA8800200629 /* PXExpressionNodeCompiler.m */; };
+		9C475B7A18E61EAA00283A43 /* PXExpressionNodeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E6E18E5AA8800200629 /* PXExpressionNodeUtils.m */; };
+		9C475B7B18E61EAA00283A43 /* PXExpressionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E7018E5AA8800200629 /* PXExpressionParser.m */; };
+		9C475B7C18E61EAA00283A43 /* PXBuiltInScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E7B18E5AA8800200629 /* PXBuiltInScope.m */; };
+		9C475B7D18E61EAA00283A43 /* PXBuiltInSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E7D18E5AA8800200629 /* PXBuiltInSource.m */; };
+		9C475B7E18E61EAA00283A43 /* PXScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E8018E5AA8800200629 /* PXScope.m */; };
+		9C475B7F18E61EAA00283A43 /* PXScopeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E8218E5AA8800200629 /* PXScopeBase.m */; };
+		9C475B8018E61EAA00283A43 /* PXArrayValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E8518E5AA8800200629 /* PXArrayValue.m */; };
+		9C475B8118E61EAA00283A43 /* PXBlockValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E8718E5AA8800200629 /* PXBlockValue.m */; };
+		9C475B8218E61EAA00283A43 /* PXBooleanValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E8918E5AA8800200629 /* PXBooleanValue.m */; };
+		9C475B8318E61EAA00283A43 /* PXDoubleValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E8B18E5AA8800200629 /* PXDoubleValue.m */; };
+		9C475B8418E61EAA00283A43 /* PXExpressionValueBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E9118E5AA8800200629 /* PXExpressionValueBase.m */; };
+		9C475B8518E61EAA00283A43 /* PXFunctionValueBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E9318E5AA8800200629 /* PXFunctionValueBase.m */; };
+		9C475B8618E61EAA00283A43 /* PXMarkValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E9518E5AA8800200629 /* PXMarkValue.m */; };
+		9C475B8718E61EAA00283A43 /* PXNullValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E9718E5AA8800200629 /* PXNullValue.m */; };
+		9C475B8818E61EAA00283A43 /* PXObjectValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E9918E5AA8800200629 /* PXObjectValue.m */; };
+		9C475B8918E61EAA00283A43 /* PXStringValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E9B18E5AA8800200629 /* PXStringValue.m */; };
+		9C475B8A18E61EAA00283A43 /* PXUndefinedValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E9D18E5AA8800200629 /* PXUndefinedValue.m */; };
+		9C475B8B18E61EAA00283A43 /* PXExpressionEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E7218E5AA8800200629 /* PXExpressionEnvironment.m */; };
+		9C475B8C18E61EAA00283A43 /* PXExpressionUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E7418E5AA8800200629 /* PXExpressionUnit.m */; };
+		9C475B8D18E61EAA00283A43 /* PXScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8518E5A78B00200629 /* PXScriptManager.m */; };
 		9CF979DD18E4EED900B442DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF979DC18E4EED900B442DE /* Foundation.framework */; };
 		9CF979EB18E4EED900B442DE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF979EA18E4EED900B442DE /* XCTest.framework */; };
 		9CF979EC18E4EED900B442DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF979DC18E4EED900B442DE /* Foundation.framework */; };
@@ -87,6 +150,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9C475B4318E61E4600283A43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CF979D118E4EED900B442DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9C475B2E18E61E4600283A43;
+			remoteInfo = "pixate-expression-engine-mac";
+		};
 		9CF979EF18E4EED900B442DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9CF979D118E4EED900B442DE /* Project object */;
@@ -260,6 +330,16 @@
 		0A4D1E9C18E5AA8800200629 /* PXUndefinedValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXUndefinedValue.h; sourceTree = "<group>"; };
 		0A4D1E9D18E5AA8800200629 /* PXUndefinedValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXUndefinedValue.m; sourceTree = "<group>"; };
 		9C475B1B18E6114200283A43 /* PXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXParser.h; sourceTree = "<group>"; };
+		9C475B2F18E61E4600283A43 /* libpixate-expression-engine-mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libpixate-expression-engine-mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C475B3018E61E4600283A43 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		9C475B3318E61E4600283A43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9C475B3418E61E4600283A43 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9C475B3518E61E4600283A43 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9C475B3818E61E4600283A43 /* pixate-expression-engine-mac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "pixate-expression-engine-mac-Prefix.pch"; sourceTree = "<group>"; };
+		9C475B4018E61E4600283A43 /* pixate-expression-engine-macTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pixate-expression-engine-macTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C475B4818E61E4600283A43 /* pixate-expression-engine-macTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "pixate-expression-engine-macTests-Info.plist"; sourceTree = "<group>"; };
+		9C475B4A18E61E4600283A43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C475B4C18E61E4600283A43 /* pixate_expression_engine_macTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pixate_expression_engine_macTests.m; sourceTree = "<group>"; };
 		9CF979D918E4EED900B442DE /* libpixate-expression-machine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libpixate-expression-machine.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF979DC18E4EED900B442DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9CF979E918E4EED900B442DE /* pixate-expression-machineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pixate-expression-machineTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,6 +348,24 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9C475B2C18E61E4600283A43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C475B3118E61E4600283A43 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C475B3D18E61E4600283A43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C475B4518E61E4600283A43 /* libpixate-expression-engine-mac.a in Frameworks */,
+				9C475B4218E61E4600283A43 /* Cocoa.framework in Frameworks */,
+				9C475B4118E61E4600283A43 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9CF979D618E4EED900B442DE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -599,11 +697,57 @@
 			path = Values;
 			sourceTree = "<group>";
 		};
+		9C475B3218E61E4600283A43 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C475B3318E61E4600283A43 /* Foundation.framework */,
+				9C475B3418E61E4600283A43 /* CoreData.framework */,
+				9C475B3518E61E4600283A43 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		9C475B3618E61E4600283A43 /* pixate-expression-engine-mac */ = {
+			isa = PBXGroup;
+			children = (
+				9C475B3718E61E4600283A43 /* Supporting Files */,
+			);
+			path = "pixate-expression-engine-mac";
+			sourceTree = "<group>";
+		};
+		9C475B3718E61E4600283A43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C475B3818E61E4600283A43 /* pixate-expression-engine-mac-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C475B4618E61E4600283A43 /* pixate-expression-engine-macTests */ = {
+			isa = PBXGroup;
+			children = (
+				9C475B4C18E61E4600283A43 /* pixate_expression_engine_macTests.m */,
+				9C475B4718E61E4600283A43 /* Supporting Files */,
+			);
+			path = "pixate-expression-engine-macTests";
+			sourceTree = "<group>";
+		};
+		9C475B4718E61E4600283A43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C475B4818E61E4600283A43 /* pixate-expression-engine-macTests-Info.plist */,
+				9C475B4918E61E4600283A43 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		9CF979D018E4EED900B442DE = {
 			isa = PBXGroup;
 			children = (
 				0A4D1CF418E5A78B00200629 /* ExpressionMachine */,
 				0A4D1D8618E5A78B00200629 /* ExpressionMachineTests */,
+				9C475B3618E61E4600283A43 /* pixate-expression-engine-mac */,
+				9C475B4618E61E4600283A43 /* pixate-expression-engine-macTests */,
 				9CF979DB18E4EED900B442DE /* Frameworks */,
 				9CF979DA18E4EED900B442DE /* Products */,
 			);
@@ -614,6 +758,8 @@
 			children = (
 				9CF979D918E4EED900B442DE /* libpixate-expression-machine.a */,
 				9CF979E918E4EED900B442DE /* pixate-expression-machineTests.xctest */,
+				9C475B2F18E61E4600283A43 /* libpixate-expression-engine-mac.a */,
+				9C475B4018E61E4600283A43 /* pixate-expression-engine-macTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -624,13 +770,62 @@
 				9CF979DC18E4EED900B442DE /* Foundation.framework */,
 				9CF979EA18E4EED900B442DE /* XCTest.framework */,
 				9CF979ED18E4EED900B442DE /* UIKit.framework */,
+				9C475B3018E61E4600283A43 /* Cocoa.framework */,
+				9C475B3218E61E4600283A43 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		9C475B2D18E61E4600283A43 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		9C475B2E18E61E4600283A43 /* pixate-expression-engine-mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C475B5218E61E4600283A43 /* Build configuration list for PBXNativeTarget "pixate-expression-engine-mac" */;
+			buildPhases = (
+				9C475B2B18E61E4600283A43 /* Sources */,
+				9C475B2C18E61E4600283A43 /* Frameworks */,
+				9C475B2D18E61E4600283A43 /* Headers */,
+				9C475B8E18E61EC100283A43 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "pixate-expression-engine-mac";
+			productName = "pixate-expression-engine-mac";
+			productReference = 9C475B2F18E61E4600283A43 /* libpixate-expression-engine-mac.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		9C475B3F18E61E4600283A43 /* pixate-expression-engine-macTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C475B5318E61E4600283A43 /* Build configuration list for PBXNativeTarget "pixate-expression-engine-macTests" */;
+			buildPhases = (
+				9C475B3C18E61E4600283A43 /* Sources */,
+				9C475B3D18E61E4600283A43 /* Frameworks */,
+				9C475B3E18E61E4600283A43 /* Resources */,
+				9C475B8F18E61ED300283A43 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9C475B4418E61E4600283A43 /* PBXTargetDependency */,
+			);
+			name = "pixate-expression-engine-macTests";
+			productName = "pixate-expression-engine-macTests";
+			productReference = 9C475B4018E61E4600283A43 /* pixate-expression-engine-macTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9CF979D818E4EED900B442DE /* pixate-expression-machine */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CF979FC18E4EED900B442DE /* Build configuration list for PBXNativeTarget "pixate-expression-machine" */;
@@ -690,11 +885,21 @@
 			targets = (
 				9CF979D818E4EED900B442DE /* pixate-expression-machine */,
 				9CF979E818E4EED900B442DE /* pixate-expression-machineTests */,
+				9C475B2E18E61E4600283A43 /* pixate-expression-engine-mac */,
+				9C475B3F18E61E4600283A43 /* pixate-expression-engine-macTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9C475B3E18E61E4600283A43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C475B4B18E61E4600283A43 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9CF979E718E4EED900B442DE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -719,9 +924,107 @@
 			shellScript = "cd \"${SRCROOT}/ExpressionMachine/Resources/\" && ./embedResources.pl > \"${SRCROOT}/ExpressionMachine/Scopes/PXBuiltInSource.m\"";
 			showEnvVarsInLog = 0;
 		};
+		9C475B8E18E61EC100283A43 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${SRCROOT}/ExpressionMachine/Resources/\" && ./embedResources.pl > \"${SRCROOT}/ExpressionMachine/Scopes/PXBuiltInSource.m\"\n";
+		};
+		9C475B8F18E61ED300283A43 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${SRCROOT}/ExpressionMachine/Resources/\" && ./embedResources.pl > \"${SRCROOT}/ExpressionMachine/Scopes/PXBuiltInSource.m\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9C475B2B18E61E4600283A43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C475B5518E61EAA00283A43 /* PXDoubleProperty.m in Sources */,
+				9C475B5618E61EAA00283A43 /* PXObjectValueWrapper.m in Sources */,
+				9C475B5718E61EAA00283A43 /* PXArrayForEachMethod.m in Sources */,
+				9C475B5818E61EAA00283A43 /* PXArrayLengthMethod.m in Sources */,
+				9C475B5918E61EAA00283A43 /* PXArrayMapMethod.m in Sources */,
+				9C475B5A18E61EAA00283A43 /* PXArrayPopMethod.m in Sources */,
+				9C475B5B18E61EAA00283A43 /* PXArrayPushMethod.m in Sources */,
+				9C475B5C18E61EAA00283A43 /* PXArrayReduceMethod.m in Sources */,
+				9C475B5D18E61EAA00283A43 /* PXArrayReverseMethod.m in Sources */,
+				9C475B5E18E61EAA00283A43 /* PXArrayShiftMethod.m in Sources */,
+				9C475B5F18E61EAA00283A43 /* PXArrayUnshiftMethod.m in Sources */,
+				9C475B6018E61EAA00283A43 /* PXByteCodeFunction.m in Sources */,
+				9C475B6118E61EAA00283A43 /* PXParameter.m in Sources */,
+				9C475B6218E61EAA00283A43 /* PXLogFunction.m in Sources */,
+				9C475B6318E61EAA00283A43 /* PXShowTopFunction.m in Sources */,
+				9C475B6418E61EAA00283A43 /* PXCosFunction.m in Sources */,
+				9C475B6518E61EAA00283A43 /* PXPowerFunction.m in Sources */,
+				9C475B6618E61EAA00283A43 /* PXSinFunction.m in Sources */,
+				9C475B6718E61EAA00283A43 /* PXSquareRootFunction.m in Sources */,
+				9C475B6818E61EAA00283A43 /* PXObjectForEachMethod.m in Sources */,
+				9C475B6918E61EAA00283A43 /* PXObjectLengthMethod.m in Sources */,
+				9C475B6A18E61EAA00283A43 /* PXObjectReverseMethod.m in Sources */,
+				9C475B6B18E61EAA00283A43 /* PXParserBase.m in Sources */,
+				9C475B6C18E61EAA00283A43 /* PXSourceWriter.m in Sources */,
+				9C475B6D18E61EAA00283A43 /* PXByteCodeBuilder.m in Sources */,
+				9C475B6E18E61EAA00283A43 /* PXExpressionByteCode.m in Sources */,
+				9C475B6F18E61EAA00283A43 /* PXExpressionInstruction.m in Sources */,
+				9C475B7018E61EAA00283A43 /* PXInstructionCounter.m in Sources */,
+				9C475B7118E61EAA00283A43 /* PXInstructionDisassembler.m in Sources */,
+				9C475B7218E61EAA00283A43 /* PXInstructionProcessor.m in Sources */,
+				9C475B7318E61EAA00283A43 /* PXPushValueInstruction.m in Sources */,
+				9C475B7418E61EAA00283A43 /* PXBlockNode.m in Sources */,
+				9C475B7518E61EAA00283A43 /* PXGenericNode.m in Sources */,
+				9C475B7618E61EAA00283A43 /* PXExpressionAssembler.m in Sources */,
+				9C475B7718E61EAA00283A43 /* PXExpressionLexeme.m in Sources */,
+				9C475B7818E61EAA00283A43 /* PXExpressionNodeBuilder.m in Sources */,
+				9C475B7918E61EAA00283A43 /* PXExpressionNodeCompiler.m in Sources */,
+				9C475B7A18E61EAA00283A43 /* PXExpressionNodeUtils.m in Sources */,
+				9C475B7B18E61EAA00283A43 /* PXExpressionParser.m in Sources */,
+				9C475B7C18E61EAA00283A43 /* PXBuiltInScope.m in Sources */,
+				9C475B7D18E61EAA00283A43 /* PXBuiltInSource.m in Sources */,
+				9C475B7E18E61EAA00283A43 /* PXScope.m in Sources */,
+				9C475B7F18E61EAA00283A43 /* PXScopeBase.m in Sources */,
+				9C475B8018E61EAA00283A43 /* PXArrayValue.m in Sources */,
+				9C475B8118E61EAA00283A43 /* PXBlockValue.m in Sources */,
+				9C475B8218E61EAA00283A43 /* PXBooleanValue.m in Sources */,
+				9C475B8318E61EAA00283A43 /* PXDoubleValue.m in Sources */,
+				9C475B8418E61EAA00283A43 /* PXExpressionValueBase.m in Sources */,
+				9C475B8518E61EAA00283A43 /* PXFunctionValueBase.m in Sources */,
+				9C475B8618E61EAA00283A43 /* PXMarkValue.m in Sources */,
+				9C475B8718E61EAA00283A43 /* PXNullValue.m in Sources */,
+				9C475B8818E61EAA00283A43 /* PXObjectValue.m in Sources */,
+				9C475B8918E61EAA00283A43 /* PXStringValue.m in Sources */,
+				9C475B8A18E61EAA00283A43 /* PXUndefinedValue.m in Sources */,
+				9C475B8B18E61EAA00283A43 /* PXExpressionEnvironment.m in Sources */,
+				9C475B8C18E61EAA00283A43 /* PXExpressionUnit.m in Sources */,
+				9C475B8D18E61EAA00283A43 /* PXScriptManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C475B3C18E61E4600283A43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C475B4D18E61E4600283A43 /* pixate_expression_engine_macTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9CF979D518E4EED900B442DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -811,6 +1114,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9C475B4418E61E4600283A43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9C475B2E18E61E4600283A43 /* pixate-expression-engine-mac */;
+			targetProxy = 9C475B4318E61E4600283A43 /* PBXContainerItemProxy */;
+		};
 		9CF979F018E4EED900B442DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9CF979D818E4EED900B442DE /* pixate-expression-machine */;
@@ -827,9 +1135,97 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		9C475B4918E61E4600283A43 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C475B4A18E61E4600283A43 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9C475B4E18E61E4600283A43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "pixate-expression-engine-mac/pixate-expression-engine-mac-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9C475B4F18E61E4600283A43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "pixate-expression-engine-mac/pixate-expression-engine-mac-Prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9C475B5018E61E4600283A43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "pixate-expression-engine-mac/pixate-expression-engine-mac-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "pixate-expression-engine-macTests/pixate-expression-engine-macTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		9C475B5118E61E4600283A43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "pixate-expression-engine-mac/pixate-expression-engine-mac-Prefix.pch";
+				INFOPLIST_FILE = "pixate-expression-engine-macTests/pixate-expression-engine-macTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		9CF979FA18E4EED900B442DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -967,6 +1363,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9C475B5218E61E4600283A43 /* Build configuration list for PBXNativeTarget "pixate-expression-engine-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C475B4E18E61E4600283A43 /* Debug */,
+				9C475B4F18E61E4600283A43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9C475B5318E61E4600283A43 /* Build configuration list for PBXNativeTarget "pixate-expression-engine-macTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C475B5018E61E4600283A43 /* Debug */,
+				9C475B5118E61E4600283A43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		9CF979D418E4EED900B442DE /* Build configuration list for PBXProject "pixate-expression-machine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
