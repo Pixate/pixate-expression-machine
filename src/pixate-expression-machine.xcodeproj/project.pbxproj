@@ -128,6 +128,9 @@
 		0A4D1C2118E4FD5300200629 /* PXSquareFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXSquareFunction.m; sourceTree = "<group>"; };
 		0A4D1C3018E4FD9000200629 /* PXEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXEasing.h; sourceTree = "<group>"; };
 		0A4D1C3118E4FD9000200629 /* PXEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXEasing.m; sourceTree = "<group>"; };
+		0A4D1C3418E4FE3F00200629 /* built-ins.em */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "built-ins.em"; sourceTree = "<group>"; };
+		0A4D1C3518E4FE3F00200629 /* built-ins.ema */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "built-ins.ema"; sourceTree = "<group>"; };
+		0A4D1C3618E4FE3F00200629 /* embedResources.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = embedResources.pl; sourceTree = "<group>"; };
 		9CF979D918E4EED900B442DE /* libpixate-expression-machine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libpixate-expression-machine.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF979DC18E4EED900B442DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9CF979E018E4EED900B442DE /* pixate-expression-machine-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "pixate-expression-machine-Prefix.pch"; sourceTree = "<group>"; };
@@ -300,6 +303,16 @@
 			name = "Supporting Classes";
 			sourceTree = "<group>";
 		};
+		0A4D1C3718E4FE4700200629 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0A4D1C3418E4FE3F00200629 /* built-ins.em */,
+				0A4D1C3518E4FE3F00200629 /* built-ins.ema */,
+				0A4D1C3618E4FE3F00200629 /* embedResources.pl */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		9CF979D018E4EED900B442DE = {
 			isa = PBXGroup;
 			children = (
@@ -332,11 +345,12 @@
 		9CF979DE18E4EED900B442DE /* pixate-expression-machine */ = {
 			isa = PBXGroup;
 			children = (
-				9CF97A0318E4EF5000B442DE /* PXScriptManager.h */,
-				9CF97A0418E4EF5000B442DE /* PXScriptManager.m */,
 				9CF97A0518E4EF5000B442DE /* Expressions */,
 				9CF97BF918E4F50800B442DE /* Parsing */,
+				0A4D1C3718E4FE4700200629 /* Resources */,
 				9CF979DF18E4EED900B442DE /* Supporting Files */,
+				9CF97A0318E4EF5000B442DE /* PXScriptManager.h */,
+				9CF97A0418E4EF5000B442DE /* PXScriptManager.m */,
 			);
 			path = "pixate-expression-machine";
 			sourceTree = "<group>";
@@ -394,6 +408,8 @@
 				9CF97A0718E4EF5000B442DE /* Bridge */,
 				9CF97A0D18E4EF5000B442DE /* BuiltIns */,
 				9CF97A3B18E4EF5000B442DE /* Instructions */,
+				9CF97A5018E4EF5000B442DE /* Scopes */,
+				9CF97A5A18E4EF5000B442DE /* Values */,
 				9CF97A4818E4EF5000B442DE /* PXByteCodeBuilder.h */,
 				9CF97A4918E4EF5000B442DE /* PXByteCodeBuilder.m */,
 				9CF97A4A18E4EF5000B442DE /* PXExpressionByteCode.h */,
@@ -402,8 +418,6 @@
 				9CF97A4D18E4EF5000B442DE /* PXExpressionEnvironment.m */,
 				9CF97A4E18E4EF5000B442DE /* PXExpressionUnit.h */,
 				9CF97A4F18E4EF5000B442DE /* PXExpressionUnit.m */,
-				9CF97A5018E4EF5000B442DE /* Scopes */,
-				9CF97A5A18E4EF5000B442DE /* Values */,
 			);
 			path = Machine;
 			sourceTree = "<group>";
@@ -639,6 +653,7 @@
 				9CF979D518E4EED900B442DE /* Sources */,
 				9CF979D618E4EED900B442DE /* Frameworks */,
 				9CF979D718E4EED900B442DE /* CopyFiles */,
+				0A4D1C3818E4FE6800200629 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -704,6 +719,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A4D1C3818E4FE6800200629 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${SRCROOT}/pixate-expression-machine/\" && ./embedResources.pl > \"${SRCROOT}/pixate-expression-machine/Expressions/Machine/Scopes/PXBuiltInSource.m\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9CF979D518E4EED900B442DE /* Sources */ = {
