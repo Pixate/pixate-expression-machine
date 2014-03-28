@@ -143,6 +143,7 @@
 		9C475BF418E620FC00283A43 /* PXExpressionUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E7418E5AA8800200629 /* PXExpressionUnit.m */; };
 		9C475BF518E620FC00283A43 /* PXScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8518E5A78B00200629 /* PXScriptManager.m */; };
 		9C475BF818E621B400283A43 /* pixate-expression-machine-Prefix.pch in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8318E5A78B00200629 /* pixate-expression-machine-Prefix.pch */; };
+		9C475C0318E6232700283A43 /* PXExpressionLexer.lm in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E6818E5AA8800200629 /* PXExpressionLexer.lm */; };
 		9CF979DD18E4EED900B442DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF979DC18E4EED900B442DE /* Foundation.framework */; };
 		9CF979EB18E4EED900B442DE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF979EA18E4EED900B442DE /* XCTest.framework */; };
 		9CF979EC18E4EED900B442DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF979DC18E4EED900B442DE /* Foundation.framework */; };
@@ -958,6 +959,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C475C0318E6232700283A43 /* PXExpressionLexer.lm in Sources */,
 				9C475BF818E621B400283A43 /* pixate-expression-machine-Prefix.pch in Sources */,
 				9C475BBD18E620FC00283A43 /* PXDoubleProperty.m in Sources */,
 				9C475BBE18E620FC00283A43 /* PXObjectValueWrapper.m in Sources */,
@@ -1370,6 +1372,7 @@
 				9C475BB918E620C100283A43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9C475BBA18E620C100283A43 /* Build configuration list for PBXNativeTarget "pixate-expression-machine-macTests" */ = {
 			isa = XCConfigurationList;
@@ -1378,6 +1381,7 @@
 				9C475BBC18E620C100283A43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9CF979D418E4EED900B442DE /* Build configuration list for PBXProject "pixate-expression-machine" */ = {
 			isa = XCConfigurationList;
