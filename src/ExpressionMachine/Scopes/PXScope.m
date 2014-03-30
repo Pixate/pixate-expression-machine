@@ -72,7 +72,7 @@
     [_symbols removeAllObjects];
 }
 
-- (void)removeSymbol:(NSString *)name
+- (void)removeSymbolName:(NSString *)name
 {
     [_symbols removeObjectForKey:name];
 }

@@ -65,7 +65,7 @@
     return (result != nil) ? result : [PXUndefinedValue undefined];
 }
 
-- (void)removeSymbol:(NSString *)name
+- (void)removeSymbolName:(NSString *)name
 {
     // Subclasses need to override this method
 }
