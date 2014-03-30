@@ -72,6 +72,11 @@
     [_symbols removeAllObjects];
 }
 
+- (void)removeSymbol:(NSString *)name
+{
+    [_symbols removeObjectForKey:name];
+}
+
 #pragma mark - Overrides
 
 - (NSString *)description

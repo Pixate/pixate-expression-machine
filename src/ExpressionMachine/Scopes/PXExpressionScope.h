@@ -22,6 +22,7 @@
 - (void)setStringValue:(NSString *)value forSymbolName:(NSString *)name;
 - (void)setDoubleValue:(double)value forSymbolName:(NSString *)name;
 
+- (void)removeSymbol:(NSString *)name;
 - (void)removeAllSymbols;
 
 @end
