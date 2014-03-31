@@ -34,7 +34,7 @@ static NSIndexSet *MULTIPLICATIVE_OPERATORS_SET;
 static NSIndexSet *ADDITIVE_OPERATORS_SET;
 static NSIndexSet *PREFIX_OPERATORS_SET;
 static NSIndexSet *SIMPLE_TYPE_SET;
-static NSIndexSet *MEMBER_SET;
+static NSIndexSet *ACCESSOR_SET;
 static PXExpressionNodeBuilder *NODE_BUILDER;
 
 + (void)initialize
@@ -97,7 +97,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
         set = [NSMutableIndexSet indexSet];
         [set addIndex:EM_DOT];
         [set addIndex:EM_LBRACKET];
-        MEMBER_SET = [[NSIndexSet alloc] initWithIndexSet:set];
+        ACCESSOR_SET = [[NSIndexSet alloc] initWithIndexSet:set];
 
         NODE_BUILDER = [[PXExpressionNodeBuilder alloc] init];
     });
@@ -665,7 +665,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
         result = [NODE_BUILDER createInvokeNode:result arguments:args];
     }
     
-    return result;
+    return [self parseAccessorsWithNode:result];
 }
 
 - (id<PXExpressionNode>)parseMember
@@ -681,7 +681,14 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
         result = [self parsePrimary];
     }
 
-    while ([self isInTypeSet:MEMBER_SET])
+    return [self parseAccessorsWithNode:result];
+}
+
+- (id<PXExpressionNode>)parseAccessorsWithNode:(id<PXExpressionNode>)node
+{
+    id<PXExpressionNode> result = node;
+
+    while ([self isInTypeSet:ACCESSOR_SET])
     {
         switch (currentLexeme.type)
         {

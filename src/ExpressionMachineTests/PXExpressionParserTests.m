@@ -371,6 +371,17 @@
     [self assertResult:expected fromSource:@"abc.def"];
 }
 
+- (void)testInvokeAndGetProperty
+{
+    NSString *expected = [@[
+        @".",
+        @"  'abc'()",
+        @"  def"
+    ] componentsJoinedByString:@"\n"];
+
+    [self assertResult:expected fromSource:@"abc().def"];
+}
+
 #pragma mark - Array Tests
 
 - (void)testCreateArray
