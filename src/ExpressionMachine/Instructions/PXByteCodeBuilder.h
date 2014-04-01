@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Pixate, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "PXExpressionObject.h"
 #import "PXExpressionFunction.h"
 
@@ -17,6 +16,7 @@
 @interface PXByteCodeBuilder : NSObject
 
 @property (nonatomic, strong, readonly) PXExpressionByteCode *byteCode;
+@property (nonatomic, strong, readonly) PXExpressionInstruction *lastInstruction;
 
 - (void)reset;
 

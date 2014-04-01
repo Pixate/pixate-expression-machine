@@ -19,11 +19,14 @@
 + (PXPushValueInstruction *)blockValue:(PXExpressionByteCode *)byteCodeValue;
 
 @property (nonatomic, strong, readonly) id<PXExpressionValue> value;
+@property (nonatomic, strong, readonly) NSArray *values;
 
 - (id)initWithExpressionValue:(id<PXExpressionValue>)value;
 - (id)initWithBoolean:(BOOL)booleanValue;
 - (id)initWithString:(NSString *)stringValue;
 - (id)initWithDouble:(double)doubleValue;
 - (id)initWithByteCode:(PXExpressionByteCode *)byteCode;
+
+- (void)pushValue:(id<PXExpressionValue>)value;
 
 @end

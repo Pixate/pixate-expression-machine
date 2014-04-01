@@ -15,7 +15,7 @@
 
 @implementation PXPushValueInstruction
 {
-    id<PXExpressionValue> _value;
+    NSMutableArray *values_;
 }
 
 #pragma mark - Static methods
@@ -83,6 +83,31 @@
     PXBlockValue *value = [[PXBlockValue alloc] initWithByteCode:byteCode];
 
     return [self initWithExpressionValue:value];
+}
+
+#pragma mark - Getters
+
+- (NSArray *)values
+{
+    return [values_ copy];
+}
+
+#pragma mark - Methods
+
+- (void)pushValue:(id<PXExpressionValue>)value
+{
+    if (values_ == nil)
+    {
+        values_ = [[NSMutableArray alloc] init];
+
+        if (_value != nil)
+        {
+            [values_ addObject:_value];
+            _value = nil;
+        }
+    }
+
+    [values_ addObject:value];
 }
 
 @end

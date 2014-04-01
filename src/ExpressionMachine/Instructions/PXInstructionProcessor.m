@@ -294,8 +294,17 @@
 
             PXPushValueInstruction *pushInstruction = (PXPushValueInstruction *)instruction;
 
-            pushImp(env, pushSelector, pushInstruction.value);
-            // [env pushValue:pushInstruction.value];
+            if (pushInstruction.value != nil)
+            {
+                pushImp(env, pushSelector, pushInstruction.value);
+                // [env pushValue:pushInstruction.value];
+            }
+            else
+            {
+                [pushInstruction.values enumerateObjectsUsingBlock:^(id<PXExpressionValue> value, NSUInteger idx, BOOL *stop) {
+                    pushImp(env, pushSelector, value);
+                }];
+            }
             break;
         }
 

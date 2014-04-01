@@ -49,6 +49,11 @@
     return [[PXExpressionByteCode alloc] initWithInstructions:[NSArray arrayWithArray:_instructions]];
 }
 
+- (PXExpressionInstruction *)lastInstruction
+{
+    return [_instructions lastObject];
+}
+
 #pragma mark - Reset
 
 - (void)reset
@@ -68,49 +73,65 @@
 
 #pragma mark - Stack manipulation add methods
 
+- (void)addPushInstruction:(PXPushValueInstruction *)instruction
+{
+    PXExpressionInstruction *last = self.lastInstruction;
+
+    if (last.type == EM_INSTRUCTION_STACK_PUSH)
+    {
+        PXPushValueInstruction *push = (PXPushValueInstruction *)instruction;
+
+        [push pushValue:instruction.value];
+    }
+    else
+    {
+        [self addInstruction:instruction];
+    }
+}
+
 - (void)addPushBooleanInstruction:(BOOL)booleanValue
 {
-    [self addInstruction:[PXPushValueInstruction booleanValue:booleanValue]];
+    [self addPushInstruction:[PXPushValueInstruction booleanValue:booleanValue]];
 }
 
 - (void)addPushStringInstruction:(NSString *)stringValue
 {
-    [self addInstruction:[PXPushValueInstruction stringValue:stringValue]];
+    [self addPushInstruction:[PXPushValueInstruction stringValue:stringValue]];
 }
 
 - (void)addPushDoubleInstruction:(double)doubleValue
 {
-    [self addInstruction:[PXPushValueInstruction doubleValue:doubleValue]];
+    [self addPushInstruction:[PXPushValueInstruction doubleValue:doubleValue]];
 }
 
 - (void)addPushObjectInstruction:(id<PXExpressionObject>)objectValue
 {
-    [self addInstruction:[PXPushValueInstruction expressionValue:objectValue]];
+    [self addPushInstruction:[PXPushValueInstruction expressionValue:objectValue]];
 }
 
 - (void)addPushBlockInstruction:(PXExpressionByteCode *)byteCodeValue
 {
-    [self addInstruction:[PXPushValueInstruction blockValue:byteCodeValue]];
+    [self addPushInstruction:[PXPushValueInstruction blockValue:byteCodeValue]];
 }
 
 - (void)addPushFunctionInstruction:(id<PXExpressionFunction>)function
 {
-    [self addInstruction:[PXPushValueInstruction expressionValue:function]];
+    [self addPushInstruction:[PXPushValueInstruction expressionValue:function]];
 }
 
 - (void)addPushNullInstruction
 {
-    [self addInstruction:[PXPushValueInstruction expressionValue:[PXNullValue null]]];
+    [self addPushInstruction:[PXPushValueInstruction expressionValue:[PXNullValue null]]];
 }
 
 - (void)addPushUndefinedInstruction
 {
-    [self addInstruction:[PXPushValueInstruction expressionValue:[PXUndefinedValue undefined]]];
+    [self addPushInstruction:[PXPushValueInstruction expressionValue:[PXUndefinedValue undefined]]];
 }
 
 - (void)addPushMarkInstruction
 {
-    [self addInstruction:[PXPushValueInstruction expressionValue:[PXMarkValue mark]]];
+    [self addPushInstruction:[PXPushValueInstruction expressionValue:[PXMarkValue mark]]];
 }
 
 - (void)addPushGlobal

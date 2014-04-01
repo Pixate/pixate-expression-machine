@@ -18,7 +18,7 @@
         case EM_INSTRUCTION_BREAK:
             return @"break";
             
-        // arrays
+#pragma mark Arrays
 
         case EM_INSTRUCTION_ARRAY_CREATE:
             return (_useShortForm) ? @"]" : @"createArray";
@@ -52,7 +52,7 @@
                 ? [NSString stringWithFormat:@".'%@'", instruction.stringValue]
                 : [NSString stringWithFormat:@"getProperty('%@')", instruction.stringValue];
 
-        // functions
+#pragma mark Functions
 
         case EM_INSTRUCTION_FUNCTION_APPLY:
             return (_useShortForm) ? @"<" : @"apply";
@@ -80,12 +80,12 @@
                 ? [NSString stringWithFormat:@">'%@'(%d)", instruction.stringValue, instruction.uintValue]
                 : [NSString stringWithFormat:@"invoke('%@', %d)", instruction.stringValue, instruction.uintValue];
 
-        // blocks
+#pragma mark Blocks
 
         case EM_INSTRUCTION_BLOCK_EXECUTE:
             return @"exec";
 
-        // stack
+#pragma mark Stack
 
         case EM_INSTRUCTION_STACK_POP:
             return @"pop";
@@ -93,10 +93,25 @@
         case EM_INSTRUCTION_STACK_PUSH:
         {
             PXPushValueInstruction *pushInstruction = (PXPushValueInstruction *)instruction;
-            
-            return (_useShortForm)
-                ? pushInstruction.value.description
-                : [NSString stringWithFormat:@"push(%@)", pushInstruction.value.description];
+
+            if (pushInstruction.value != nil)
+            {
+                return (_useShortForm)
+                    ? pushInstruction.value.description
+                    : [NSString stringWithFormat:@"push(%@)", pushInstruction.value.description];
+            }
+            else
+            {
+                NSMutableArray *parts = [[NSMutableArray alloc] init];
+
+                [pushInstruction.values enumerateObjectsUsingBlock:^(id<PXExpressionValue> value, NSUInteger idx, BOOL *stop) {
+                    [parts addObject:value.description];
+                }];
+
+                NSString *values = [parts componentsJoinedByString:@", "];
+
+                return [NSString stringWithFormat:@"push(%@)", values];
+            }
         }
 
         case EM_INSTRUCTION_STACK_PUSH_GLOBAL:
@@ -108,7 +123,7 @@
         case EM_INSTRUCTION_STACK_DUPLICATE:
             return @"dup";
 
-        // scope
+#pragma mark Scope
 
         case EM_INSTRUCTION_SCOPE_GET_SYMBOL:
             return (_useShortForm) ? @"^" : @"getSymbol";
@@ -126,7 +141,7 @@
                 ? [NSString stringWithFormat:@"^='%@'", instruction.stringValue]
                 : [NSString stringWithFormat:@"setSymbol('%@')", instruction.stringValue];
 
-        // math
+#pragma mark Math
 
         case EM_INSTRUCTION_MATH_ADDITION:
             return @"add";
@@ -148,7 +163,7 @@
             return @"neg";
             break;
 
-        // boolean
+#pragma mark Boolean
 
         case EM_INSTRUCTION_BOOLEAN_AND:
             return @"and";
@@ -188,7 +203,7 @@
             return @"gt";
             break;
 
-        // flow
+#pragma mark Flow
             
         case EM_INSTRUCTION_FLOW_IF:
             return @"if";
