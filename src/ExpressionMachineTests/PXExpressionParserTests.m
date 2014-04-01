@@ -223,8 +223,7 @@
 - (void)testNegation
 {
     NSString *expected = [@[
-        @"-",
-        @"  10.5"
+        @"-10.5"
     ] componentsJoinedByString:@"\n"];
 
     [self assertResult:expected fromSource:@"-10.5"];
@@ -234,12 +233,23 @@
 {
     NSString *expected = [@[
         @"*",
-        @"  -",
-        @"    8",
+        @"  -8",
         @"  t"
     ] componentsJoinedByString:@"\n"];
 
     [self assertResult:expected fromSource:@"-8 * t"];
+}
+
+- (void)testNegation3
+{
+    NSString *expected = [@[
+        @"-",
+        @"  +",
+        @"    5",
+        @"    3"
+    ] componentsJoinedByString:@"\n"];
+
+    [self assertResult:expected fromSource:@"-(5 + 3)"];
 }
 
 - (void)testSubtractionWithNegation
@@ -247,8 +257,7 @@
     NSString *expected = [@[
         @"-",
         @"  10.5",
-        @"  -",
-        @"    8.5"
+        @"  -8.5"
     ] componentsJoinedByString:@"\n"];
 
     [self assertResult:expected fromSource:@"10.5 - -8.5"];
