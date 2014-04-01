@@ -623,7 +623,16 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
                 break;
 
             case EM_MINUS:
-                currentNode = [NODE_BUILDER createNegateNode:currentNode];
+                if (currentNode.type == EM_NUMBER)
+                {
+                    PXGenericNode *number = (PXGenericNode *)currentNode;
+
+                    currentNode = [NODE_BUILDER createNumberNode:-number.doubleValue];
+                }
+                else
+                {
+                    currentNode = [NODE_BUILDER createNegateNode:currentNode];
+                }
                 break;
 
             default:
