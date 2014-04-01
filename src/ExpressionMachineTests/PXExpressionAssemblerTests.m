@@ -613,15 +613,25 @@
 
 - (void)testBehindT
 {
-    // abs(dy / max_distance)
-    [self assertSource: [@[
+    NSString *source = [ @[
         @"push(mark)",
         @"push(mark)",
         @"getSymbol('dy')",
         @"getSymbol('max_distance')",
         @"invoke('/')",
         @"invoke('abs')"
-    ] componentsJoinedByString:@"\n"]];
+    ] componentsJoinedByString:@"\n"];
+
+    NSString *result = [ @[
+        @"push(mark, mark)",
+        @"getSymbol('dy')",
+        @"getSymbol('max_distance')",
+        @"invoke('/')",
+        @"invoke('abs')"
+    ] componentsJoinedByString:@"\n"];
+
+    // abs(dy / max_distance)
+    [self assertSource:source withResult:result];
 }
 
 - (void)testBehindT2
@@ -639,8 +649,7 @@
 {
     // abs(dy / max_distance)
     NSString *expected = [@[
-        @"push(mark)",
-        @"push(mark)",
+        @"push(mark, mark)",
         @"getSymbol('dy')",
         @"getSymbol('max_distance')",
         @"invoke('/')",

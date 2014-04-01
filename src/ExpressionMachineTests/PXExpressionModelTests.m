@@ -109,8 +109,7 @@
     PXGenericNode *node = [[PXGenericNode alloc] initWithType:EM_LPAREN nodeValue:name arrayValue:@[lhs, rhs]];
     PXExpressionNodeCompiler *compiler = [[PXExpressionNodeCompiler alloc] init];
     NSString *expected = [@[
-        @"push(5)",
-        @"push(3)",
+        @"push(5, 3)",
         @"invoke('<', 2)"
     ] componentsJoinedByString:@"\n"];
 
@@ -128,8 +127,7 @@
     PXGenericNode *node = [[PXGenericNode alloc] initWithType:EM_LPAREN nodeValue:name arrayValue:@[lhs, rhs]];
     PXExpressionNodeCompiler *compiler = [[PXExpressionNodeCompiler alloc] init];
     NSString *expected = [@[
-        @"push(5)",
-        @"push(3)",
+        @"push(5, 3)",
         @"invoke('lt', 2)"
     ] componentsJoinedByString:@"\n"];
 
