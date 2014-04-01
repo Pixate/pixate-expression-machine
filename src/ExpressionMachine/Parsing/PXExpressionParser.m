@@ -168,7 +168,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
     }
     else
     {
-        result = [self parseConditional];
+        result = [self parseExpression];
 
         // handle optional semicolon
         [self advanceIfIsType:EM_SEMICOLON];
