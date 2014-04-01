@@ -79,9 +79,9 @@
 
     if (last.type == EM_INSTRUCTION_STACK_PUSH)
     {
-        PXPushValueInstruction *push = (PXPushValueInstruction *)instruction;
+        PXPushValueInstruction *lastPush = (PXPushValueInstruction *)last;
 
-        [push pushValue:instruction.value];
+        [lastPush pushValue:instruction.value];
     }
     else
     {
