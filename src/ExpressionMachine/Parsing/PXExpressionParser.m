@@ -92,6 +92,8 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
         [set addIndex:EM_TRUE];
         [set addIndex:EM_FALSE];
         [set addIndex:EM_STRING];
+        [set addIndex:EM_NULL];
+        [set addIndex:EM_UNDEFINED];
         SIMPLE_TYPE_SET = [[NSIndexSet alloc] initWithIndexSet:set];
 
         set = [NSMutableIndexSet indexSet];
