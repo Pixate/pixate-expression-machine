@@ -632,7 +632,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
         // advance over '('
         [self advance];
 
-        // grab name
+        // grab number
         if ([self isType:EM_NUMBER])
         {
             uint count = [currentLexeme.text intValue];
