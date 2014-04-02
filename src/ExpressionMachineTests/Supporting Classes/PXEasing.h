@@ -1,6 +1,6 @@
 //
 //  PXEasing.h
-//  Protostyle
+//  pixate-expression-machine
 //
 //  Created by Robin Debreuil on 1/20/2014.
 //  Copyright (c) 2014 Pixate. All rights reserved.
