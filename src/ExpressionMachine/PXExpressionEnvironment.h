@@ -39,6 +39,7 @@
 - (void)pushValue:(id<PXExpressionValue>)value;
 - (void)pushBoolean:(BOOL)booleanValue;
 - (void)pushDouble:(double)doubleValue;
+- (void)pushString:(NSString *)stringValue;
 - (void)pushNullValue;
 - (void)pushUndefinedValue;
 - (void)pushGlobal;

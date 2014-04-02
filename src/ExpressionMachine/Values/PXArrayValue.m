@@ -14,6 +14,7 @@
 #import "PXUndefinedValue.h"
 
 #import "PXArrayForEachMethod.h"
+#import "PXArrayJoinMethod.h"
 #import "PXArrayLengthMethod.h"
 #import "PXArrayMapMethod.h"
 #import "PXArrayPopMethod.h"
@@ -39,6 +40,7 @@ static NSDictionary *METHODS;
     dispatch_once(&onceToken, ^{
         METHODS = @{
             @"forEach": [[PXArrayForEachMethod alloc] init],
+            @"join": [[PXArrayJoinMethod alloc] init],
             @"length": [[PXArrayLengthMethod alloc] init],
             @"map": [[PXArrayMapMethod alloc] init],
             @"pop": [[PXArrayPopMethod alloc] init],

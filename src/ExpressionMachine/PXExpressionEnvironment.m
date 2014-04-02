@@ -16,6 +16,7 @@
 #import "PXBuiltInScope.h"
 #import "PXBooleanValue.h"
 #import "PXDoubleValue.h"
+#import "PXStringValue.h"
 #import "PXNullValue.h"
 #import "PXUndefinedValue.h"
 
@@ -115,6 +116,11 @@
 - (void)pushDouble:(double)doubleValue
 {
     [self pushValue:[[PXDoubleValue alloc] initWithDouble:doubleValue]];
+}
+
+- (void)pushString:(NSString *)stringValue
+{
+    [self pushValue:[[PXStringValue alloc] initWithString:stringValue]];
 }
 
 - (void)pushNullValue

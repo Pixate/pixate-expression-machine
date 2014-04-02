@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A09BE5D18EC6911004780F8 /* PXArrayJoinMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A09BE5C18EC6911004780F8 /* PXArrayJoinMethod.m */; };
 		0A4D1DD518E5A78B00200629 /* PXScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8518E5A78B00200629 /* PXScriptManager.m */; };
 		0A4D1DE418E5A85D00200629 /* PXBuiltInsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8A18E5A78B00200629 /* PXBuiltInsTests.m */; };
 		0A4D1DE618E5A85D00200629 /* PXEasingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8D18E5A78B00200629 /* PXEasingTests.m */; };
@@ -181,6 +182,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A09BE5B18EC6911004780F8 /* PXArrayJoinMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXArrayJoinMethod.h; sourceTree = "<group>"; };
+		0A09BE5C18EC6911004780F8 /* PXArrayJoinMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXArrayJoinMethod.m; sourceTree = "<group>"; };
 		0A4D1D8318E5A78B00200629 /* pixate-expression-machine-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "pixate-expression-machine-Prefix.pch"; sourceTree = "<group>"; };
 		0A4D1D8418E5A78B00200629 /* PXScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXScriptManager.h; sourceTree = "<group>"; };
 		0A4D1D8518E5A78B00200629 /* PXScriptManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXScriptManager.m; sourceTree = "<group>"; };
@@ -514,6 +517,8 @@
 			children = (
 				0A4D1E2018E5AA8800200629 /* PXArrayForEachMethod.h */,
 				0A4D1E2118E5AA8800200629 /* PXArrayForEachMethod.m */,
+				0A09BE5B18EC6911004780F8 /* PXArrayJoinMethod.h */,
+				0A09BE5C18EC6911004780F8 /* PXArrayJoinMethod.m */,
 				0A4D1E2218E5AA8800200629 /* PXArrayLengthMethod.h */,
 				0A4D1E2318E5AA8800200629 /* PXArrayLengthMethod.m */,
 				0A4D1E2418E5AA8800200629 /* PXArrayMapMethod.h */,
@@ -1041,6 +1046,7 @@
 				0A4D1EAA18E5AA8800200629 /* PXParameter.m in Sources */,
 				0A4D1EA418E5AA8800200629 /* PXArrayPushMethod.m in Sources */,
 				0A4D1EA618E5AA8800200629 /* PXArrayReverseMethod.m in Sources */,
+				0A09BE5D18EC6911004780F8 /* PXArrayJoinMethod.m in Sources */,
 				0A4D1EB418E5AA8800200629 /* PXByteCodeBuilder.m in Sources */,
 				0A4D1EC018E5AA8800200629 /* PXExpressionNodeBuilder.m in Sources */,
 				0A4D1EB018E5AA8800200629 /* PXSquareRootFunction.m in Sources */,

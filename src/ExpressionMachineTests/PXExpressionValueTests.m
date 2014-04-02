@@ -76,6 +76,30 @@
     [self assertDoubleValue:[env popValue] expected:1.0];
 }
 
+- (void)testArrayJoin
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"['abc','def','ghi'].join('; ')";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertStringValue:[env popValue] expected:@"abc; def; ghi"];
+}
+
+- (void)testArrayJoinMissingDelimiter
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"['abc','def','ghi'].join()";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertStringValue:[env popValue] expected:@"abcdefghi"];
+}
+
 - (void)testArrayMap
 {
     PXExpressionParser *parser = [[PXExpressionParser alloc] init];
