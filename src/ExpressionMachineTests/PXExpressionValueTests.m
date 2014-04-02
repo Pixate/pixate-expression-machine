@@ -88,6 +88,18 @@
     [self assertStringValue:[env popValue] expected:@"abc; def; ghi"];
 }
 
+- (void)testArrayJoinOneElement
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"['abc'].join('; ')";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertStringValue:[env popValue] expected:@"abc"];
+}
+
 - (void)testArrayJoinMissingDelimiter
 {
     PXExpressionParser *parser = [[PXExpressionParser alloc] init];
