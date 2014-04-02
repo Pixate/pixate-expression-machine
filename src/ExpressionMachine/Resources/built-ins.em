@@ -118,8 +118,8 @@ func map(value, start1, end1, start2, end2, clampResult=false) {
 // This function returns whatever value is passed to it. The value is
 // expected to be a string.
 //
-function url(URL) {
-  URL;
+function url() {
+  arguments.join();
 }
 
 //
