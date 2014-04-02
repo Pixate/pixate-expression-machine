@@ -435,4 +435,16 @@
     [self assertStringValue:[env popValue] expected:@"ell"];
 }
 
+- (void)testStringIndex
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"'hello'[1]";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertStringValue:[env popValue] expected:@"e"];
+}
+
 @end
