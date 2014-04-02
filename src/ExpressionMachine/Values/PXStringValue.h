@@ -6,10 +6,11 @@
 //  Copyright (c) 2014 Pixate, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "PXExpressionValueBase.h"
+#import "PXExpressionObject.h"
+#import "PXExpressionArray.h"
 
-@interface PXStringValue : PXExpressionValueBase
+@interface PXStringValue : PXExpressionValueBase <PXExpressionObject, PXExpressionArray>
 
 - (id)initWithString:(NSString *)stringValue;
 

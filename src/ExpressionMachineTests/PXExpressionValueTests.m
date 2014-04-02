@@ -379,6 +379,8 @@
     XCTAssertTrue(isnan(mark.doubleValue), @"Expected NaN");
 }
 
+#pragma mark - String Tests
+
 - (void)testEmptyString
 {
     PXStringValue *string = [[PXStringValue alloc] initWithString:@""];
@@ -407,6 +409,30 @@
     XCTAssertTrue([string.stringValue isEqualToString:@"hello"], @"Expected 'hello'");
     XCTAssertTrue([string.description isEqualToString:@"'hello'"], @"Expected 'hello'");
     XCTAssertTrue(string.doubleValue == 0.0, @"Expected 0.0");
+}
+
+- (void)testStringLength
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"'hello'.length()";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertDoubleValue:[env popValue] expected:5.0];
+}
+
+- (void)testStringSubstring
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"'hello'.substring(1, 3)";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertStringValue:[env popValue] expected:@"ell"];
 }
 
 @end

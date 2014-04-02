@@ -70,7 +70,7 @@
             id<PXExpressionValue> item = [env popValue];
             id<PXExpressionValue> result = [PXUndefinedValue undefined];
 
-            if (index.valueType == PX_VALUE_TYPE_DOUBLE && item.valueType == PX_VALUE_TYPE_ARRAY)
+            if (index.valueType == PX_VALUE_TYPE_DOUBLE && [item conformsToProtocol:@protocol(PXExpressionArray)])
             {
                 id<PXExpressionArray> array = (id<PXExpressionArray>)item;
 
@@ -87,7 +87,7 @@
             id<PXExpressionValue> item = [env popValue];
             id<PXExpressionValue> result = [PXUndefinedValue undefined];
 
-            if (item.valueType == PX_VALUE_TYPE_ARRAY)
+            if ([item conformsToProtocol:@protocol(PXExpressionArray)])
             {
                 id<PXExpressionArray> array = (id<PXExpressionArray>)item;
 
