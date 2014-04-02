@@ -6,4 +6,4 @@ Except as otherwise noted, Pixate Freestyle for iOS is licensed under the Apache
 
 ## Documentation
 
-More info about EM can be find in the [Wiki](https://github.com/Pixate/pixate-expression-machine/wiki)
+More info about EM can be found in the [Wiki](https://github.com/Pixate/pixate-expression-machine/wiki)
