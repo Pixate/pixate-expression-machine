@@ -198,4 +198,28 @@
     [self assertObject:expected forSource:@"red"];
 }
 
+#pragma mark - URL tests
+
+- (void)assertString:(NSString *)expected forSource:(NSString *)source
+{
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+    PXExpressionParser *compiler = [[PXExpressionParser alloc] init];
+    PXExpressionUnit *unit = [compiler compileString:source];
+
+    [env executeUnit:unit];
+    id<PXExpressionValue> result = [env popValue];
+
+    [self assertStringValue:result expected:expected];
+}
+
+- (void)testURL
+{
+    [self assertString:@"image.png" forSource:@"url('image.png')"];
+}
+
+- (void)testURLCombined
+{
+    [self assertString:@"http://www.example.com/image.png" forSource:@"url('http://www.example.com/', 'image.png')"];
+}
+
 @end
