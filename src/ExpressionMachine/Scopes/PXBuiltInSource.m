@@ -139,7 +139,7 @@
         "// This function returns whatever value is passed to it. The value is\n"
         "// expected to be a string.\n"
         "//\n"
-        "function url() {\n"
+        "func url() {\n"
         "  arguments.join();\n"
         "}\n"
         "\n"
