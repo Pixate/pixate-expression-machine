@@ -182,7 +182,12 @@
 
 - (NSArray *)propertyNames
 {
-    return @[];
+    return nil;
+}
+
+- (NSArray *)propertyValues
+{
+    return nil;
 }
 
 - (id<PXExpressionValue>)valueForPropertyName:(NSString *)name

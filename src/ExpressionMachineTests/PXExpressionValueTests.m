@@ -272,6 +272,18 @@
     [self assertArrayValue:[env popValue] expected:@[ @2, @4, @6 ]];
 }
 
+- (void)testObjectKeys
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"{ a:2, b:4, c:6 }.keys()";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertArrayValue:[env popValue] expectedStrings:@[ @"a", @"b", @"c" ]];
+}
+
 - (void)testObjectLength
 {
     PXExpressionParser *parser = [[PXExpressionParser alloc] init];
@@ -303,6 +315,18 @@
     XCTAssertTrue([names[0] isEqualToString:@"c"], @"Expected first property to be 'c', but was %@", names[0]);
     XCTAssertTrue([names[1] isEqualToString:@"b"], @"Expected first property to be 'b', but was %@", names[1]);
     XCTAssertTrue([names[2] isEqualToString:@"a"], @"Expected first property to be 'a', but was %@", names[2]);
+}
+
+- (void)testObjectValues
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"{ a:2, b:4, c:6 }.values()";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertArrayValue:[env popValue] expected:@[ @2, @4, @6 ]];
 }
 
 #pragma mark - Primitive Types Tests

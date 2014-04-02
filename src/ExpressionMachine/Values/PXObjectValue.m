@@ -17,8 +17,10 @@
 #import "PXUndefinedValue.h"
 
 #import "PXObjectForEachMethod.h"
+#import "PXObjectKeysMethod.h"
 #import "PXObjectLengthMethod.h"
 #import "PXObjectReverseMethod.h"
+#import "PXObjectValuesMethod.h"
 
 @implementation PXObjectValue
 {
@@ -36,16 +38,12 @@ static NSDictionary *METHODS;
 
     dispatch_once(&onceToken, ^{
         METHODS = @{
-                    @"forEach": [[PXObjectForEachMethod alloc] init],
-                    @"length": [[PXObjectLengthMethod alloc] init],
-//                    @"map": [[PXArrayMapMethod alloc] init],
-//                    @"pop": [[PXArrayPopMethod alloc] init],
-//                    @"push": [[PXArrayPushMethod alloc] init],
-//                    @"reduce": [[PXArrayReduceMethod alloc] init],
-                    @"reverse": [[PXObjectReverseMethod alloc] init],
-//                    @"shift": [[PXArrayShiftMethod alloc] init],
-//                    @"unshift": [[PXArrayUnshiftMethod alloc] init]
-                    };
+            @"forEach": [[PXObjectForEachMethod alloc] init],
+            @"keys": [[PXObjectKeysMethod alloc] init],
+            @"length": [[PXObjectLengthMethod alloc] init],
+            @"reverse": [[PXObjectReverseMethod alloc] init],
+            @"values": [[PXObjectValuesMethod alloc] init]
+        };
     });
 }
 
@@ -116,6 +114,17 @@ static NSDictionary *METHODS;
 - (NSArray *)propertyNames
 {
     return [_propertyNames array];
+}
+
+- (NSArray *)propertyValues
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+
+    [_propertyNames enumerateObjectsUsingBlock:^(NSString *propertyName, NSUInteger idx, BOOL *stop) {
+        [result addObject:[_properties objectForKey:propertyName]];
+    }];
+
+    return [result copy];
 }
 
 #pragma mark - Methods

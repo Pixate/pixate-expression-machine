@@ -210,6 +210,12 @@ static NSDictionary *METHODS;
     return nil;
 }
 
+- (NSArray *)propertyValues
+{
+    // TODO: Should we return methods here?
+    return nil;
+}
+
 - (id<PXExpressionValue>)valueForPropertyName:(NSString *)name
 {
     id<PXExpressionFunction> method = [METHODS objectForKey:name];

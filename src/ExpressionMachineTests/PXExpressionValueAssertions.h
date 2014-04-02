@@ -16,6 +16,7 @@
 - (void)assertDoubleValue:(id<PXExpressionValue>)value expected:(double)expected;
 - (void)assertStringValue:(id<PXExpressionValue>)value expected:(NSString *)expected;
 - (void)assertArrayValue:(id<PXExpressionValue>)value expected:(NSArray *)expected;
+- (void)assertArrayValue:(id<PXExpressionValue>)value expectedStrings:(NSArray *)expected;
 - (void)assertObjectValue:(id<PXExpressionValue>)value expected:(NSDictionary *)expected;
 
 @end

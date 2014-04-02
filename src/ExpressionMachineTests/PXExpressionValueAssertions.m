@@ -75,6 +75,22 @@
     }];
 }
 
+- (void)assertArrayValue:(id<PXExpressionValue>)value expectedStrings:(NSArray *)expected
+{
+    XCTAssertNotNil(value, "Expected a non-nil result");
+    XCTAssertTrue(value.valueType == PX_VALUE_TYPE_ARRAY, @"Expected value to be an array");
+
+    PXArrayValue *array = (PXArrayValue *)value;
+
+    XCTAssertTrue(array.length == expected.count, @"Expected array to have %lu elements, but it had %d", (unsigned long)expected.count, array.length);
+
+    [expected enumerateObjectsUsingBlock:^(NSString *target, NSUInteger idx, BOOL *stop) {
+        id<PXExpressionValue> elem = [array valueForIndex:(uint)idx];
+
+        [self assertStringValue:elem expected:target];
+    }];
+}
+
 - (void)assertObjectValue:(id<PXExpressionValue>)value expected:(NSDictionary *)expected
 {
     XCTAssertNotNil(value, "Expected a non-nil result");

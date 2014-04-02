@@ -101,6 +101,17 @@
     return [self symbolNames];
 }
 
+- (NSArray *)propertyValues
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+
+    [self.symbolNames enumerateObjectsUsingBlock:^(id<PXExpressionValue> value, NSUInteger idx, BOOL *stop) {
+        [result addObject:value];
+    }];
+
+    return [result copy];
+}
+
 - (id<PXExpressionValue>)valueForPropertyName:(NSString *)name
 {
     return [self valueForSymbolName:name];

@@ -12,6 +12,7 @@
 
 @property (nonatomic, readonly) uint length;
 @property (nonatomic, strong, readonly) NSArray *propertyNames;
+@property (nonatomic, strong, readonly) NSArray *propertyValues;
 
 - (void)setValue:(id<PXExpressionValue>)value forPropertyName:(NSString *)name;
 - (id<PXExpressionValue>)valueForPropertyName:(NSString *)name;
