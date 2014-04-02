@@ -122,9 +122,14 @@
     return [[PXGenericNode alloc] initWithType:EM_RBRACKET arrayValue:elements];
 }
 
-- (PXGenericNode *)createGetPropertyNode:(id<PXExpressionNode>)lhs withName:(NSString *)name
+- (PXGenericNode *)createGetPropertyNode:(id<PXExpressionNode>)lhs withStringName:(NSString *)name
 {
     return [[PXGenericNode alloc] initWithType:EM_DOT nodeValue:lhs stringValue:name];
+}
+
+- (PXGenericNode *)createGetPropertyNode:(id<PXExpressionNode>)lhs withName:(id<PXExpressionNode>)name
+{
+    return [[PXGenericNode alloc] initWithType:EM_DOT lhs:lhs rhs:name];
 }
 
 - (PXGenericNode *)createIdentifierNode:(NSString *)stringValue

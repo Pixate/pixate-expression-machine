@@ -446,7 +446,16 @@ static NSIndexSet *PRIMITIVES;
             PXGenericNode *em = (PXGenericNode *)node;
 
             [self emitInstructionsForNode:em.nodeValue builder:builder scope:scope];
-            [builder addGetPropertyInstructionWithName:em.stringValue];
+
+            if (em.stringValue.length > 0)
+            {
+                [builder addGetPropertyInstructionWithName:em.stringValue];
+            }
+            else
+            {
+                [self emitInstructionsForNode:em.nodeValue2 builder:builder scope:scope];
+                [builder addGetPropertyInstruction];
+            }
             break;
         }
 

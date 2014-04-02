@@ -37,7 +37,8 @@
 - (PXGenericNode *)createGreaterThanNode:(id<PXExpressionNode>)lhs rhs:(id<PXExpressionNode>)rhs;
 
 - (PXGenericNode *)createArrayNode:(NSArray *)elements;
-- (PXGenericNode *)createGetPropertyNode:(id<PXExpressionNode>)lhs withName:(NSString *)name;
+- (PXGenericNode *)createGetPropertyNode:(id<PXExpressionNode>)lhs withStringName:(NSString *)name;
+- (PXGenericNode *)createGetPropertyNode:(id<PXExpressionNode>)lhs withName:(id<PXExpressionNode>)name;
 - (PXGenericNode *)createIdentifierNode:(NSString *)stringValue;
 - (PXGenericNode *)createInvokeNode:(id<PXExpressionNode>)lhs arguments:(NSArray *)args;
 - (PXGenericNode *)createKeyValueNode:(NSString *)key value:(id<PXExpressionNode>)value;

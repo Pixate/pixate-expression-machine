@@ -99,6 +99,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
         set = [NSMutableIndexSet indexSet];
         [set addIndex:EM_DOT];
         [set addIndex:EM_LBRACKET];
+        [set addIndex:EM_LCURLY];
         ACCESSOR_SET = [[NSIndexSet alloc] initWithIndexSet:set];
 
         NODE_BUILDER = [[PXExpressionNodeBuilder alloc] init];
@@ -647,6 +648,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
 {
     id<PXExpressionNode> result = [self parseMember];
 
+    // TODO: should be 'while'
     if ([self isType:EM_LPAREN])
     {
         // advance over '('
@@ -709,7 +711,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
 
                 // get property name
                 [self assertType:EM_IDENTIFIER];
-                result = [NODE_BUILDER createGetPropertyNode:result withName:currentLexeme.text];
+                result = [NODE_BUILDER createGetPropertyNode:result withStringName:currentLexeme.text];
 
                 // advance over identifier
                 [self advance];
@@ -726,6 +728,20 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
                 [self assertTypeAndAdvance:EM_RBRACKET];
 
                 result = [NODE_BUILDER createGetElementNode:result withIndex:index];
+                break;
+            }
+
+            case EM_LCURLY:
+            {
+                 // advance over '{'
+                [self advance];
+
+                id<PXExpressionNode> property = [self parseExpression];
+
+                // assert '}'
+                [self assertTypeAndAdvance:EM_RCURLY];
+
+                result = [NODE_BUILDER createGetPropertyNode:result withName:property];
                 break;
             }
 

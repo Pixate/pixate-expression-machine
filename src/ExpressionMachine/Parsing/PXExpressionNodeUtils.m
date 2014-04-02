@@ -320,8 +320,18 @@
                 [writer increaseIndent];
 
                 [self descriptionForNode:ast.nodeValue withWriter:writer];
-                [writer printIndent];
-                [writer printWithNewLine:ast.stringValue];
+
+                if (ast.stringValue.length > 0)
+                {
+                    [writer printIndent];
+                    [writer print:@"'"];
+                    [writer print:ast.stringValue];
+                    [writer printWithNewLine:@"'"];
+                }
+                else
+                {
+                    [self descriptionForNode:ast.nodeValue2 withWriter:writer];
+                }
                 
                 [writer decreaseIndent];
                 break;

@@ -374,10 +374,21 @@
     NSString *expected = [@[
         @".",
         @"  abc",
-        @"  def"
+        @"  'def'"
     ] componentsJoinedByString:@"\n"];
 
     [self assertResult:expected fromSource:@"abc.def"];
+}
+
+- (void)testGetProperty2
+{
+    NSString *expected = [@[
+        @".",
+        @"  abc",
+        @"  def"
+    ] componentsJoinedByString:@"\n"];
+
+    [self assertResult:expected fromSource:@"abc{def}"];
 }
 
 - (void)testInvokeAndGetProperty
@@ -385,7 +396,7 @@
     NSString *expected = [@[
         @".",
         @"  'abc'()",
-        @"  def"
+        @"  'def'"
     ] componentsJoinedByString:@"\n"];
 
     [self assertResult:expected fromSource:@"abc().def"];
