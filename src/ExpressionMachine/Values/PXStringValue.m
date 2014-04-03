@@ -108,7 +108,11 @@ static NSDictionary *METHODS;
 
 -(void)setValue:(id<PXExpressionValue>)value forIndex:(int)index
 {
-    // TODO:
+    NSMutableString *string = [NSMutableString stringWithString:_stringValue];
+
+    [string replaceCharactersInRange:NSMakeRange(index, 1) withString:value.stringValue];
+
+    _stringValue = [string copy];
 }
 
 - (id<PXExpressionValue>)valueForIndex:(int)index
@@ -123,8 +127,15 @@ static NSDictionary *METHODS;
 
 - (id<PXExpressionValue>)popValue
 {
-    // TODO:
-    return [PXUndefinedValue undefined];
+    NSMutableString *string = [NSMutableString stringWithString:_stringValue];
+    NSRange range = NSMakeRange(_stringValue.length - 1, 1);
+    NSString *result = [string substringWithRange:range];
+
+    [string deleteCharactersInRange:range];
+
+    _stringValue = [string copy];
+
+    return [[PXStringValue alloc] initWithString:result];
 }
 
 - (void)shiftValue:(id<PXExpressionValue>)value
@@ -134,13 +145,15 @@ static NSDictionary *METHODS;
 
 - (id<PXExpressionValue>)unshiftValue
 {
-    // TODO:
-    return [PXUndefinedValue undefined];
-}
+    NSMutableString *string = [NSMutableString stringWithString:_stringValue];
+    NSRange range = NSMakeRange(0, 1);
+    NSString *result = [string substringWithRange:range];
 
-- (void)reverse
-{
-    // TODO:
+    [string deleteCharactersInRange:range];
+
+    _stringValue = [string copy];
+
+    return [[PXStringValue alloc] initWithString:result];
 }
 
 #pragma mark - Overrides
