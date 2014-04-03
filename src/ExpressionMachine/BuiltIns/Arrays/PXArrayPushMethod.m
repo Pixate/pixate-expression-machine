@@ -7,6 +7,7 @@
 //
 
 #import "PXArrayPushMethod.h"
+#import "PXArrayValue.h"
 
 @implementation PXArrayPushMethod
 
@@ -16,7 +17,7 @@
 {
     if (invocationObject.valueType == PX_VALUE_TYPE_ARRAY)
     {
-        id<PXExpressionArray> array = (id<PXExpressionArray>)invocationObject;
+        PXArrayValue *array = (PXArrayValue *)invocationObject;
 
         [args.elements enumerateObjectsUsingBlock:^(id<PXExpressionValue> value, NSUInteger idx, BOOL *stop) {
             [array pushValue:value];

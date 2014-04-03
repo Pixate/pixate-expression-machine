@@ -16,11 +16,4 @@
 - (void)setValue:(id<PXExpressionValue>)value forIndex:(int)index;
 - (id<PXExpressionValue>)valueForIndex:(int)index;
 
-- (void)pushValue:(id<PXExpressionValue>)value;
-- (id<PXExpressionValue>)popValue;
-- (void)shiftValue:(id<PXExpressionValue>)value;
-- (id<PXExpressionValue>)unshiftValue;
-
-- (void)reverse;
-
 @end

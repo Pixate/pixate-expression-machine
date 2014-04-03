@@ -7,6 +7,7 @@
 //
 
 #import "PXArrayPopMethod.h"
+#import "PXArrayValue.h"
 
 @implementation PXArrayPopMethod
 
@@ -16,7 +17,7 @@
 {
     if (invocationObject.valueType == PX_VALUE_TYPE_ARRAY)
     {
-        id<PXExpressionArray> array = (id<PXExpressionArray>)invocationObject;
+        PXArrayValue *array = (PXArrayValue *)invocationObject;
 
         [env pushValue:[array popValue]];
     }

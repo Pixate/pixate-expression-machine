@@ -120,42 +120,6 @@ static NSDictionary *METHODS;
     return [[PXStringValue alloc] initWithString:[_stringValue substringWithRange:NSMakeRange(index, 1)]];
 }
 
-- (void)pushValue:(id<PXExpressionValue>)value
-{
-    _stringValue = [_stringValue stringByAppendingString:value.stringValue];
-}
-
-- (id<PXExpressionValue>)popValue
-{
-    NSMutableString *string = [NSMutableString stringWithString:_stringValue];
-    NSRange range = NSMakeRange(_stringValue.length - 1, 1);
-    NSString *result = [string substringWithRange:range];
-
-    [string deleteCharactersInRange:range];
-
-    _stringValue = [string copy];
-
-    return [[PXStringValue alloc] initWithString:result];
-}
-
-- (void)shiftValue:(id<PXExpressionValue>)value
-{
-    _stringValue = [NSString stringWithFormat:@"%@%@", value.stringValue, _stringValue];
-}
-
-- (id<PXExpressionValue>)unshiftValue
-{
-    NSMutableString *string = [NSMutableString stringWithString:_stringValue];
-    NSRange range = NSMakeRange(0, 1);
-    NSString *result = [string substringWithRange:range];
-
-    [string deleteCharactersInRange:range];
-
-    _stringValue = [string copy];
-
-    return [[PXStringValue alloc] initWithString:result];
-}
-
 #pragma mark - Overrides
 
 - (NSString *)description

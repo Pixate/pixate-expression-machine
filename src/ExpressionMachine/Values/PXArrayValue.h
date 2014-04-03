@@ -17,4 +17,10 @@
 + (PXArrayValue *)arrayFromEnvironment:(PXExpressionEnvironment *)env;
 + (PXArrayValue *)arrayFromEnvironment:(PXExpressionEnvironment *)env withCount:(uint)count;
 
+- (void)pushValue:(id<PXExpressionValue>)value;
+- (id<PXExpressionValue>)popValue;
+- (void)shiftValue:(id<PXExpressionValue>)value;
+- (id<PXExpressionValue>)unshiftValue;
+- (void)reverse;
+
 @end
