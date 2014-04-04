@@ -17,6 +17,7 @@
 #import "PXArrayValue.h"
 #import "PXObjectValue.h"
 #import "PXUndefinedValue.h"
+#import "PXFunctionValueBase.h"
 
 @interface PXObjectValueWrapper ()
 @property (nonatomic, strong, readonly) id object;
@@ -151,51 +152,44 @@
     }
 }
 
-#pragma mark - PXExpressionValue Implementation
-
-- (PXExpressionValueType)valueType
-{
-    return PX_VALUE_TYPE_OBJECT;
-}
-
-- (BOOL)booleanValue
-{
-    return YES;
-}
-
-- (NSString *)stringValue
-{
-    return @"[value ObjectWrapper]";
-}
-
-- (double)doubleValue
-{
-    return NAN;
-}
-
 #pragma mark - PXExpressionObject Implementation
 
 - (uint)length
 {
-    return 0;
+    return (uint)_properties.count;
 }
 
 - (NSArray *)propertyNames
 {
-    return nil;
+    return [_properties allKeys];
 }
 
 - (NSArray *)propertyValues
 {
-    return nil;
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+
+    [self.propertyNames enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
+        [result addObject:[self valueForPropertyName:key]];
+    }];
+
+    return [result copy];
 }
 
 - (id<PXExpressionValue>)valueForPropertyName:(NSString *)name
 {
-    PXDoubleProperty *property = [_properties objectForKey:name];
-    double result = [property getWithObject:_object];
+    id<PXExpressionValue> candidate = [super valueForPropertyName:name];
 
-    return [[PXDoubleValue alloc] initWithDouble:result];
+    if ([candidate isKindOfClass:[PXFunctionValueBase class]])
+    {
+        return candidate;
+    }
+    else
+    {
+        PXDoubleProperty *property = [_properties objectForKey:name];
+        double result = [property getWithObject:_object];
+
+        return [[PXDoubleValue alloc] initWithDouble:result];
+    }
 }
 
 - (void)setValue:(id<PXExpressionValue>)value forPropertyName:(NSString *)name

@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Pixate, Inc. All rights reserved.
 //
 
-#import "PXExpressionObject.h"
+#import "PXObjectValue.h"
 
-@interface PXObjectValueWrapper : NSObject <PXExpressionObject>
+@interface PXObjectValueWrapper : PXObjectValue
 
 - (id)initWithObject:(id)object;
 
