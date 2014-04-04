@@ -186,25 +186,25 @@
 - (void)testArrayShift
 {
     PXExpressionParser *parser = [[PXExpressionParser alloc] init];
-    NSString *source = @"sym ary = [1, 2, 3]; ary.shift(0); ary";
-    PXExpressionUnit *unit = [parser compileString:source];
-    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
-
-    [env executeUnit:unit];
-
-    [self assertArrayValue:[env popValue] expected:@[ @0, @1, @2, @3 ]];
-}
-
-- (void)testArrayUnshift
-{
-    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
-    NSString *source = @"[1, 2, 3].unshift()";
+    NSString *source = @"[1, 2, 3].shift()";
     PXExpressionUnit *unit = [parser compileString:source];
     PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
 
     [env executeUnit:unit];
 
     [self assertDoubleValue:[env popValue] expected:1.0];
+}
+
+- (void)testArrayUnShift
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"sym ary = [1, 2, 3]; ary.unshift(0); ary";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertArrayValue:[env popValue] expected:@[ @0, @1, @2, @3 ]];
 }
 
 - (void)testArrayLength
