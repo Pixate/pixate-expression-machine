@@ -160,15 +160,7 @@ static NSDictionary *METHODS;
     return result;
 }
 
-- (void)shiftValue:(id<PXExpressionValue>)value
-{
-    if (value != nil)
-    {
-        [_elements insertObject:value atIndex:0];
-    }
-}
-
-- (id<PXExpressionValue>)unshiftValue
+- (id<PXExpressionValue>)shiftValue
 {
     id<PXExpressionValue> result;
 
@@ -179,6 +171,14 @@ static NSDictionary *METHODS;
     }
 
     return result;
+}
+
+- (void)unshiftValue:(id<PXExpressionValue>)value
+{
+    if (value != nil)
+    {
+        [_elements insertObject:value atIndex:0];
+    }
 }
 
 - (void)reverse

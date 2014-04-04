@@ -19,8 +19,8 @@
 
 - (void)pushValue:(id<PXExpressionValue>)value;
 - (id<PXExpressionValue>)popValue;
-- (void)shiftValue:(id<PXExpressionValue>)value;
-- (id<PXExpressionValue>)unshiftValue;
+- (id<PXExpressionValue>)shiftValue;
+- (void)unshiftValue:(id<PXExpressionValue>)value;
 - (void)reverse;
 
 @end

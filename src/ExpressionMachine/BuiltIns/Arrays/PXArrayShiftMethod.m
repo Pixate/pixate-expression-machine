@@ -19,9 +19,7 @@
     {
         PXArrayValue *array = (PXArrayValue *)invocationObject;
 
-        [args.elements enumerateObjectsUsingBlock:^(id<PXExpressionValue> value, NSUInteger idx, BOOL *stop) {
-            [array shiftValue:value];
-        }];
+        [env pushValue:[array shiftValue]];
     }
     else
     {
