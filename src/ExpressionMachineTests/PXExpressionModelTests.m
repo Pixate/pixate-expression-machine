@@ -148,8 +148,7 @@
     PXGenericNode *node = [[PXGenericNode alloc] initWithType:EM_LPAREN nodeValue:name arrayValue:@[lhs, rhs]];
     PXExpressionNodeCompiler *compiler = [[PXExpressionNodeCompiler alloc] init];
     NSString *expected = [@[
-        @"getSymbol('dy')",
-        @"getSymbol('threshold')",
+        @"getSymbol('dy', 'threshold')",
         @"invoke('>', 2)"
     ] componentsJoinedByString:@"\n"];
 
@@ -170,8 +169,7 @@
     PXGenericNode *node = [[PXGenericNode alloc] initWithType:EM_LPAREN nodeValue:name arrayValue:@[division]];
     PXExpressionNodeCompiler *compiler = [[PXExpressionNodeCompiler alloc] init];
     NSString *expected = [@[
-        @"getSymbol('dy')",
-        @"getSymbol('max_distance')",
+        @"getSymbol('dy', 'max_distance')",
         @"invoke('/', 2)",
         @"invoke('abs', 1)"
     ] componentsJoinedByString:@"\n"];
@@ -191,8 +189,7 @@
     PXGenericNode *node = [[PXGenericNode alloc] initWithType:EM_LPAREN nodeValue:name arrayValue:@[lhs, rhs]];
     PXExpressionNodeCompiler *compiler = [[PXExpressionNodeCompiler alloc] init];
     NSString *expected = [@[
-        @"getSymbol('dy')",
-        @"getSymbol('max_distance')",
+        @"getSymbol('dy', 'max_distance')",
         @"invoke('/', 2)"
     ] componentsJoinedByString:@"\n"];
 

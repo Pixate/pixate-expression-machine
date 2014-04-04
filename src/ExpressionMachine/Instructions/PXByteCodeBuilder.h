@@ -79,6 +79,8 @@
 - (void)addIfInstruction;
 - (void)addIfElseInstruction;
 
+- (void)addInvokeSymbol:(NSString *)symbol property:(NSString *)property withCount:(uint)count;
+
 - (PXExpressionUnit *)compileExpression:(NSString *)expression;
 - (PXExpressionUnit *)compileAssembly:(NSString *)assembly;
 

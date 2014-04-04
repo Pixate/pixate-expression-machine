@@ -271,7 +271,16 @@
 
 - (void)addGetPropertyInstructionWithName:(NSString *)propertyName
 {
-    [self addInstruction:[[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_OBJECT_GET_PROPERTY_NAME stringValue:propertyName]];
+    PXExpressionInstruction *last = self.lastInstruction;
+
+    if (last.type == EM_INSTRUCTION_OBJECT_GET_PROPERTY_NAME)
+    {
+        [last pushStringValue:propertyName];
+    }
+    else
+    {
+        [self addInstruction:[[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_OBJECT_GET_PROPERTY_NAME stringValue:propertyName]];
+    }
 }
 
 #pragma mark - Scope add methods
@@ -283,7 +292,16 @@
 
 - (void)addGetSymbolInstructionWithName:(NSString *)symbolName
 {
-    [self addInstruction:[[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_SCOPE_GET_SYMBOL_NAME stringValue:symbolName]];
+    PXExpressionInstruction *last = self.lastInstruction;
+
+    if (last.type == EM_INSTRUCTION_SCOPE_GET_SYMBOL_NAME)
+    {
+        [last pushStringValue:symbolName];
+    }
+    else
+    {
+        [self addInstruction:[[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_SCOPE_GET_SYMBOL_NAME stringValue:symbolName]];
+    }
 }
 
 - (void)addSetSymbolInstruction
@@ -343,6 +361,20 @@
 - (void)addIfElseInstruction
 {
     [self addInstruction:[[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_FLOW_IF_ELSE]];
+}
+
+#pragma mark - Mixed instruction add methods
+
+- (void)addInvokeSymbol:(NSString *)symbol property:(NSString *)property withCount:(uint)count
+{
+    PXExpressionInstruction *invoke = [[PXExpressionInstruction alloc]
+                                       initWithType:EM_INSTRUCTION_MIX_INVOKE_SYMBOL_PROPERTY_WITH_COUNT
+                                       stringValue:symbol
+                                       uint:count];
+
+    [invoke pushStringValue:property preservingStringValue:YES];
+
+    [self addInstruction: invoke];
 }
 
 #pragma mark - Compiler

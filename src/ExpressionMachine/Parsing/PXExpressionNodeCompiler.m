@@ -241,10 +241,19 @@ static NSIndexSet *PRIMITIVES;
             {
                 PXGenericNode *getProperty = (PXGenericNode *)em.nodeValue;
 
-                [self emitInstructionsForNode:getProperty.nodeValue builder:builder scope:scope];
-                [builder addDuplicateInstruction];
-                [builder addGetPropertyInstructionWithName:getProperty.stringValue];
-                [builder addInvokeFunctionInstructionWithCount:(uint)em.arrayValue.count];
+                if (getProperty.nodeValue.type == EM_IDENTIFIER)
+                {
+                    PXGenericNode *identifier = (PXGenericNode *)getProperty.nodeValue;
+
+                    [builder addInvokeSymbol:identifier.stringValue property:getProperty.stringValue withCount:(uint)em.arrayValue.count];
+                }
+                else
+                {
+                    [self emitInstructionsForNode:getProperty.nodeValue builder:builder scope:scope];
+                    [builder addDuplicateInstruction];
+                    [builder addGetPropertyInstructionWithName:getProperty.stringValue];
+                    [builder addInvokeFunctionInstructionWithCount:(uint)em.arrayValue.count];
+                }
             }
             else
             {

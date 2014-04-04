@@ -48,9 +48,20 @@
             return (_useShortForm) ? @"." : @"getProperty";
 
         case EM_INSTRUCTION_OBJECT_GET_PROPERTY_NAME:
-            return (_useShortForm)
-                ? [NSString stringWithFormat:@".'%@'", instruction.stringValue]
-                : [NSString stringWithFormat:@"getProperty('%@')", instruction.stringValue];
+        {
+            if (instruction.stringValue != nil)
+            {
+                return (_useShortForm)
+                    ? [NSString stringWithFormat:@".'%@'", instruction.stringValue]
+                    : [NSString stringWithFormat:@"getProperty('%@')", instruction.stringValue];
+            }
+            else
+            {
+                NSString *values = [instruction.stringValues componentsJoinedByString:@"', '"];
+
+                return [NSString stringWithFormat:@"getProperty('%@')", values];
+            }
+        }
 
 #pragma mark Functions
 
@@ -129,9 +140,20 @@
             return (_useShortForm) ? @"^" : @"getSymbol";
 
         case EM_INSTRUCTION_SCOPE_GET_SYMBOL_NAME:
-            return (_useShortForm)
-                ? [NSString stringWithFormat:@"^'%@'", instruction.stringValue]
-                : [NSString stringWithFormat:@"getSymbol('%@')", instruction.stringValue];
+        {
+            if (instruction.stringValue != nil)
+            {
+                return (_useShortForm)
+                    ? [NSString stringWithFormat:@"^'%@'", instruction.stringValue]
+                    : [NSString stringWithFormat:@"getSymbol('%@')", instruction.stringValue];
+            }
+            else
+            {
+                NSString *values = [instruction.stringValues componentsJoinedByString:@"', '"];
+
+                return [NSString stringWithFormat:@"getSymbol('%@')", values];
+            }
+        }
 
         case EM_INSTRUCTION_SCOPE_SET_SYMBOL:
             return (_useShortForm) ? @"^=" : @"setSymbol";
@@ -210,6 +232,15 @@
             
         case EM_INSTRUCTION_FLOW_IF_ELSE:
             return @"ifelse";
+
+#pragma mark Mix
+
+        case EM_INSTRUCTION_MIX_INVOKE_SYMBOL_PROPERTY_WITH_COUNT:
+        {
+            NSString *values = [instruction.stringValues componentsJoinedByString:@"', '"];
+
+            return [NSString stringWithFormat:@"invokeSymbolProperty('%@', '%@', %d)", instruction.stringValue, values, instruction.uintValue];
+        }
             
         default:
             NSLog(@"Unknown instruction type: %ld", (long) instruction.type);

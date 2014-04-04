@@ -194,6 +194,11 @@
     [self assertSource:@"getSymbol('hello')"];
 }
 
+- (void)testGetSymbolNames
+{
+    [self assertSource:@"getSymbol('abc')\ngetSymbol('def')" withResult:@"getSymbol('abc', 'def')"];
+}
+
 - (void)testGetSymbolNameShortcut
 {
     [self assertSource:@"^hello" withResult:@"getSymbol('hello')"];
@@ -462,6 +467,11 @@
     [self assertSource:@"getProperty('hello')"];
 }
 
+- (void)testGetPropertyNames
+{
+    [self assertSource:@"getProperty('abc')\ngetProperty('def')" withResult:@"getProperty('abc', 'def')"];
+}
+
 - (void)testGetPropertyNameShortcut
 {
     [self assertSource:@".hello" withResult:@"getProperty('hello')"];
@@ -581,30 +591,42 @@
 - (void)testHalfWayCondition
 {
     // dy > threshold
-    [self assertSource: [@[
+    NSString *source = [@[
         @"push(mark)",
         @"getSymbol('dy')",
         @"getSymbol('threshold')",
         @"invoke('>')"
-    ] componentsJoinedByString:@"\n"]];
+    ] componentsJoinedByString:@"\n"];
+    NSString *expected = [@[
+        @"push(mark)",
+        @"getSymbol('dy', 'threshold')",
+        @"invoke('>')"
+    ] componentsJoinedByString:@"\n"];
+
+    [self assertSource:source withResult:expected];
 }
 
 - (void)testHalfWayCondition2
 {
-    // dy > threshold
-    [self assertSource: [@[
+    NSString *source = [@[
         @"getSymbol('dy')",
         @"getSymbol('threshold')",
         @"invoke('>', 2)"
-    ] componentsJoinedByString:@"\n"]];
+    ] componentsJoinedByString:@"\n"];
+    NSString *expected = [@[
+        @"getSymbol('dy', 'threshold')",
+        @"invoke('>', 2)"
+    ] componentsJoinedByString:@"\n"];
+
+    // dy > threshold
+    [self assertSource:source withResult:expected];
 }
 
 - (void)testHalfWayConditionShortcuts
 {
     // dy > threshold
     NSString *expected = [@[
-       @"getSymbol('dy')",
-       @"getSymbol('threshold')",
+       @"getSymbol('dy', 'threshold')",
        @"gt"
     ] componentsJoinedByString:@"\n"];
 
@@ -624,8 +646,7 @@
 
     NSString *result = [ @[
         @"push(mark, mark)",
-        @"getSymbol('dy')",
-        @"getSymbol('max_distance')",
+        @"getSymbol('dy', 'max_distance')",
         @"invoke('/')",
         @"invoke('abs')"
     ] componentsJoinedByString:@"\n"];
@@ -637,12 +658,19 @@
 - (void)testBehindT2
 {
     // abs(dy / max_distance)
-    [self assertSource: [@[
+    NSString *source = [@[
         @"getSymbol('dy')",
         @"getSymbol('max_distance')",
         @"invoke('/', 2)",
         @"invoke('abs', 1)"
-    ] componentsJoinedByString:@"\n"]];
+    ] componentsJoinedByString:@"\n"];
+    NSString *expected = [@[
+        @"getSymbol('dy', 'max_distance')",
+        @"invoke('/', 2)",
+        @"invoke('abs', 1)"
+    ] componentsJoinedByString:@"\n"];
+
+    [self assertSource:source withResult:expected];
 }
 
 - (void)testBehindTShortcuts
@@ -650,8 +678,7 @@
     // abs(dy / max_distance)
     NSString *expected = [@[
         @"push(mark, mark)",
-        @"getSymbol('dy')",
-        @"getSymbol('max_distance')",
+        @"getSymbol('dy', 'max_distance')",
         @"invoke('/')",
         @"invoke('abs')"
     ] componentsJoinedByString:@"\n"];
@@ -663,8 +690,7 @@
 {
     // abs(dy / max_distance)
     NSString *expected = [@[
-        @"getSymbol('dy')",
-        @"getSymbol('max_distance')",
+        @"getSymbol('dy', 'max_distance')",
         @"invoke('/', 2)",
         @"invoke('abs', 1)"
     ] componentsJoinedByString:@"\n"];
@@ -675,22 +701,35 @@
 - (void)testMainT
 {
     // dy / max_distance
-    [self assertSource: [@[
+    NSString *source = [@[
         @"push(mark)",
         @"getSymbol('dy')",
         @"getSymbol('max_distance')",
         @"invoke('/')"
-    ] componentsJoinedByString:@"\n"]];
+    ] componentsJoinedByString:@"\n"];
+    NSString *expected = [@[
+        @"push(mark)",
+        @"getSymbol('dy', 'max_distance')",
+        @"invoke('/')"
+    ] componentsJoinedByString:@"\n"];
+
+    [self assertSource:source withResult:expected];
 }
 
 - (void)testMainT2
 {
     // dy / max_distance
-    [self assertSource: [@[
+    NSString *source = [@[
         @"getSymbol('dy')",
         @"getSymbol('max_distance')",
         @"invoke('/', 2)"
-    ] componentsJoinedByString:@"\n"]];
+    ] componentsJoinedByString:@"\n"];
+    NSString *expected = [@[
+        @"getSymbol('dy', 'max_distance')",
+        @"invoke('/', 2)"
+    ] componentsJoinedByString:@"\n"];
+
+    [self assertSource:source withResult:expected];
 }
 
 - (void)testMainTShortcut
@@ -698,8 +737,7 @@
     // dy / max_distance
     NSString *expected = [@[
         @"push(mark)",
-        @"getSymbol('dy')",
-        @"getSymbol('max_distance')",
+        @"getSymbol('dy', 'max_distance')",
         @"invoke('/')"
     ] componentsJoinedByString:@"\n"];
 
@@ -710,8 +748,7 @@
 {
     // dy / max_distance
     NSString *expected = [@[
-        @"getSymbol('dy')",
-        @"getSymbol('max_distance')",
+        @"getSymbol('dy', 'max_distance')",
         @"invoke('/', 2)"
     ] componentsJoinedByString:@"\n"];
 

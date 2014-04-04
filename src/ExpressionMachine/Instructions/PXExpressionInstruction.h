@@ -13,11 +13,15 @@
 
 @property (nonatomic, readonly) PXExpressionInstructionType type;
 @property (nonatomic, strong, readonly) NSString *stringValue;
+@property (nonatomic, strong, readonly) NSArray *stringValues;
 @property (nonatomic, readonly) uint uintValue;
 
 - (id)initWithType:(PXExpressionInstructionType)type;
 - (id)initWithType:(PXExpressionInstructionType)type stringValue:(NSString *)stringValue;
 - (id)initWithType:(PXExpressionInstructionType)type uint:(uint)uintValue;
 - (id)initWithType:(PXExpressionInstructionType)type stringValue:(NSString *)stringValue uint:(uint)uintValue;
+
+- (void)pushStringValue:(NSString *)stringValue;
+- (void)pushStringValue:(NSString *)stringValue preservingStringValue:(BOOL)preserve;
 
 @end

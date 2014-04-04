@@ -134,9 +134,30 @@
 
             if ([item conformsToProtocol:@protocol(PXExpressionObject)])
             {
-                id<PXExpressionObject> object = (id<PXExpressionObject>)item;
+                __block id<PXExpressionObject> object = (id<PXExpressionObject>)item;
 
-                result = [object valueForPropertyName:instruction.stringValue];
+                if (instruction.stringValue != nil)
+                {
+                    result = [object valueForPropertyName:instruction.stringValue];
+                }
+                else
+                {
+                    [instruction.stringValues enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL *stop) {
+                        id<PXExpressionValue> value = [object valueForPropertyName:name];
+
+                        if ([value conformsToProtocol:@protocol(PXExpressionObject)])
+                        {
+                            object = (id<PXExpressionObject>)value;
+                        }
+                        else
+                        {
+                            object = nil;
+                            *stop = YES;
+                        }
+                    }];
+
+                    result = (object != nil) ? object : [PXUndefinedValue undefined];
+                }
             }
 
             [env pushValue:result];
@@ -331,8 +352,19 @@
         }
 
         case EM_INSTRUCTION_SCOPE_GET_SYMBOL_NAME:
-            [env pushValue:[env getSymbol:instruction.stringValue]];
+        {
+            if (instruction.stringValue != nil)
+            {
+                [env pushValue:[env getSymbol:instruction.stringValue]];
+            }
+            else
+            {
+                [instruction.stringValues enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL *stop) {
+                    [env pushValue:[env getSymbol:name]];
+                }];
+            }
             break;
+        }
 
         case EM_INSTRUCTION_SCOPE_SET_SYMBOL:
         {
@@ -499,6 +531,55 @@
                 }
             }
 
+            break;
+        }
+
+#pragma mark Mix
+
+        case EM_INSTRUCTION_MIX_INVOKE_SYMBOL_PROPERTY_WITH_COUNT:
+        {
+            // lookup symbol
+            id<PXExpressionValue> item = [env getSymbol:instruction.stringValue];
+
+            if ([item conformsToProtocol:@protocol(PXExpressionObject)])
+            {
+                __block id<PXExpressionObject> object = (id<PXExpressionObject>)item;
+                __block id<PXExpressionObject> invocationObject = nil;
+                __block id<PXExpressionFunction> function = nil;
+
+                // lookup properties
+                [instruction.stringValues enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL *stop) {
+                    id<PXExpressionValue> value = [object valueForPropertyName:name];
+
+                    if ([value conformsToProtocol:@protocol(PXExpressionObject)])
+                    {
+                        invocationObject = object;
+                        object = (id<PXExpressionObject>)value;
+                    }
+                    else if (idx == instruction.stringValues.count - 1 && value.valueType == PX_VALUE_TYPE_FUNCTION)
+                    {
+                        invocationObject = object;
+                        object = nil;
+                        function = (id<PXExpressionFunction>)value;
+                        *stop = YES;
+                    }
+                    else
+                    {
+                        invocationObject = nil;
+                        object = nil;
+                        *stop = YES;
+                    }
+                }];
+
+                // invoke function
+                PXArrayValue *args = [PXArrayValue arrayFromEnvironment:env withCount:instruction.uintValue];
+
+                // execute function, if we can
+                if (function)
+                {
+                    [function invokeWithEnvironment:env invocationObject:invocationObject args:args];
+                }
+            }
             break;
         }
 

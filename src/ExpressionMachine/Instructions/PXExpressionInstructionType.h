@@ -71,7 +71,10 @@ typedef NS_ENUM(NSInteger, PXExpressionInstructionType)
 
     // flow
     EM_INSTRUCTION_FLOW_IF,
-    EM_INSTRUCTION_FLOW_IF_ELSE
+    EM_INSTRUCTION_FLOW_IF_ELSE,
+
+    // mix
+    EM_INSTRUCTION_MIX_INVOKE_SYMBOL_PROPERTY_WITH_COUNT
 };
 
 #endif

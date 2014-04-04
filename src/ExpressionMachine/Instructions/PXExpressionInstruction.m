@@ -9,6 +9,9 @@
 #import "PXExpressionInstruction.h"
 
 @implementation PXExpressionInstruction
+{
+    NSMutableArray *stringValues_;
+}
 
 #pragma mark - Initializers
 
@@ -36,6 +39,34 @@
     }
 
     return self;
+}
+
+- (void)pushStringValue:(NSString *)stringValue
+{
+    [self pushStringValue:stringValue preservingStringValue:NO];
+}
+
+- (void)pushStringValue:(NSString *)stringValue preservingStringValue:(BOOL)preserve
+{
+    if (stringValues_ == nil)
+    {
+        stringValues_ = [[NSMutableArray alloc] init];
+
+        if (preserve == NO && _stringValue != nil)
+        {
+            [stringValues_ addObject:_stringValue];
+            _stringValue = nil;
+        }
+    }
+
+    [stringValues_ addObject:stringValue];
+}
+
+#pragma mark - Getters
+
+- (NSArray *)stringValues
+{
+    return [stringValues_ copy];
 }
 
 #pragma mark - Overrides
@@ -105,6 +136,9 @@
         // flow
         case EM_INSTRUCTION_FLOW_IF: return @"FLOW_IF";
         case EM_INSTRUCTION_FLOW_IF_ELSE: return @"FLOW_IF_ELSE";
+
+        // mix
+        case EM_INSTRUCTION_MIX_INVOKE_SYMBOL_PROPERTY_WITH_COUNT: return @"INVOKE_SYMBOL_PROPERTY_WITH_COUNT";
 
         default:
             return [NSString stringWithFormat:@"Unknown instruction type: %ld", (long) _type];

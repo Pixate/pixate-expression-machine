@@ -630,4 +630,27 @@
     [self assertDoubleValue:result expected:1.0];
 }
 
+- (void)testSnapshot
+{
+    NSString *source = [ @[
+        @"func snapshot() {",
+        @"sym obj = arguments.shift();",
+        @"sym keys = (arguments.length() == 0) ? obj.keys() : arguments;",
+        @"sym result = {};",
+        @"",
+        @"keys.forEach(func(key) {",
+        @"    result.push(key, obj{key});",
+        @"});",
+        @"",
+        @"result;",
+        @"}",
+        @"snapshot({a:1,b:2,c:3}, 'a', 'c');"
+    ] componentsJoinedByString:@"\n"];
+    NSString *expected = @"{'a': 1, 'c': 3}";
+
+    id<PXExpressionValue> result = [self valueFromExecutingString:source];
+
+    XCTAssertTrue([expected isEqualToString:result.description], @"Exected '%@' but found '%@'", expected, result.description);
+}
+
 @end
