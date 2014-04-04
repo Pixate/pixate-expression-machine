@@ -115,8 +115,8 @@ func map(value, start1, end1, start2, end2, clampResult=false) {
 //
 
 //
-// This function returns whatever value is passed to it. The value is
-// expected to be a string.
+// This function joins whatever values are passed to it. Values are
+// expected to be a strings.
 //
 func url() {
   arguments.join();

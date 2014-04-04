@@ -272,6 +272,23 @@
     XCTAssertTrue(isnan(object.doubleValue), @"Expected NaN");
 }
 
+- (void)testObjectConcat
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"sym obj = { a:2, b:4, c:6 }; obj.concat({ d:8, e:10, f:12 }); obj";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    id<PXExpressionValue> result = [env popValue];
+
+    NSString *resultString = result.description;
+    NSString *expected = @"{'a': 2, 'b': 4, 'c': 6, 'd': 8, 'e': 10, 'f': 12}";
+
+    XCTAssertTrue([expected isEqualToString:resultString], @"Expected %@ but found %@", expected, resultString);
+}
+
 - (void)testObjectForEach
 {
     PXExpressionParser *parser = [[PXExpressionParser alloc] init];
@@ -308,6 +325,23 @@
     [self assertDoubleValue:[env popValue] expected:3.0];
 }
 
+- (void)testObjectPush
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"sym obj = { a:2, b:4, c:6 }; obj.push('d', 8); obj";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    id<PXExpressionValue> result = [env popValue];
+
+    NSString *resultString = result.description;
+    NSString *expected = @"{'a': 2, 'b': 4, 'c': 6, 'd': 8}";
+
+    XCTAssertTrue([expected isEqualToString:resultString], @"Expected %@ but found %@", expected, resultString);
+}
+
 - (void)testObjectReverse
 {
     PXExpressionParser *parser = [[PXExpressionParser alloc] init];
@@ -327,6 +361,23 @@
     XCTAssertTrue([names[0] isEqualToString:@"c"], @"Expected first property to be 'c', but was %@", names[0]);
     XCTAssertTrue([names[1] isEqualToString:@"b"], @"Expected first property to be 'b', but was %@", names[1]);
     XCTAssertTrue([names[2] isEqualToString:@"a"], @"Expected first property to be 'a', but was %@", names[2]);
+}
+
+- (void)testObjectUnshift
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"sym obj = { b:4, c:6 }; obj.unshift('a', 2); obj";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    id<PXExpressionValue> result = [env popValue];
+
+    NSString *resultString = result.description;
+    NSString *expected = @"{'a': 2, 'b': 4, 'c': 6}";
+
+    XCTAssertTrue([expected isEqualToString:resultString], @"Expected %@ but found %@", expected, resultString);
 }
 
 - (void)testObjectValues

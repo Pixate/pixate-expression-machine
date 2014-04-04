@@ -20,6 +20,9 @@
 - (void)setStringValue:(NSString *)value forPropertyName:(NSString *)name;
 - (void)setDoubleValue:(double)value forPropertyName:(NSString *)name;
 
+- (void)concatenateObject:(id<PXExpressionObject>)object;
+- (void)pushValue:(id<PXExpressionValue>)value forPropertyName:(NSString *)key;
+- (void)unshiftValue:(id<PXExpressionValue>)value forPropertyName:(NSString *)key;
 - (void)reverse;
 
 @end

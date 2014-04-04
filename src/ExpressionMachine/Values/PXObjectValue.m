@@ -16,10 +16,13 @@
 #import "PXMarkValue.h"
 #import "PXUndefinedValue.h"
 
+#import "PXObjectConcatenateMethod.h"
 #import "PXObjectForEachMethod.h"
 #import "PXObjectKeysMethod.h"
 #import "PXObjectLengthMethod.h"
+#import "PXObjectPushMethod.h"
 #import "PXObjectReverseMethod.h"
+#import "PXObjectUnshiftMethod.h"
 #import "PXObjectValuesMethod.h"
 
 @implementation PXObjectValue
@@ -38,10 +41,13 @@ static NSDictionary *METHODS;
 
     dispatch_once(&onceToken, ^{
         METHODS = @{
+            @"concat": [[PXObjectConcatenateMethod alloc] init],
             @"forEach": [[PXObjectForEachMethod alloc] init],
             @"keys": [[PXObjectKeysMethod alloc] init],
             @"length": [[PXObjectLengthMethod alloc] init],
+            @"push": [[PXObjectPushMethod alloc] init],
             @"reverse": [[PXObjectReverseMethod alloc] init],
+            @"unshift": [[PXObjectUnshiftMethod alloc] init],
             @"values": [[PXObjectValuesMethod alloc] init]
         };
     });
@@ -173,6 +179,37 @@ static NSDictionary *METHODS;
     {
         return [PXUndefinedValue undefined];
     }
+}
+
+- (void)concatenateObject:(id<PXExpressionObject>)object
+{
+    [object.propertyNames enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
+        [self setValue:[object valueForPropertyName:key] forPropertyName:key];
+    }];
+}
+
+- (void)pushValue:(id<PXExpressionValue>)value forPropertyName:(NSString *)key
+{
+    if ([_propertyNames containsObject:key])
+    {
+        // move key to last position
+        [_propertyNames removeObject:key];
+        [_propertyNames addObject:key];
+    }
+
+    [self setValue:value forPropertyName:key];
+}
+
+- (void)unshiftValue:(id<PXExpressionValue>)value forPropertyName:(NSString *)key
+{
+    if ([_propertyNames containsObject:key])
+    {
+        [_propertyNames removeObject:key];
+    }
+
+    // move key to first position
+    [_propertyNames insertObject:key atIndex:0];
+    [self setValue:value forPropertyName:key];
 }
 
 - (void)reverse
