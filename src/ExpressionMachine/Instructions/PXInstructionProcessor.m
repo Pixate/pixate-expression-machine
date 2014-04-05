@@ -536,6 +536,41 @@
 
 #pragma mark Mix
 
+        case EM_INSTRUCTION_MIX_GET_SYMBOL_PROPERTY:
+        {
+            // lookup symbol
+            id<PXExpressionValue> item = [env getSymbol:instruction.stringValue];
+            __block id<PXExpressionValue> result = [PXUndefinedValue undefined];
+
+            if ([item conformsToProtocol:@protocol(PXExpressionObject)])
+            {
+                __block id<PXExpressionObject> object = (id<PXExpressionObject>)item;
+
+                // lookup properties
+                [instruction.stringValues enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL *stop) {
+                    id<PXExpressionValue> value = [object valueForPropertyName:name];
+
+                    if (idx == instruction.stringValues.count - 1)
+                    {
+                        result = value;
+                        *stop = YES;
+                    }
+                    else if ([value conformsToProtocol:@protocol(PXExpressionObject)])
+                    {
+                        object = (id<PXExpressionObject>)value;
+                    }
+                    else
+                    {
+                        object = nil;
+                        *stop = YES;
+                    }
+                }];
+            }
+
+            [env pushValue:result];
+            break;
+        }
+
         case EM_INSTRUCTION_MIX_INVOKE_SYMBOL_PROPERTY_WITH_COUNT:
         {
             // lookup symbol

@@ -73,10 +73,7 @@
     PXGenericNode *lhs = [[PXGenericNode alloc] initWithType:EM_IDENTIFIER stringValue:@"abc"];
     PXGenericNode *node = [[PXGenericNode alloc] initWithType:EM_DOT nodeValue:lhs stringValue:@"def"];
     PXExpressionNodeCompiler *compiler = [[PXExpressionNodeCompiler alloc] init];
-    NSString *expected = [@[
-        @"getSymbol('abc')",
-        @"getProperty('def')"
-    ] componentsJoinedByString:@"\n"];
+    NSString *expected = @"getSymbolProperty('abc', 'def')";
 
     // grab byte code
     PXExpressionByteCode *code = [compiler compileNode:node withScope:nil];

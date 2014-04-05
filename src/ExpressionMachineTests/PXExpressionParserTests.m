@@ -630,6 +630,8 @@
     [self assertDoubleValue:result expected:1.0];
 }
 
+#pragma mark - Byte code generation tests that don't belong here
+
 - (void)testSnapshot
 {
     NSString *source = [ @[

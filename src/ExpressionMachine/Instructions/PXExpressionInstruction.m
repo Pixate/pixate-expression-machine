@@ -62,6 +62,19 @@
     [stringValues_ addObject:stringValue];
 }
 
+- (NSString *)popStringValue
+{
+    NSString *result = nil;
+
+    if (stringValues_.count > 0)
+    {
+        result = [stringValues_ lastObject];
+        [stringValues_ removeLastObject];
+    }
+
+    return result;
+}
+
 #pragma mark - Getters
 
 - (NSArray *)stringValues
@@ -138,6 +151,7 @@
         case EM_INSTRUCTION_FLOW_IF_ELSE: return @"FLOW_IF_ELSE";
 
         // mix
+        case EM_INSTRUCTION_MIX_GET_SYMBOL_PROPERTY: return @"GET_SYMBOL_PROPERTY";
         case EM_INSTRUCTION_MIX_INVOKE_SYMBOL_PROPERTY_WITH_COUNT: return @"INVOKE_SYMBOL_PROPERTY_WITH_COUNT";
 
         default:

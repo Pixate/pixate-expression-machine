@@ -241,19 +241,22 @@ static NSIndexSet *PRIMITIVES;
             {
                 PXGenericNode *getProperty = (PXGenericNode *)em.nodeValue;
 
-                if (getProperty.nodeValue.type == EM_IDENTIFIER)
-                {
-                    PXGenericNode *identifier = (PXGenericNode *)getProperty.nodeValue;
+                // emit lhs of the dotted name
+                [self emitInstructionsForNode:getProperty.nodeValue builder:builder scope:scope];
 
-                    [builder addInvokeSymbol:identifier.stringValue property:getProperty.stringValue withCount:(uint)em.arrayValue.count];
-                }
-                else
+                // code builder optimizes simple dotted name invocations. The generated instruction handles
+                // the invocation object for us. If this is not a simple dotted name invocation, then we
+                // need to duplicate the calculated invocation object at this point
+                if ([self isSimpleGetter:(PXGenericNode *)em.nodeValue] == NO)
                 {
-                    [self emitInstructionsForNode:getProperty.nodeValue builder:builder scope:scope];
                     [builder addDuplicateInstruction];
-                    [builder addGetPropertyInstructionWithName:getProperty.stringValue];
-                    [builder addInvokeFunctionInstructionWithCount:(uint)em.arrayValue.count];
                 }
+
+                // emit rhs of the dotted name
+                [builder addGetPropertyInstructionWithName:getProperty.stringValue];
+
+                // emit invocation
+                [builder addInvokeFunctionInstructionWithCount:(uint)em.arrayValue.count];
             }
             else
             {
@@ -458,10 +461,12 @@ static NSIndexSet *PRIMITIVES;
 
             if (em.stringValue.length > 0)
             {
+                // EM case
                 [builder addGetPropertyInstructionWithName:em.stringValue];
             }
             else
             {
+                // Ema case
                 [self emitInstructionsForNode:em.nodeValue2 builder:builder scope:scope];
                 [builder addGetPropertyInstruction];
             }
@@ -709,6 +714,30 @@ static NSIndexSet *PRIMITIVES;
 
         default:
             NSLog(@"Unrecognized primitive node type: %d", node.type);
+    }
+
+    return result;
+}
+
+- (BOOL)isSimpleGetter:(PXGenericNode *)node
+{
+    BOOL result = NO;
+
+    while (node.type == EM_DOT)
+    {
+        if (node.nodeValue.type == EM_IDENTIFIER)
+        {
+            result = YES;
+            break;
+        }
+        else if (node.nodeValue.type != EM_DOT)
+        {
+            break;
+        }
+        else
+        {
+            node = node.nodeValue;
+        }
     }
 
     return result;

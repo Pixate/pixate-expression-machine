@@ -61,13 +61,21 @@
     [_instructions removeAllObjects];
 }
 
-#pragma mark - General add methods
+#pragma mark - General add/replace methods
 
 - (void)addInstruction:(PXExpressionInstruction *)instruction
 {
     if (instruction != nil)
     {
         [_instructions addObject:instruction];
+    }
+}
+
+- (void)replaceLastInstruction:(PXExpressionInstruction *)instruction
+{
+    if (instruction != nil && _instructions.count > 0)
+    {
+        [_instructions replaceObjectAtIndex:_instructions.count - 1 withObject:instruction];
     }
 }
 
@@ -277,6 +285,30 @@
     {
         [last pushStringValue:propertyName];
     }
+    else if (last.type == EM_INSTRUCTION_SCOPE_GET_SYMBOL_NAME)
+    {
+        if (last.stringValue.length > 0)
+        {
+            PXExpressionInstruction *getSymbolProperty = [[PXExpressionInstruction alloc]
+                                 initWithType:EM_INSTRUCTION_MIX_GET_SYMBOL_PROPERTY stringValue:last.stringValue];
+            [getSymbolProperty pushStringValue:propertyName preservingStringValue:YES];
+            [self replaceLastInstruction:getSymbolProperty];
+        }
+        else
+        {
+            NSString *symbol = [last popStringValue];
+            PXExpressionInstruction *getSymbolProperty = [[PXExpressionInstruction alloc]
+                                 initWithType:EM_INSTRUCTION_MIX_GET_SYMBOL_PROPERTY stringValue:symbol];
+
+            [getSymbolProperty pushStringValue:propertyName preservingStringValue:YES];
+
+            [self addInstruction:getSymbolProperty];
+        }
+    }
+    else if (last.type == EM_INSTRUCTION_MIX_GET_SYMBOL_PROPERTY)
+    {
+        [last pushStringValue:propertyName];
+    }
     else
     {
         [self addInstruction:[[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_OBJECT_GET_PROPERTY_NAME stringValue:propertyName]];
@@ -323,7 +355,22 @@
 
 - (void)addInvokeFunctionInstructionWithCount:(uint)count
 {
-    [self addInstruction:[[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_FUNCTION_INVOKE_WITH_COUNT uint:count]];
+    PXExpressionInstruction *last = self.lastInstruction;
+
+    if (last.type == EM_INSTRUCTION_MIX_GET_SYMBOL_PROPERTY)
+    {
+        PXExpressionInstruction *invoke = [[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_MIX_INVOKE_SYMBOL_PROPERTY_WITH_COUNT stringValue:last.stringValue uint:count];
+
+        [last.stringValues enumerateObjectsUsingBlock:^(NSString *value, NSUInteger idx, BOOL *stop) {
+            [invoke pushStringValue:value preservingStringValue:YES];
+        }];
+
+        [self replaceLastInstruction:invoke];
+    }
+    else
+    {
+        [self addInstruction:[[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_FUNCTION_INVOKE_WITH_COUNT uint:count]];
+    }
 }
 
 - (void)addInvokeFunctionInstructionWithName:(NSString *)functionName
@@ -365,6 +412,16 @@
 
 #pragma mark - Mixed instruction add methods
 
+- (void)addGetSymbol:(NSString *)symbol property:(NSString *)property
+{
+    PXExpressionInstruction *get = [[PXExpressionInstruction alloc]
+                                    initWithType:EM_INSTRUCTION_MIX_GET_SYMBOL_PROPERTY stringValue:symbol];
+
+    [get pushStringValue:property preservingStringValue:YES];
+
+    [self addInstruction:get];
+}
+
 - (void)addInvokeSymbol:(NSString *)symbol property:(NSString *)property withCount:(uint)count
 {
     PXExpressionInstruction *invoke = [[PXExpressionInstruction alloc]
@@ -374,7 +431,7 @@
 
     [invoke pushStringValue:property preservingStringValue:YES];
 
-    [self addInstruction: invoke];
+    [self addInstruction:invoke];
 }
 
 #pragma mark - Compiler

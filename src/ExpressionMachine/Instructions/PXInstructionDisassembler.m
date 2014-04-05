@@ -235,6 +235,13 @@
 
 #pragma mark Mix
 
+        case EM_INSTRUCTION_MIX_GET_SYMBOL_PROPERTY:
+        {
+            NSString *values = [instruction.stringValues componentsJoinedByString:@"', '"];
+
+            return [NSString stringWithFormat:@"getSymbolProperty('%@', '%@')", instruction.stringValue, values];
+        }
+
         case EM_INSTRUCTION_MIX_INVOKE_SYMBOL_PROPERTY_WITH_COUNT:
         {
             NSString *values = [instruction.stringValues componentsJoinedByString:@"', '"];

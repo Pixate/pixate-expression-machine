@@ -79,6 +79,7 @@
 - (void)addIfInstruction;
 - (void)addIfElseInstruction;
 
+- (void)addGetSymbol:(NSString *)symbol property:(NSString *)property;
 - (void)addInvokeSymbol:(NSString *)symbol property:(NSString *)property withCount:(uint)count;
 
 - (PXExpressionUnit *)compileExpression:(NSString *)expression;

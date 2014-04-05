@@ -23,5 +23,6 @@
 
 - (void)pushStringValue:(NSString *)stringValue;
 - (void)pushStringValue:(NSString *)stringValue preservingStringValue:(BOOL)preserve;
+- (NSString *)popStringValue;
 
 @end

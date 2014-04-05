@@ -24,7 +24,7 @@
 {
     if (self = [super init])
     {
-        int max_count = EM_INSTRUCTION_FLOW_IF_ELSE + 1;
+        int max_count = EM_INSTRUCTION_LAST;
         _counts = calloc(max_count, sizeof(int));
         _times = calloc(max_count, sizeof(uint64_t));
     }
@@ -41,7 +41,7 @@
 
 - (void)reset
 {
-    for (int i = 0; i <= EM_INSTRUCTION_FLOW_IF_ELSE; i++)
+    for (int i = 0; i < EM_INSTRUCTION_LAST; i++)
     {
         _counts[i] = 0;
         _times[i] = 0;
@@ -57,7 +57,7 @@
         mach_timebase_info(&timebaseInfo);
     });
 
-    for (int i = 0; i <= EM_INSTRUCTION_FLOW_IF_ELSE; i++)
+    for (int i = 0; i < EM_INSTRUCTION_LAST; i++)
     {
         int count = _counts[i];
 
