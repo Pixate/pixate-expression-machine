@@ -34,7 +34,7 @@
         case EM_INSTRUCTION_ARRAY_GET_ELEMENT_AT_INDEX:
             return [NSString stringWithFormat:@"getElement(%d)", instruction.uintValue];
 
-        // objects
+#pragma mark Objects
 
         case EM_INSTRUCTION_OBJECT_CREATE:
             return (_useShortForm) ? @"]}" : @"createObject";
