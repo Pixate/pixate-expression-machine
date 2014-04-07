@@ -233,6 +233,15 @@
         case EM_INSTRUCTION_FLOW_IF_ELSE:
             return @"ifelse";
 
+        case EM_INSTRUCTION_BRANCH:
+            return [NSString stringWithFormat:@"br(%d)", instruction.intValue];
+
+        case EM_INSTRUCTION_BRANCH_IF_TRUE:
+            return [NSString stringWithFormat:@"brtrue(%d)", instruction.intValue];
+
+        case EM_INSTRUCTION_BRANCH_IF_FALSE:
+            return [NSString stringWithFormat:@"brfalse(%d)", instruction.intValue];
+
 #pragma mark Mix
 
         case EM_INSTRUCTION_MIX_GET_SYMBOL_PROPERTY:

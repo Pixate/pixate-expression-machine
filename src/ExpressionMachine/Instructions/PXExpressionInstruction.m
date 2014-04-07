@@ -162,6 +162,9 @@
         // flow
         case EM_INSTRUCTION_FLOW_IF: return @"FLOW_IF";
         case EM_INSTRUCTION_FLOW_IF_ELSE: return @"FLOW_IF_ELSE";
+        case EM_INSTRUCTION_BRANCH: return @"BRANCH";
+        case EM_INSTRUCTION_BRANCH_IF_TRUE: return @"BRANCH_IF_TRUE";
+        case EM_INSTRUCTION_BRANCH_IF_FALSE: return @"BRANCH_IF_FALSE";
 
         // mix
         case EM_INSTRUCTION_MIX_GET_SYMBOL_PROPERTY: return @"GET_SYMBOL_PROPERTY";
