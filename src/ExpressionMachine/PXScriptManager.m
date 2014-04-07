@@ -102,7 +102,7 @@
 
             @try {
                 // run byte code
-                [unit executeWithEnvironment:_environment];
+                [_environment executeUnit:unit];
 
                 // grab result
                 result = [_environment popValue];

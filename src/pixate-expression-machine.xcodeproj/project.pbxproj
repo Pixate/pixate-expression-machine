@@ -30,6 +30,10 @@
 		0A09BF3C18EF050A004780F8 /* PXObjectConcatenateMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A09BF3A18EF050A004780F8 /* PXObjectConcatenateMethod.h */; };
 		0A09BF3D18EF050A004780F8 /* PXObjectConcatenateMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A09BF3B18EF050A004780F8 /* PXObjectConcatenateMethod.m */; };
 		0A09BF3E18EF050A004780F8 /* PXObjectConcatenateMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A09BF3B18EF050A004780F8 /* PXObjectConcatenateMethod.m */; };
+		0A09BF5F18F10598004780F8 /* PXByteCodeOptimizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A09BF5D18F10598004780F8 /* PXByteCodeOptimizer.h */; };
+		0A09BF6018F10598004780F8 /* PXByteCodeOptimizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A09BF5E18F10598004780F8 /* PXByteCodeOptimizer.m */; };
+		0A09BF6118F10598004780F8 /* PXByteCodeOptimizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A09BF5E18F10598004780F8 /* PXByteCodeOptimizer.m */; };
+		0A47254F18F30591001035E2 /* PXByteCodeOptimizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A47254E18F30591001035E2 /* PXByteCodeOptimizerTests.m */; };
 		0A4D1DD518E5A78B00200629 /* PXScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8518E5A78B00200629 /* PXScriptManager.m */; };
 		0A4D1DE418E5A85D00200629 /* PXBuiltInsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8A18E5A78B00200629 /* PXBuiltInsTests.m */; };
 		0A4D1DE618E5A85D00200629 /* PXEasingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8D18E5A78B00200629 /* PXEasingTests.m */; };
@@ -220,6 +224,9 @@
 		0A09BF3618EF04F0004780F8 /* PXObjectUnshiftMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXObjectUnshiftMethod.m; sourceTree = "<group>"; };
 		0A09BF3A18EF050A004780F8 /* PXObjectConcatenateMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXObjectConcatenateMethod.h; sourceTree = "<group>"; };
 		0A09BF3B18EF050A004780F8 /* PXObjectConcatenateMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXObjectConcatenateMethod.m; sourceTree = "<group>"; };
+		0A09BF5D18F10598004780F8 /* PXByteCodeOptimizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXByteCodeOptimizer.h; sourceTree = "<group>"; };
+		0A09BF5E18F10598004780F8 /* PXByteCodeOptimizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXByteCodeOptimizer.m; sourceTree = "<group>"; };
+		0A47254E18F30591001035E2 /* PXByteCodeOptimizerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXByteCodeOptimizerTests.m; sourceTree = "<group>"; };
 		0A4D1D8318E5A78B00200629 /* pixate-expression-machine-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "pixate-expression-machine-Prefix.pch"; sourceTree = "<group>"; };
 		0A4D1D8418E5A78B00200629 /* PXScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXScriptManager.h; sourceTree = "<group>"; };
 		0A4D1D8518E5A78B00200629 /* PXScriptManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXScriptManager.m; sourceTree = "<group>"; };
@@ -468,6 +475,7 @@
 				0A4D1DF218E5A8E300200629 /* Supporting Classes */,
 				0A4D1E0318E5A98D00200629 /* Supporting Files */,
 				0A4D1D8A18E5A78B00200629 /* PXBuiltInsTests.m */,
+				0A47254E18F30591001035E2 /* PXByteCodeOptimizerTests.m */,
 				0A4D1D8D18E5A78B00200629 /* PXEasingTests.m */,
 				0A4D1D8E18E5A78B00200629 /* PXEmaLexerTests.m */,
 				0A4D1D8F18E5A78B00200629 /* PXExpressionAssemblerTests.m */,
@@ -652,6 +660,8 @@
 			children = (
 				0A4D1E4D18E5AA8800200629 /* PXByteCodeBuilder.h */,
 				0A4D1E4E18E5AA8800200629 /* PXByteCodeBuilder.m */,
+				0A09BF5D18F10598004780F8 /* PXByteCodeOptimizer.h */,
+				0A09BF5E18F10598004780F8 /* PXByteCodeOptimizer.m */,
 				0A4D1E4F18E5AA8800200629 /* PXExpressionByteCode.h */,
 				0A4D1E5018E5AA8800200629 /* PXExpressionByteCode.m */,
 				0A4D1E5118E5AA8800200629 /* PXExpressionInstruction.h */,
@@ -853,6 +863,7 @@
 				0A09BF0618ECB06E004780F8 /* PXStringLengthMethod.h in Headers */,
 				0A09BF3718EF04F0004780F8 /* PXObjectUnshiftMethod.h in Headers */,
 				0A09BE6618EC8515004780F8 /* PXObjectValuesMethod.h in Headers */,
+				0A09BF5F18F10598004780F8 /* PXByteCodeOptimizer.h in Headers */,
 				0A09BF3218EF04DA004780F8 /* PXObjectPushMethod.h in Headers */,
 				0A09BE6018EC84FB004780F8 /* PXObjectKeysMethod.h in Headers */,
 			);
@@ -1047,6 +1058,7 @@
 				0A09BE6218EC84FB004780F8 /* PXObjectKeysMethod.m in Sources */,
 				9C475BCA18E620FC00283A43 /* PXLogFunction.m in Sources */,
 				9C475BCB18E620FC00283A43 /* PXShowTopFunction.m in Sources */,
+				0A09BF6118F10598004780F8 /* PXByteCodeOptimizer.m in Sources */,
 				9C475BCC18E620FC00283A43 /* PXCosFunction.m in Sources */,
 				9C475BCD18E620FC00283A43 /* PXPowerFunction.m in Sources */,
 				9C475BCE18E620FC00283A43 /* PXSinFunction.m in Sources */,
@@ -1164,6 +1176,7 @@
 				0A4D1EA818E5AA8800200629 /* PXArrayUnshiftMethod.m in Sources */,
 				0A09BF3818EF04F0004780F8 /* PXObjectUnshiftMethod.m in Sources */,
 				0A4D1EB318E5AA8800200629 /* PXObjectReverseMethod.m in Sources */,
+				0A09BF6018F10598004780F8 /* PXByteCodeOptimizer.m in Sources */,
 				0A4D1EB918E5AA8800200629 /* PXInstructionProcessor.m in Sources */,
 				0A4D1ECD18E5AA8800200629 /* PXDoubleValue.m in Sources */,
 				0A4D1ED218E5AA8800200629 /* PXObjectValue.m in Sources */,
@@ -1193,6 +1206,7 @@
 				0A4D1DEE18E5A85D00200629 /* PXExpressionValueAssertions.m in Sources */,
 				0A4D1DE718E5A85D00200629 /* PXEmaLexerTests.m in Sources */,
 				0A4D1DEA18E5A85D00200629 /* PXExpressionLexerTests.m in Sources */,
+				0A47254F18F30591001035E2 /* PXByteCodeOptimizerTests.m in Sources */,
 				0A4D1DED18E5A85D00200629 /* PXExpressionPropertyTests.m in Sources */,
 				0A4D1DFA18E5A8E300200629 /* PXPropertyTestClass.m in Sources */,
 				0A4D1DE618E5A85D00200629 /* PXEasingTests.m in Sources */,

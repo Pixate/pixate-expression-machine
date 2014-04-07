@@ -41,6 +41,19 @@
     return self;
 }
 
+- (id)initWithType:(PXExpressionInstructionType)type intValue:(int)intValue
+{
+    if (self = [super init])
+    {
+        _type = type;
+        _intValue = intValue;
+    }
+
+    return self;
+}
+
+#pragma mark - Methods
+
 - (void)pushStringValue:(NSString *)stringValue
 {
     [self pushStringValue:stringValue preservingStringValue:NO];

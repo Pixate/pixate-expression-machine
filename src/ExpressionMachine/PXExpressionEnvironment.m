@@ -88,9 +88,20 @@
     [processor processInstructions:byteCode.instructions withEnvironment:self];
 }
 
-- (void)executeUnit:(id)unit
+- (void)executeUnit:(PXExpressionUnit *)unit
 {
-    [unit executeWithEnvironment:self];
+    if (unit.scope != nil)
+    {
+        [self pushScope:unit.scope];
+    }
+
+    //[self executeByteCode:unit.byteCode];
+    [self executeByteCode:unit.optimizedByteCode];
+
+    if (unit.scope != nil)
+    {
+        [self popScope];
+    }
 }
 
 #pragma mark - Stack Methods

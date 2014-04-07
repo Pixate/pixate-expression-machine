@@ -73,12 +73,12 @@
     PXGenericNode *lhs = [[PXGenericNode alloc] initWithType:EM_IDENTIFIER stringValue:@"abc"];
     PXGenericNode *node = [[PXGenericNode alloc] initWithType:EM_DOT nodeValue:lhs stringValue:@"def"];
     PXExpressionNodeCompiler *compiler = [[PXExpressionNodeCompiler alloc] init];
-    NSString *expected = @"getSymbolProperty('abc', 'def')";
+    NSString *expected = @"getSymbol('abc')\ngetProperty('def')";
 
     // grab byte code
     PXExpressionByteCode *code = [compiler compileNode:node withScope:nil];
 
-    XCTAssertTrue([expected isEqualToString:code.description]);
+    XCTAssertTrue([expected isEqualToString:code.description], @"Expected\n%@\nbut found\n%@\n", expected, code.description);
 }
 
 - (void)testInvocationNode
@@ -106,7 +106,8 @@
     PXGenericNode *node = [[PXGenericNode alloc] initWithType:EM_LPAREN nodeValue:name arrayValue:@[lhs, rhs]];
     PXExpressionNodeCompiler *compiler = [[PXExpressionNodeCompiler alloc] init];
     NSString *expected = [@[
-        @"push(5, 3)",
+        @"push(5)",
+        @"push(3)",
         @"invoke('<', 2)"
     ] componentsJoinedByString:@"\n"];
 
@@ -124,7 +125,8 @@
     PXGenericNode *node = [[PXGenericNode alloc] initWithType:EM_LPAREN nodeValue:name arrayValue:@[lhs, rhs]];
     PXExpressionNodeCompiler *compiler = [[PXExpressionNodeCompiler alloc] init];
     NSString *expected = [@[
-        @"push(5, 3)",
+        @"push(5)",
+        @"push(3)",
         @"invoke('lt', 2)"
     ] componentsJoinedByString:@"\n"];
 
@@ -145,7 +147,8 @@
     PXGenericNode *node = [[PXGenericNode alloc] initWithType:EM_LPAREN nodeValue:name arrayValue:@[lhs, rhs]];
     PXExpressionNodeCompiler *compiler = [[PXExpressionNodeCompiler alloc] init];
     NSString *expected = [@[
-        @"getSymbol('dy', 'threshold')",
+        @"getSymbol('dy')",
+        @"getSymbol('threshold')",
         @"invoke('>', 2)"
     ] componentsJoinedByString:@"\n"];
 
@@ -166,7 +169,8 @@
     PXGenericNode *node = [[PXGenericNode alloc] initWithType:EM_LPAREN nodeValue:name arrayValue:@[division]];
     PXExpressionNodeCompiler *compiler = [[PXExpressionNodeCompiler alloc] init];
     NSString *expected = [@[
-        @"getSymbol('dy', 'max_distance')",
+        @"getSymbol('dy')",
+        @"getSymbol('max_distance')",
         @"invoke('/', 2)",
         @"invoke('abs', 1)"
     ] componentsJoinedByString:@"\n"];
@@ -186,7 +190,8 @@
     PXGenericNode *node = [[PXGenericNode alloc] initWithType:EM_LPAREN nodeValue:name arrayValue:@[lhs, rhs]];
     PXExpressionNodeCompiler *compiler = [[PXExpressionNodeCompiler alloc] init];
     NSString *expected = [@[
-        @"getSymbol('dy', 'max_distance')",
+        @"getSymbol('dy')",
+        @"getSymbol('max_distance')",
         @"invoke('/', 2)"
     ] componentsJoinedByString:@"\n"];
 

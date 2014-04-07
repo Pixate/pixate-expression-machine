@@ -10,8 +10,12 @@
 #import "PXExpressionEnvironment.h"
 #import "PXExpressionByteCode.h"
 #import "PXExpressionNodeUtils.h"
+#import "PXByteCodeOptimizer.h"
 
 @implementation PXExpressionUnit
+{
+    PXExpressionByteCode *_optimizedByteCode;
+}
 
 #pragma mark - Initializers
 
@@ -37,21 +41,18 @@
     return self;
 }
 
-#pragma mark - Methods
+#pragma mark - Getters
 
-- (void)executeWithEnvironment:(id)env
+- (PXExpressionByteCode *)optimizedByteCode
 {
-    if (_scope != nil)
+    if (_optimizedByteCode == nil && _byteCode != nil)
     {
-        [env pushScope:_scope];
+        PXByteCodeOptimizer *optimizer = [[PXByteCodeOptimizer alloc] init];
+
+        _optimizedByteCode = [optimizer optimizeByteCode:self.byteCode];
     }
 
-    [env executeByteCode:_byteCode];
-
-    if (_scope != nil)
-    {
-        [env popScope];
-    }
+    return _optimizedByteCode;
 }
 
 #pragma mark - Overrides

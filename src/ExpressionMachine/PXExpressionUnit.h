@@ -11,18 +11,16 @@
 #import "PXExpressionNode.h"
 
 @class PXExpressionByteCode;
-@class PXExpressionEnvironment;
 
 @interface PXExpressionUnit : NSObject
 
 @property (nonatomic, strong, readonly) PXExpressionByteCode *byteCode;
+@property (nonatomic, strong, readonly) PXExpressionByteCode *optimizedByteCode;
 @property (nonatomic, strong, readonly) id<PXExpressionScope> scope;
 @property (nonatomic, strong, readonly) id<PXExpressionNode> ast;
 
 - (id)initWithByteCode:(PXExpressionByteCode *)byteCode;
 - (id)initWithByteCode:(PXExpressionByteCode *)byteCode scope:(id<PXExpressionScope>)scope;
 - (id)initWithByteCode:(PXExpressionByteCode *)byteCode scope:(id<PXExpressionScope>)scope ast:(id<PXExpressionNode>)ast;
-
-- (void)executeWithEnvironment:(PXExpressionEnvironment *)env;
 
 @end

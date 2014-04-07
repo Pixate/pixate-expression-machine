@@ -16,7 +16,7 @@
 @interface PXByteCodeBuilder : NSObject
 
 @property (nonatomic, strong, readonly) PXExpressionByteCode *byteCode;
-@property (nonatomic, strong, readonly) PXExpressionInstruction *lastInstruction;
+@property (nonatomic, strong, readonly) PXExpressionByteCode *optimizedByteCode;
 
 - (void)reset;
 

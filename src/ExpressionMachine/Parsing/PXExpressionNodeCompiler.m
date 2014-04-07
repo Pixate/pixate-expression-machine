@@ -241,18 +241,11 @@ static NSIndexSet *PRIMITIVES;
             {
                 PXGenericNode *getProperty = (PXGenericNode *)em.nodeValue;
 
-                // emit lhs of the dotted name
+                // emit lhs of the dotted name. This is the invocation object
                 [self emitInstructionsForNode:getProperty.nodeValue builder:builder scope:scope];
 
-                // code builder optimizes simple dotted name invocations. The generated instruction handles
-                // the invocation object for us. If this is not a simple dotted name invocation, then we
-                // need to duplicate the calculated invocation object at this point
-                if ([self isSimpleGetter:(PXGenericNode *)em.nodeValue] == NO)
-                {
-                    [builder addDuplicateInstruction];
-                }
-
-                // emit rhs of the dotted name
+                // Copy invocation object and get rhs of the dotted name
+                [builder addDuplicateInstruction];
                 [builder addGetPropertyInstructionWithName:getProperty.stringValue];
 
                 // emit invocation

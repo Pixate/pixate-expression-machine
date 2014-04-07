@@ -39,13 +39,13 @@
             // process built-in assembly file
             PXExpressionAssembler *assembler = [[PXExpressionAssembler alloc] init];
             PXExpressionUnit *unit = [assembler assembleString:[PXBuiltInSource emaSource]];
-            [unit executeWithEnvironment:env];
+            [env executeUnit:unit];
             emaScope = unit.scope;
 
             // process built-in expression file
             PXExpressionParser *parser = [[PXExpressionParser alloc] init];
             unit = [parser compileString:[PXBuiltInSource emSource]];
-            [unit executeWithEnvironment:env];
+            [env executeUnit:unit];
             emScope = unit.scope;
         });
 
