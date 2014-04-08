@@ -98,7 +98,10 @@
 
                         [getSymbolProperty pushStringValue:instruction.stringValue preservingStringValue:YES];
 
-                        [result removeLastObject];
+                        if (last.stringValue.length > 0)
+                        {
+                            [result removeLastObject];
+                        }
                         [result addObject:getSymbolProperty];
                         break;
                     }

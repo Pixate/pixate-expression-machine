@@ -193,6 +193,35 @@
     XCTAssertTrue([expected isEqualToString:byteCode.description], @"Expected\n%@\nbut found\n%@", expected, byteCode.description);
 }
 
+- (void)testGetSymbolTwiceGetPropertyOnce
+{
+    PXByteCodeBuilder *builder = [[PXByteCodeBuilder alloc] init];
+
+    [builder addGetSymbolInstructionWithName:@"A"];
+    [builder addGetSymbolInstructionWithName:@"hello"];
+    [builder addGetPropertyInstructionWithName:@"world"];
+
+    PXExpressionByteCode *byteCode = builder.optimizedByteCode;
+    NSString *expected = @"getSymbol('A')\ngetSymbolProperty('hello', 'world')";
+
+    XCTAssertTrue([expected isEqualToString:byteCode.description], @"Expected\n%@\nbut found\n%@", expected, byteCode.description);
+}
+
+- (void)testGetSymbolThriceGetPropertyOnce
+{
+    PXByteCodeBuilder *builder = [[PXByteCodeBuilder alloc] init];
+
+    [builder addGetSymbolInstructionWithName:@"A"];
+    [builder addGetSymbolInstructionWithName:@"B"];
+    [builder addGetSymbolInstructionWithName:@"hello"];
+    [builder addGetPropertyInstructionWithName:@"world"];
+
+    PXExpressionByteCode *byteCode = builder.optimizedByteCode;
+    NSString *expected = @"getSymbol('A', 'B')\ngetSymbolProperty('hello', 'world')";
+
+    XCTAssertTrue([expected isEqualToString:byteCode.description], @"Expected\n%@\nbut found\n%@", expected, byteCode.description);
+}
+
 #pragma mark - Invoke function with count optimizations
 
 - (void)testInvokeWithCount
