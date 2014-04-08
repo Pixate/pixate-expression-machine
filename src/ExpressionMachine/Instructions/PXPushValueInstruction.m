@@ -110,4 +110,16 @@
     [values_ addObject:value];
 }
 
+#pragma mark - NSCopying Implementation
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    PXPushValueInstruction *result = [[PXPushValueInstruction alloc] initWithType:EM_INSTRUCTION_STACK_PUSH];
+
+    result->_value = _value;
+    result->values_ = (values_ != nil) ? [NSMutableArray arrayWithArray:values_] : nil;
+
+    return result;
+}
+
 @end

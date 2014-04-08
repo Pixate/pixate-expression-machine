@@ -10,7 +10,7 @@
 #import "PXExpressionValue.h"
 #import "PXBlockValue.h"
 
-@interface PXPushValueInstruction : PXExpressionInstruction
+@interface PXPushValueInstruction : PXExpressionInstruction <NSCopying>
 
 + (PXPushValueInstruction *)expressionValue:(id<PXExpressionValue>)value;
 + (PXPushValueInstruction *)booleanValue:(BOOL)booleanValue;

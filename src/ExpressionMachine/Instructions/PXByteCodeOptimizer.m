@@ -53,6 +53,8 @@
             return;
         }
 
+        instruction = [instruction copy];
+
         // handle push
         switch (instruction.type)
         {

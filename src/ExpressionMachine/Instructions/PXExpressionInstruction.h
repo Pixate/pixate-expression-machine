@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PXExpressionInstructionType.h"
 
-@interface PXExpressionInstruction : NSObject
+@interface PXExpressionInstruction : NSObject <NSCopying>
 
 @property (nonatomic, readonly) PXExpressionInstructionType type;
 @property (nonatomic, strong, readonly) NSString *stringValue;

@@ -175,4 +175,19 @@
     }
 }
 
+#pragma mark - NSCopying Implementation
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    PXExpressionInstruction *result = [[PXExpressionInstruction alloc] init];
+
+    result->_type = _type;
+    result->_stringValue = _stringValue;
+    result->stringValues_ = (stringValues_ != nil) ? [NSMutableArray arrayWithArray:stringValues_] : nil;
+    result->_uintValue = _uintValue;
+    result->_intValue = _intValue;
+
+    return result;
+}
+
 @end
