@@ -196,7 +196,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
     [self assertTypeAndAdvance:EM_LPAREN];
 
     // comma-delimited list
-    NSMutableArray *parameters;
+    NSMutableArray *parameters = nil;
 
     if ([self isType:EM_IDENTIFIER])
     {
@@ -877,7 +877,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
 
 - (id<PXExpressionNode>)parseSimpleType
 {
-    id<PXExpressionNode> result;
+    id<PXExpressionNode> result = nil;
 
     switch (currentLexeme.type)
     {
@@ -943,7 +943,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
 
 - (NSString *)getName
 {
-    NSString *result;
+    NSString *result = nil;
 
     if ([self isType:EM_IDENTIFIER])
     {
@@ -965,7 +965,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
 
 - (NSString *)strippedString
 {
-    NSString *result;
+    NSString *result = nil;
 
     if ([self isType:EM_STRING])
     {
