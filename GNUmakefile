@@ -182,7 +182,6 @@ Classes/PXDoubleValue.m \
 Classes/PXObjectValue.m \
 Classes/PXPushValueInstruction.m \
 Classes/PXBooleanValue.m \
-Classes/PXInstructionCounter.m \
 Classes/PXScriptManager.m \
 Classes/PXStringLengthMethod.m \
 Classes/PXSourceWriter.m \

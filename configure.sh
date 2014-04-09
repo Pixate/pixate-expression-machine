@@ -21,7 +21,14 @@ rm -rf Classes
 mkdir -p Classes
 
 while read line; do
-   cp "src/$line" Classes
+    extension="${line##*.}"
+    if [ "$extension" != "lm" ]; then
+        cp "src/$line" Classes
+    else
+        filename="${line%.*}"
+        target="$(basename $filename).yy.m"
+        flex -o Classes/$target "src/$line"
+    fi
 done < Classes.txt
 
 cat <<EOF
@@ -76,7 +83,10 @@ EOF
 
 # emit class files
 while read line; do
-  echo "Classes/$(basename "$line") \\"
+    extension="${line##*.}"
+    if [ "$extension" != "lm" ]; then
+        echo "Classes/$(basename "$line") \\"
+    fi
 done < Classes.txt
 
 cat <<EOF
