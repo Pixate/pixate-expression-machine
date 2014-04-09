@@ -24,4 +24,9 @@ Pods
 Headers/
 Headers.txt
 Classes.txt
+EM.framework/
+derived_src/
+obj/
 
+#AFP
+.AppleDouble/
