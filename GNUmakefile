@@ -188,6 +188,7 @@ Classes/PXSourceWriter.m \
 Classes/PXGenericNode.m \
 Classes/PXArrayReduceMethod.m \
 Classes/PXPowerFunction.m \
+Classes/PXExpressionLexer.yy.m \
 
 #
 # Makefiles

@@ -86,6 +86,10 @@ while read line; do
     extension="${line##*.}"
     if [ "$extension" != "lm" ]; then
         echo "Classes/$(basename "$line") \\"
+    else
+        filename="${line%.*}"
+        target="$(basename $filename).yy.m"
+        echo  "Classes/$target \\"
     fi
 done < Classes.txt
 
