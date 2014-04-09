@@ -67,7 +67,7 @@ EOF
 
 # emit class files
 while read line; do
-  echo "$line \\"
+  echo "src/$line \\"
 done < Classes.txt
 
 cat <<EOF
