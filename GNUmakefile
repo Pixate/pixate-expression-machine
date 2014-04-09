@@ -16,6 +16,7 @@ include $(GNUSTEP_MAKEFILES)/common.make
 VERSION = 0.1
 PACKAGE_NAME = EM
 FRAMEWORK_NAME = EM
+EM_HEADER_FILES_DIR = Headers
 
 #
 # Resource files
