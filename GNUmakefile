@@ -36,7 +36,6 @@ PXExpressionNodeBuilder.h \
 PXSquareRootFunction.h \
 PXStringValue.h \
 PXObjectKeysMethod.h \
-pixate-expression-machine-mac-Prefix.pch \
 PXExpressionLexemeType.h \
 PXSinFunction.h \
 PXExpressionInstructionType.h \
@@ -74,9 +73,7 @@ PXParserBase.h \
 PXFunctionValueBase.h \
 Supporting \
 PXScopeBase.h \
-pixate-expression-machine-Prefix.pch \
 PXCosFunction.h \
-pixate-expression-machine-Prefix.pch \
 PXParser.h \
 PXExpressionValueAssertions.h \
 PXShowTopFunction.h \

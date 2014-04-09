@@ -9,7 +9,10 @@ rm -rf Headers
 mkdir -p Headers
 
 while read line; do
-    cp "src/$line" Headers
+    extension="${line##*.}"
+    if [ "$extension" != "pch" ]; then
+       cp "src/$line" Headers
+    fi
 done < Headers.txt
 
 cat <<EOF
@@ -48,7 +51,10 @@ EOF
 # emit header files
 
 while read line; do
-    echo "$(basename $line) \\"
+    extension="${line##*.}"
+    if [ "$extension" != "pch" ]; then
+        echo "$(basename $line) \\"
+    fi
 done < Headers.txt
 
 cat <<EOF
