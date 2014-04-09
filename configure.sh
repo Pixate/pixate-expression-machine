@@ -15,6 +15,15 @@ while read line; do
     fi
 done < Headers.txt
 
+# copy classes
+
+rm -rf Classes
+mkdir -p Classes
+
+while read line; do
+   cp "src/$line" Classes
+done < Classes.txt
+
 cat <<EOF
 #
 # GNUmakefile
@@ -67,7 +76,7 @@ EOF
 
 # emit class files
 while read line; do
-  echo "src/$line \\"
+  echo "Classes/$(basename "$line") \\"
 done < Classes.txt
 
 cat <<EOF

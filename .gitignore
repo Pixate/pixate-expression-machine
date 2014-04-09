@@ -22,6 +22,7 @@ Pods
 
 #GNUstep
 Headers/
+Classes/
 Headers.txt
 Classes.txt
 EM.framework/
