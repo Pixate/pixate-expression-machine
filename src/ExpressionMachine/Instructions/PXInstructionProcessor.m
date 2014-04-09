@@ -9,7 +9,6 @@
 #import "PXInstructionProcessor.h"
 #import "PXExpressionInstructionType.h"
 #import "PXPushValueInstruction.h"
-#import "PXInstructionDisassembler.h"
 
 #import "PXArrayValue.h"
 #import "PXBlockValue.h"
@@ -26,21 +25,12 @@
 {
     typedef void (*InstructionProcessor)(id object, SEL selector, PXExpressionInstruction *instruction, PXExpressionEnvironment *environment);
 
-    static SEL runnerSelector;
-    static InstructionProcessor runner;
-    static PXInstructionDisassembler *disassembler;
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
-        runnerSelector = @selector(processInstruction:withEnvironment:);
-        runner = (InstructionProcessor) [self methodForSelector:runnerSelector];
-        disassembler = [[PXInstructionDisassembler alloc] init];
-    });
+    SEL runnerSelector = @selector(processInstruction:withEnvironment:);
+    InstructionProcessor runner = (InstructionProcessor) [self methodForSelector:runnerSelector];
 
     [instructions enumerateObjectsUsingBlock:^(PXExpressionInstruction *instruction, NSUInteger idx, BOOL *stop) {
         // TODO: runtime errors
         //NSLog(@"%@", [disassembler disassembleInstruction:instruction]);
-        // [processor processInstruction:instruction withEnvironment:env];
         runner(self, runnerSelector, instruction, env);
         //NSLog(@"stack: %@", [env stackDescription]);
     }];
@@ -304,14 +294,9 @@
         case EM_INSTRUCTION_STACK_PUSH:
         {
             typedef void (*PushValue)(id object, SEL cmd, id<PXExpressionValue> value);
-            static SEL pushSelector;
-            static PushValue pushImp;
 
-            static dispatch_once_t onceToken;
-            dispatch_once(&onceToken, ^{
-                pushSelector = @selector(pushValue:);
-                pushImp = (PushValue)[env methodForSelector:pushSelector];
-            });
+            SEL pushSelector = @selector(pushValue:);
+            PushValue pushImp = (PushValue)[env methodForSelector:pushSelector];
 
             PXPushValueInstruction *pushInstruction = (PXPushValueInstruction *)instruction;
 

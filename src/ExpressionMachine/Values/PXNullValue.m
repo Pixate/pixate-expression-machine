@@ -12,16 +12,19 @@
 
 #pragma mark - Static Methods
 
+static PXNullValue *INSTANCE;
+
++ (void)initialize
+{
+    if (INSTANCE == nil)
+    {
+        INSTANCE = [[PXNullValue alloc] init];
+    }
+}
+
 + (PXNullValue *)null
 {
-    static PXNullValue *null;
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
-        null = [[PXNullValue alloc] init];
-    });
-
-    return null;
+    return INSTANCE;
 }
 
 #pragma mark - Initializers

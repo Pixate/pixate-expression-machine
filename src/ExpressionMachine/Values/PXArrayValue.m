@@ -35,9 +35,8 @@ static NSDictionary *METHODS;
 
 + (void)initialize
 {
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
+    if (METHODS == nil)
+    {
         METHODS = @{
             @"forEach": [[PXArrayForEachMethod alloc] init],
             @"join": [[PXArrayJoinMethod alloc] init],
@@ -50,7 +49,7 @@ static NSDictionary *METHODS;
             @"shift": [[PXArrayShiftMethod alloc] init],
             @"unshift": [[PXArrayUnshiftMethod alloc] init]
         };
-    });
+    };
 }
 
 + (PXArrayValue *)arrayFromEnvironment:(PXExpressionEnvironment *)env
@@ -149,7 +148,7 @@ static NSDictionary *METHODS;
 
 - (id<PXExpressionValue>)popValue
 {
-    id<PXExpressionValue> result;
+    id<PXExpressionValue> result = nil;
 
     if (_elements.count > 0)
     {
@@ -162,11 +161,11 @@ static NSDictionary *METHODS;
 
 - (id<PXExpressionValue>)shiftValue
 {
-    id<PXExpressionValue> result;
+    id<PXExpressionValue> result = nil;
 
     if (_elements.count > 0)
     {
-        result = [_elements firstObject];
+        result = [_elements objectAtIndex:0];
         [_elements removeObjectAtIndex:0];
     }
 

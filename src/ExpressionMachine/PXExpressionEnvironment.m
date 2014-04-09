@@ -28,19 +28,21 @@
 
 @implementation PXExpressionEnvironment
 
+static PXInstructionProcessor *PROCESSOR;
+
 #pragma mark - Static Methods
+
++ (void)initialize
+{
+    if (PROCESSOR == nil)
+    {
+        PROCESSOR = [[PXInstructionProcessor alloc] init];
+    }
+}
 
 + (PXInstructionProcessor *)processor
 {
-    static PXInstructionProcessor *processor;
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
-        //processor = [[PXInstructionCounter alloc] init];
-        processor = [[PXInstructionProcessor alloc] init];
-    });
-
-    return processor;
+    return PROCESSOR;
 }
 
 #pragma mark - Initializers
@@ -231,7 +233,7 @@
 
 - (id<PXExpressionScope>)popScope
 {
-    id<PXExpressionScope> result;
+    id<PXExpressionScope> result = nil;
 
     if (_currentScope != _globalScope)
     {

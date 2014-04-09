@@ -17,7 +17,23 @@
 
 @implementation PXExpressionByteCode
 
+static PXInstructionDisassembler *SHORT_DISASSEMBLER;
+static PXInstructionDisassembler *DISASSEMBLER;
+
 #pragma mark - Initializers
+
++ (void)initialize
+{
+    if (SHORT_DISASSEMBLER == nil)
+    {
+        SHORT_DISASSEMBLER = [[PXInstructionDisassembler alloc] init];
+        SHORT_DISASSEMBLER.useShortForm = YES;
+    }
+    if (DISASSEMBLER == nil)
+    {
+        DISASSEMBLER = [[PXInstructionDisassembler alloc] init];
+    }
+}
 
 - (id)initWithInstructions:(NSArray *)instructions
 {
@@ -33,17 +49,10 @@
 
 - (NSString *)shortDescription
 {
-    static PXInstructionDisassembler *disassembler;
-    static dispatch_once_t onceToken;
     NSMutableArray *lines = [[NSMutableArray alloc] init];
 
-    dispatch_once(&onceToken, ^{
-        disassembler = [[PXInstructionDisassembler alloc] init];
-        disassembler.useShortForm = YES;
-    });
-
     [_instructions enumerateObjectsUsingBlock:^(PXExpressionInstruction *instruction, NSUInteger idx, BOOL *stop) {
-        [lines addObject:[disassembler disassembleInstruction:instruction]];
+        [lines addObject:[SHORT_DISASSEMBLER disassembleInstruction:instruction]];
     }];
 
     return [lines componentsJoinedByString:@" "];
@@ -53,16 +62,10 @@
 
 - (NSString *)description
 {
-    static PXInstructionDisassembler *disassembler;
-    static dispatch_once_t onceToken;
     NSMutableArray *lines = [[NSMutableArray alloc] init];
 
-    dispatch_once(&onceToken, ^{
-        disassembler = [[PXInstructionDisassembler alloc] init];
-    });
-
     [_instructions enumerateObjectsUsingBlock:^(PXExpressionInstruction *instruction, NSUInteger idx, BOOL *stop) {
-        [lines addObject:[disassembler disassembleInstruction:instruction]];
+        [lines addObject:[DISASSEMBLER disassembleInstruction:instruction]];
     }];
 
     return [lines componentsJoinedByString:@"\n"];

@@ -30,9 +30,8 @@ static NSIndexSet *PRIMITIVES;
 
 + (void)initialize
 {
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
+    if (PRIMITIVES == nil)
+    {
         NSMutableIndexSet *set = [[NSMutableIndexSet alloc] init];
         [set addIndex:EM_BOOLEAN];
         [set addIndex:EM_NULL];
@@ -40,7 +39,7 @@ static NSIndexSet *PRIMITIVES;
         [set addIndex:EM_STRING];
         [set addIndex:EM_UNDEFINED];
         PRIMITIVES = [set copy];
-    });
+    };
 }
 
 #pragma mark - Methods

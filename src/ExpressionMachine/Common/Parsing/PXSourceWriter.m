@@ -96,13 +96,6 @@
 
 #pragma mark - Overrides
 
-- (void)dealloc
-{
-    currentIndent = nil;
-    indentString = nil;
-    strings = nil;
-}
-
 - (NSString *)description
 {
     return [strings componentsJoinedByString:@""];

@@ -27,7 +27,7 @@
 
 @implementation PXObjectValue
 {
-    NSMutableOrderedSet *_propertyNames;
+    NSMutableArray *_propertyNames;
     NSMutableDictionary *_properties;
 }
 
@@ -37,9 +37,8 @@ static NSDictionary *METHODS;
 
 + (void)initialize
 {
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
+    if (METHODS == nil)
+    {
         METHODS = @{
             @"concat": [[PXObjectConcatenateMethod alloc] init],
             @"forEach": [[PXObjectForEachMethod alloc] init],
@@ -50,7 +49,7 @@ static NSDictionary *METHODS;
             @"unshift": [[PXObjectUnshiftMethod alloc] init],
             @"values": [[PXObjectValuesMethod alloc] init]
         };
-    });
+    }
 }
 
 + (PXObjectValue *)objectFromEnvironment:(PXExpressionEnvironment *)env
@@ -93,7 +92,7 @@ static NSDictionary *METHODS;
 
     // items come in reversed, so reverse to correct order
     [object reverse];
-    
+
     return object;
 }
 
@@ -103,7 +102,7 @@ static NSDictionary *METHODS;
 {
     if (self = [super initWithValueType:PX_VALUE_TYPE_OBJECT])
     {
-        _propertyNames = [[NSMutableOrderedSet alloc] init];
+        _propertyNames = [[NSMutableArray alloc] init];
         _properties = [[NSMutableDictionary alloc] init];
     }
 
@@ -119,7 +118,7 @@ static NSDictionary *METHODS;
 
 - (NSArray *)propertyNames
 {
-    return [_propertyNames array];
+    return [_propertyNames copy];
 }
 
 - (NSArray *)propertyValues
@@ -214,7 +213,9 @@ static NSDictionary *METHODS;
 
 - (void)reverse
 {
-    _propertyNames = [NSMutableOrderedSet orderedSetWithOrderedSet:[_propertyNames reversedOrderedSet]];
+    NSArray *reverse = [[_propertyNames reverseObjectEnumerator] allObjects];
+
+    _propertyNames = [NSMutableArray arrayWithArray:reverse];
 }
 
 #pragma mark - Overrides
