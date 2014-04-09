@@ -53,7 +53,7 @@ EOF
 while read line; do
     extension="${line##*.}"
     if [ "$extension" != "pch" ]; then
-        echo "$(basename $line) \\"
+        echo "$(basename "$line") \\"
     fi
 done < Headers.txt
 
