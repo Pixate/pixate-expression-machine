@@ -76,7 +76,6 @@
 		0A4D1EB418E5AA8800200629 /* PXByteCodeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E4E18E5AA8800200629 /* PXByteCodeBuilder.m */; };
 		0A4D1EB518E5AA8800200629 /* PXExpressionByteCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E5018E5AA8800200629 /* PXExpressionByteCode.m */; };
 		0A4D1EB618E5AA8800200629 /* PXExpressionInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E5218E5AA8800200629 /* PXExpressionInstruction.m */; };
-		0A4D1EB718E5AA8800200629 /* PXInstructionCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E5518E5AA8800200629 /* PXInstructionCounter.m */; };
 		0A4D1EB818E5AA8800200629 /* PXInstructionDisassembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E5718E5AA8800200629 /* PXInstructionDisassembler.m */; };
 		0A4D1EB918E5AA8800200629 /* PXInstructionProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E5918E5AA8800200629 /* PXInstructionProcessor.m */; };
 		0A4D1EBA18E5AA8800200629 /* PXPushValueInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1E5B18E5AA8800200629 /* PXPushValueInstruction.m */; };
@@ -1182,7 +1181,6 @@
 				0A4D1ED218E5AA8800200629 /* PXObjectValue.m in Sources */,
 				0A4D1EBA18E5AA8800200629 /* PXPushValueInstruction.m in Sources */,
 				0A4D1ECC18E5AA8800200629 /* PXBooleanValue.m in Sources */,
-				0A4D1EB718E5AA8800200629 /* PXInstructionCounter.m in Sources */,
 				0A4D1DD518E5A78B00200629 /* PXScriptManager.m in Sources */,
 				0A4D1EBF18E5AA8800200629 /* PXExpressionLexer.lm in Sources */,
 				0A09BF0718ECB06E004780F8 /* PXStringLengthMethod.m in Sources */,
