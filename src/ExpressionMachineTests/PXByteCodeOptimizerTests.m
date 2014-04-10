@@ -229,6 +229,21 @@
     PXByteCodeBuilder *builder = [[PXByteCodeBuilder alloc] init];
 
     [builder addGetSymbolInstructionWithName:@"a"];
+    [builder addDuplicateInstruction];
+    [builder addGetPropertyInstructionWithName:@"b"];
+    [builder addInvokeFunctionInstructionWithCount:0];
+
+    PXExpressionByteCode *byteCode = builder.optimizedByteCode;
+    NSString *expected = @"invokeSymbolProperty('a', 'b', 0)";
+
+    XCTAssertTrue([expected isEqualToString:byteCode.description], @"Expected\n%@\nbut found\n%@", expected, byteCode.description);
+}
+
+- (void)testInvokeWithCount2
+{
+    PXByteCodeBuilder *builder = [[PXByteCodeBuilder alloc] init];
+
+    [builder addGetSymbolInstructionWithName:@"a"];
     [builder addGetPropertyInstructionWithName:@"b"];
     [builder addGetPropertyInstructionWithName:@"c"];
     [builder addDuplicateInstruction];
@@ -241,7 +256,7 @@
     XCTAssertTrue([expected isEqualToString:byteCode.description], @"Expected\n%@\nbut found\n%@", expected, byteCode.description);
 }
 
-- (void)testInvokeWithCount2
+- (void)testInvokeWithCount3
 {
     PXByteCodeBuilder *builder = [[PXByteCodeBuilder alloc] init];
 

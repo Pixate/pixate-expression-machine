@@ -143,6 +143,24 @@
                                 [result removeLastObject];  // getSymbolProperty
                                 [result addObject:invoke];
                             }
+                            else if (backThree.type == EM_INSTRUCTION_SCOPE_GET_SYMBOL_NAME)
+                            {
+                                NSString *symbol = (backThree.stringValue.length > 0) ? backThree.stringValue : [backThree popStringValue];
+                                PXExpressionInstruction *invoke = [[PXExpressionInstruction alloc]
+                                                                   initWithType:EM_INSTRUCTION_MIX_INVOKE_SYMBOL_PROPERTY_WITH_COUNT
+                                                                   stringValue:symbol uint:instruction.uintValue];
+
+                                [backThree.stringValues enumerateObjectsUsingBlock:^(NSString *value, NSUInteger idx, BOOL *stop) {
+                                    [invoke pushStringValue:value preservingStringValue:YES];
+                                }];
+
+                                [invoke pushStringValue:last.stringValue preservingStringValue:YES];
+
+                                [result removeLastObject];  // getPropertyName
+                                [result removeLastObject];  // dup
+                                [result removeLastObject];  // getSymbolProperty
+                                [result addObject:invoke];
+                            }
                             else
                             {
                                 [result addObject:instruction];
