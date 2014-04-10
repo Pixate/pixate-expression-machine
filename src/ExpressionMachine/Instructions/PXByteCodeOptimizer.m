@@ -162,7 +162,7 @@
                                 [result removeLastObject];  // dup
                                 if (backThree.stringValue.length > 0)
                                 {
-                                    [result removeLastObject];  // getSymbolProperty
+                                    [result removeLastObject];  // getSymbolName
                                 }
 
                                 [result addObject:invoke];
