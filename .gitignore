@@ -19,3 +19,11 @@ DerivedData
 
 #CocoaPods
 Pods
+
+#AFS
+.AppleDouble
+
+#GNUstep
+EM.framework
+derived_src
+
