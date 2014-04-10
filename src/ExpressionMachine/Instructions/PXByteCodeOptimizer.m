@@ -156,15 +156,15 @@
                                                                    initWithType:EM_INSTRUCTION_MIX_INVOKE_SYMBOL_PROPERTY_WITH_COUNT
                                                                    stringValue:symbol uint:instruction.uintValue];
 
-                                [backThree.stringValues enumerateObjectsUsingBlock:^(NSString *value, NSUInteger idx, BOOL *stop) {
-                                    [invoke pushStringValue:value preservingStringValue:YES];
-                                }];
-
                                 [invoke pushStringValue:last.stringValue preservingStringValue:YES];
 
                                 [result removeLastObject];  // getPropertyName
                                 [result removeLastObject];  // dup
-                                [result removeLastObject];  // getSymbolProperty
+                                if (backThree.stringValue.length > 0)
+                                {
+                                    [result removeLastObject];  // getSymbolProperty
+                                }
+
                                 [result addObject:invoke];
                             }
                             else
