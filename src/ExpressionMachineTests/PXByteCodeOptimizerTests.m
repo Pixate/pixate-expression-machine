@@ -222,6 +222,19 @@
     XCTAssertTrue([expected isEqualToString:byteCode.description], @"Expected\n%@\nbut found\n%@", expected, byteCode.description);
 }
 
+- (void)testSetSymbolGetSymbol
+{
+    PXByteCodeBuilder *builder = [[PXByteCodeBuilder alloc] init];
+
+    [builder addSetSymbolInstructionWithName:@"A"];
+    [builder addGetSymbolInstructionWithName:@"A"];
+
+    PXExpressionByteCode *byteCode = builder.optimizedByteCode;
+    NSString *expected = @"dup\nsetSymbol('A')";
+
+    XCTAssertTrue([expected isEqualToString:byteCode.description], @"Expected\n%@\nbut found\n%@", expected, byteCode.description);
+}
+
 #pragma mark - Invoke function with count optimizations
 
 - (void)testInvokeWithCount

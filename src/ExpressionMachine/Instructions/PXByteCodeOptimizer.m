@@ -77,6 +77,12 @@
                 {
                     [last pushStringValue:instruction.stringValue];
                 }
+                else if (last.type == EM_INSTRUCTION_SCOPE_SET_SYMBOL_NAME && [last.stringValue isEqualToString:instruction.stringValue])
+                {
+                    [result removeLastObject];
+                    [result addObject:[[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_STACK_DUPLICATE]];
+                    [result addObject:last];
+                }
                 else
                 {
                     [result addObject:instruction];
