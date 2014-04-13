@@ -36,7 +36,6 @@
 		0A47254F18F30591001035E2 /* PXByteCodeOptimizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A47254E18F30591001035E2 /* PXByteCodeOptimizerTests.m */; };
 		0A4D1DD518E5A78B00200629 /* PXScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8518E5A78B00200629 /* PXScriptManager.m */; };
 		0A4D1DE418E5A85D00200629 /* PXBuiltInsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8A18E5A78B00200629 /* PXBuiltInsTests.m */; };
-		0A4D1DE618E5A85D00200629 /* PXEasingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8D18E5A78B00200629 /* PXEasingTests.m */; };
 		0A4D1DE718E5A85D00200629 /* PXEmaLexerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8E18E5A78B00200629 /* PXEmaLexerTests.m */; };
 		0A4D1DE818E5A85D00200629 /* PXExpressionAssemblerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8F18E5A78B00200629 /* PXExpressionAssemblerTests.m */; };
 		0A4D1DE918E5A85D00200629 /* PXExpressionEnvironmentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D9018E5A78B00200629 /* PXExpressionEnvironmentTests.m */; };
@@ -232,7 +231,6 @@
 		0A4D1D8818E5A78B00200629 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0A4D1D8918E5A78B00200629 /* pixate-expression-machineTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "pixate-expression-machineTests-Info.plist"; sourceTree = "<group>"; };
 		0A4D1D8A18E5A78B00200629 /* PXBuiltInsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXBuiltInsTests.m; sourceTree = "<group>"; };
-		0A4D1D8D18E5A78B00200629 /* PXEasingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXEasingTests.m; sourceTree = "<group>"; };
 		0A4D1D8E18E5A78B00200629 /* PXEmaLexerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXEmaLexerTests.m; sourceTree = "<group>"; };
 		0A4D1D8F18E5A78B00200629 /* PXExpressionAssemblerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXExpressionAssemblerTests.m; sourceTree = "<group>"; };
 		0A4D1D9018E5A78B00200629 /* PXExpressionEnvironmentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXExpressionEnvironmentTests.m; sourceTree = "<group>"; };
@@ -475,7 +473,6 @@
 				0A4D1E0318E5A98D00200629 /* Supporting Files */,
 				0A4D1D8A18E5A78B00200629 /* PXBuiltInsTests.m */,
 				0A47254E18F30591001035E2 /* PXByteCodeOptimizerTests.m */,
-				0A4D1D8D18E5A78B00200629 /* PXEasingTests.m */,
 				0A4D1D8E18E5A78B00200629 /* PXEmaLexerTests.m */,
 				0A4D1D8F18E5A78B00200629 /* PXExpressionAssemblerTests.m */,
 				0A4D1D9018E5A78B00200629 /* PXExpressionEnvironmentTests.m */,
@@ -1207,7 +1204,6 @@
 				0A47254F18F30591001035E2 /* PXByteCodeOptimizerTests.m in Sources */,
 				0A4D1DED18E5A85D00200629 /* PXExpressionPropertyTests.m in Sources */,
 				0A4D1DFA18E5A8E300200629 /* PXPropertyTestClass.m in Sources */,
-				0A4D1DE618E5A85D00200629 /* PXEasingTests.m in Sources */,
 				0A4D1DEC18E5A85D00200629 /* PXExpressionParserTests.m in Sources */,
 				0A4D1DEB18E5A85D00200629 /* PXExpressionModelTests.m in Sources */,
 			);

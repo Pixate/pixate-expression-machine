@@ -77,6 +77,12 @@
                 {
                     [last pushStringValue:instruction.stringValue];
                 }
+                else if (last.type == EM_INSTRUCTION_SCOPE_SET_SYMBOL_NAME && [last.stringValue isEqualToString:instruction.stringValue])
+                {
+                    [result removeLastObject];
+                    [result addObject:[[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_STACK_DUPLICATE]];
+                    [result addObject:last];
+                }
                 else
                 {
                     [result addObject:instruction];
@@ -141,6 +147,24 @@
                                 [result removeLastObject];  // getPropertyName
                                 [result removeLastObject];  // dup
                                 [result removeLastObject];  // getSymbolProperty
+                                [result addObject:invoke];
+                            }
+                            else if (backThree.type == EM_INSTRUCTION_SCOPE_GET_SYMBOL_NAME)
+                            {
+                                NSString *symbol = (backThree.stringValue.length > 0) ? backThree.stringValue : [backThree popStringValue];
+                                PXExpressionInstruction *invoke = [[PXExpressionInstruction alloc]
+                                                                   initWithType:EM_INSTRUCTION_MIX_INVOKE_SYMBOL_PROPERTY_WITH_COUNT
+                                                                   stringValue:symbol uint:instruction.uintValue];
+
+                                [invoke pushStringValue:last.stringValue preservingStringValue:YES];
+
+                                [result removeLastObject];  // getPropertyName
+                                [result removeLastObject];  // dup
+                                if (backThree.stringValue.length > 0)
+                                {
+                                    [result removeLastObject];  // getSymbolName
+                                }
+
                                 [result addObject:invoke];
                             }
                             else

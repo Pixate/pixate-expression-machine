@@ -222,9 +222,37 @@
     XCTAssertTrue([expected isEqualToString:byteCode.description], @"Expected\n%@\nbut found\n%@", expected, byteCode.description);
 }
 
+- (void)testSetSymbolGetSymbol
+{
+    PXByteCodeBuilder *builder = [[PXByteCodeBuilder alloc] init];
+
+    [builder addSetSymbolInstructionWithName:@"A"];
+    [builder addGetSymbolInstructionWithName:@"A"];
+
+    PXExpressionByteCode *byteCode = builder.optimizedByteCode;
+    NSString *expected = @"dup\nsetSymbol('A')";
+
+    XCTAssertTrue([expected isEqualToString:byteCode.description], @"Expected\n%@\nbut found\n%@", expected, byteCode.description);
+}
+
 #pragma mark - Invoke function with count optimizations
 
 - (void)testInvokeWithCount
+{
+    PXByteCodeBuilder *builder = [[PXByteCodeBuilder alloc] init];
+
+    [builder addGetSymbolInstructionWithName:@"a"];
+    [builder addDuplicateInstruction];
+    [builder addGetPropertyInstructionWithName:@"b"];
+    [builder addInvokeFunctionInstructionWithCount:0];
+
+    PXExpressionByteCode *byteCode = builder.optimizedByteCode;
+    NSString *expected = @"invokeSymbolProperty('a', 'b', 0)";
+
+    XCTAssertTrue([expected isEqualToString:byteCode.description], @"Expected\n%@\nbut found\n%@", expected, byteCode.description);
+}
+
+- (void)testInvokeWithCount2
 {
     PXByteCodeBuilder *builder = [[PXByteCodeBuilder alloc] init];
 
@@ -241,7 +269,7 @@
     XCTAssertTrue([expected isEqualToString:byteCode.description], @"Expected\n%@\nbut found\n%@", expected, byteCode.description);
 }
 
-- (void)testInvokeWithCount2
+- (void)testInvokeWithCount3
 {
     PXByteCodeBuilder *builder = [[PXByteCodeBuilder alloc] init];
 
@@ -250,6 +278,23 @@
 
     PXExpressionByteCode *byteCode = builder.optimizedByteCode;
     NSString *expected = @"invokeSymbolProperty('a', 'b', 0)";
+
+    XCTAssertTrue([expected isEqualToString:byteCode.description], @"Expected\n%@\nbut found\n%@", expected, byteCode.description);
+}
+
+- (void)testInvokeWithCount4
+{
+    PXByteCodeBuilder *builder = [[PXByteCodeBuilder alloc] init];
+
+    // ary.push(v)
+    [builder addGetSymbolInstructionWithName:@"v"];
+    [builder addGetSymbolInstructionWithName:@"ary"];
+    [builder addDuplicateInstruction];
+    [builder addGetPropertyInstructionWithName:@"push"];
+    [builder addInvokeFunctionInstructionWithCount:1];
+
+    PXExpressionByteCode *byteCode = builder.optimizedByteCode;
+    NSString *expected = @"getSymbol('v')\ninvokeSymbolProperty('ary', 'push', 1)";
 
     XCTAssertTrue([expected isEqualToString:byteCode.description], @"Expected\n%@\nbut found\n%@", expected, byteCode.description);
 }
