@@ -111,6 +111,24 @@ func map(value, start1, end1, start2, end2, clampResult=false) {
 }
 
 //
+// Make a shallow copy of an object. The first argument is the object
+// to copy from. If only an object is specified, then all properties
+// will be copied. Otherwise, a list of properties to copy may be
+// specified as the second and greater arguments
+//
+func snapshot() {
+    sym obj = arguments.shift();
+    sym keys = (arguments.length() == 0) ? obj.keys() : arguments;
+    sym result = {};
+
+    keys.forEach(func(key) {
+        result.push(key, obj{key});
+    });
+
+    result;
+}
+
+//
 // URLs
 //
 
