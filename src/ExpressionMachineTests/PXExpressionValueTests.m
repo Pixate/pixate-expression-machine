@@ -62,6 +62,54 @@
     XCTAssertTrue(isnan(array.doubleValue), @"Expected NaN");
 }
 
+- (void)testArrayEveryAllTrue
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"[2, 4, 6, 8, 10].every(func(a) { a < 11 })";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertBooleanValue:[env popValue] expected:YES];
+}
+
+- (void)testArrayEverySomeTrue
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"[2, 4, 6, 8, 10].every(func(a) { a < 7 })";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertBooleanValue:[env popValue] expected:NO];
+}
+
+- (void)testArrayEveryAllFalse
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"[2, 4, 6, 8, 10].every(func(a) { a < 2 })";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertBooleanValue:[env popValue] expected:NO];
+}
+
+- (void)testArrayFilter
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"[10, 2, 8, 4, 12, 6].filter(func(a) { a < 7 })";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertArrayValue:[env popValue] expected:@[ @2, @4, @6 ]];
+}
+
 - (void)testArrayForEach
 {
     PXExpressionParser *parser = [[PXExpressionParser alloc] init];
@@ -205,6 +253,42 @@
     [env executeUnit:unit];
 
     [self assertArrayValue:[env popValue] expected:@[ @0, @1, @2, @3 ]];
+}
+
+- (void)testArraySomeAllTrue
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"[2, 4, 6, 8, 10].some(func(a) { a < 11 })";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertBooleanValue:[env popValue] expected:YES];
+}
+
+- (void)testArraySomeSomeTrue
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"[2, 4, 6, 8, 10].some(func(a) { a < 7 })";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertBooleanValue:[env popValue] expected:YES];
+}
+
+- (void)testArraySomeAllFalse
+{
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    NSString *source = @"[2, 4, 6, 8, 10].some(func(a) { a < 2 })";
+    PXExpressionUnit *unit = [parser compileString:source];
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] init];
+
+    [env executeUnit:unit];
+
+    [self assertBooleanValue:[env popValue] expected:NO];
 }
 
 - (void)testArrayLength
