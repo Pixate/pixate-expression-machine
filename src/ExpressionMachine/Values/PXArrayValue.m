@@ -13,6 +13,8 @@
 #import "PXMarkValue.h"
 #import "PXUndefinedValue.h"
 
+#import "PXArrayEveryMethod.h"
+#import "PXArrayFilterMethod.h"
 #import "PXArrayForEachMethod.h"
 #import "PXArrayJoinMethod.h"
 #import "PXArrayLengthMethod.h"
@@ -22,6 +24,7 @@
 #import "PXArrayReduceMethod.h"
 #import "PXArrayReverseMethod.h"
 #import "PXArrayShiftMethod.h"
+#import "PXArraySomeMethod.h"
 #import "PXArrayUnshiftMethod.h"
 
 @implementation PXArrayValue
@@ -39,6 +42,8 @@ static NSDictionary *METHODS;
 
     dispatch_once(&onceToken, ^{
         METHODS = @{
+            @"every": [[PXArrayEveryMethod alloc] init],
+            @"filter": [[PXArrayFilterMethod alloc] init],
             @"forEach": [[PXArrayForEachMethod alloc] init],
             @"join": [[PXArrayJoinMethod alloc] init],
             @"length": [[PXArrayLengthMethod alloc] init],
@@ -48,6 +53,7 @@ static NSDictionary *METHODS;
             @"reduce": [[PXArrayReduceMethod alloc] init],
             @"reverse": [[PXArrayReverseMethod alloc] init],
             @"shift": [[PXArrayShiftMethod alloc] init],
+            @"some": [[PXArraySomeMethod alloc] init],
             @"unshift": [[PXArrayUnshiftMethod alloc] init]
         };
     });
