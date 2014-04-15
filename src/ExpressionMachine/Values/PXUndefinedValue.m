@@ -12,16 +12,19 @@
 
 #pragma mark - Static Methods
 
+static PXUndefinedValue *INSTANCE;
+
++ (void)initialize
+{
+    if (INSTANCE == nil)
+    {
+        INSTANCE = [[PXUndefinedValue alloc] init];
+    }
+}
+
 + (PXUndefinedValue *)undefined
 {
-    static PXUndefinedValue *undefined;
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
-        undefined = [[PXUndefinedValue alloc] init];
-    });
-
-    return undefined;
+    return INSTANCE;
 }
 
 #pragma mark - Initializers

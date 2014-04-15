@@ -12,16 +12,19 @@
 
 #pragma mark - Static Methods
 
+static PXMarkValue *INSTANCE;
+
++ (void)initialize
+{
+    if (INSTANCE == nil)
+    {
+        INSTANCE = [[PXMarkValue alloc] init];
+    }
+}
+
 + (PXMarkValue *)mark
 {
-    static PXMarkValue *mark;
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
-        mark = [[PXMarkValue alloc] init];
-    });
-
-    return mark;
+    return INSTANCE;
 }
 
 #pragma mark - Initializers

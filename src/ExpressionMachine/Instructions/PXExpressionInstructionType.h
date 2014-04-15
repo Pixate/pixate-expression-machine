@@ -9,6 +9,10 @@
 #ifndef Protostyle_PXExpressionInstructionType_h
 #define Protostyle_PXExpressionInstructionType_h
 
+#ifndef NS_ENUM
+#define NS_ENUM(type, name) type name; enum
+#endif
+
 typedef NS_ENUM(NSInteger, PXExpressionInstructionType)
 {
     EM_INSTRUCTION_BREAK = 0,
