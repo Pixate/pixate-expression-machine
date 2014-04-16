@@ -8,12 +8,10 @@
 
 #import "PXPropertyTestClass.h"
 
-@interface PXPropertyTestClass ()
-@property (nonatomic) double length;
-@property (nonatomic) NSString *name;
-@end
-
 @implementation PXPropertyTestClass
+
+@synthesize count = _count;
+@synthesize name = _name;
 
 - (id)init
 {
@@ -21,7 +19,7 @@
     {
         // set some defaults for testing
         _name = @"testing";
-        _length = _name.length;
+        _count = _name.length;
     }
 
     return self;

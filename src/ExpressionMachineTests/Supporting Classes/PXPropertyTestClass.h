@@ -6,8 +6,15 @@
 //  Copyright (c) 2014 Pixate, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "PXExpressionExports.h"
 
-@interface PXPropertyTestClass : NSObject
+@protocol PXTestExports <PXExpressionExports>
+
+@property (nonatomic) double count;
+@property (nonatomic) NSString *name;
+
+@end
+
+@interface PXPropertyTestClass : NSObject <PXTestExports>
 
 @end

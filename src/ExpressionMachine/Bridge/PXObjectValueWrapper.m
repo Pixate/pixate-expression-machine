@@ -230,7 +230,7 @@
         {
             [self addGetterSelector:getter setterSelector:setter forName:propertyName withType:PX_VALUE_TYPE_DOUBLE];
         }
-        else if ([attributes hasPrefix:@"Ts"])
+        else if ([attributes hasPrefix:@"T@\"NSString\""])
         {
             [self addGetterSelector:getter setterSelector:setter forName:propertyName withType:PX_VALUE_TYPE_STRING];
         }
