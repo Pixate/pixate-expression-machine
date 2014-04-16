@@ -20,10 +20,14 @@ DerivedData
 #CocoaPods
 Pods
 
-#AFS
-.AppleDouble
-
 #GNUstep
-EM.framework
-derived_src
+Headers/
+Classes/
+Headers.txt
+Classes.txt
+EM.framework/
+derived_src/
+obj/
 
+#AFP
+.AppleDouble/

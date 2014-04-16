@@ -39,28 +39,32 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
 
 + (void)initialize
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSMutableIndexSet *set;
-
-        set = [NSMutableIndexSet indexSet];
+    if (LOGICAL_OR_SET == nil)
+    {
+        NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
         [set addIndex:EM_LOGICAL_OR];
         [set addIndex:EM_OR];
         LOGICAL_OR_SET = [[NSIndexSet alloc] initWithIndexSet:set];
-
-        set = [NSMutableIndexSet indexSet];
+    }
+    if (LOGICAL_AND_SET == nil)
+    {
+        NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
         [set addIndex:EM_LOGICAL_AND];
         [set addIndex:EM_AND];
         LOGICAL_AND_SET = [[NSIndexSet alloc] initWithIndexSet:set];
-
-        set = [NSMutableIndexSet indexSet];
+    }
+    if (EQUALITY_OPERATORS_SET == nil)
+    {
+        NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
         [set addIndex:EM_EQUAL];
         [set addIndex:EM_NOT_EQUAL];
         [set addIndex:EM_EQ];
         [set addIndex:EM_NE];
         EQUALITY_OPERATORS_SET = [[NSIndexSet alloc] initWithIndexSet:set];
-
-        set = [NSMutableIndexSet indexSet];
+    }
+    if (RELATIONAL_OPERATORS_SET == nil)
+    {
+        NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
         [set addIndex:EM_LESS_THAN];
         [set addIndex:EM_LESS_THAN_EQUAL];
         [set addIndex:EM_GREATER_THAN_EQUAL];
@@ -70,24 +74,32 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
         [set addIndex:EM_GE];
         [set addIndex:EM_GT];
         RELATIONAL_OPERATORS_SET = [[NSIndexSet alloc] initWithIndexSet:set];
-
-        set = [NSMutableIndexSet indexSet];
+    }
+    if (MULTIPLICATIVE_OPERATORS_SET == nil)
+    {
+        NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
         [set addIndex:EM_TIMES];
         [set addIndex:EM_DIVIDE];
         MULTIPLICATIVE_OPERATORS_SET = [[NSIndexSet alloc] initWithIndexSet:set];
-
-        set = [NSMutableIndexSet indexSet];
+    }
+    if (ADDITIVE_OPERATORS_SET == nil)
+    {
+        NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
         [set addIndex:EM_PLUS];
         [set addIndex:EM_MINUS];
         ADDITIVE_OPERATORS_SET = [[NSIndexSet alloc] initWithIndexSet:set];
-
-        set = [NSMutableIndexSet indexSet];
+    }
+    if (PREFIX_OPERATORS_SET == nil)
+    {
+        NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
         [set addIndex:EM_LOGICAL_NOT];
         [set addIndex:EM_NOT];
         [set addIndex:EM_MINUS];
         PREFIX_OPERATORS_SET = [[NSIndexSet alloc] initWithIndexSet:set];
-
-        set = [NSMutableIndexSet indexSet];
+    }
+    if (SIMPLE_TYPE_SET == nil)
+    {
+        NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
         [set addIndex:EM_NUMBER];
         [set addIndex:EM_TRUE];
         [set addIndex:EM_FALSE];
@@ -95,15 +107,19 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
         [set addIndex:EM_NULL];
         [set addIndex:EM_UNDEFINED];
         SIMPLE_TYPE_SET = [[NSIndexSet alloc] initWithIndexSet:set];
-
-        set = [NSMutableIndexSet indexSet];
+    }
+    if (ACCESSOR_SET == nil)
+    {
+        NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
         [set addIndex:EM_DOT];
         [set addIndex:EM_LBRACKET];
         [set addIndex:EM_LCURLY];
         ACCESSOR_SET = [[NSIndexSet alloc] initWithIndexSet:set];
-
+    }
+    if (NODE_BUILDER == nil)
+    {
         NODE_BUILDER = [[PXExpressionNodeBuilder alloc] init];
-    });
+    }
 }
 
 #pragma mark - Begin parsing
@@ -590,7 +606,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
                 break;
         }
     }
-    
+
     return result;
 }
 
@@ -677,7 +693,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
 
         result = [NODE_BUILDER createInvokeNode:result arguments:args];
     }
-    
+
     return [self parseAccessorsWithNode:result];
 }
 
@@ -755,7 +771,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
 
 - (id<PXExpressionNode>)parsePrimary
 {
-    id<PXExpressionNode> result;
+    id<PXExpressionNode> result = nil;
 
     switch (currentLexeme.type)
     {

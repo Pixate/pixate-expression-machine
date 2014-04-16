@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#ifndef NS_ENUM
+#define NS_ENUM(type, name) type name; enum
+#endif
+
 typedef NS_ENUM(NSInteger, PXExpressionValueType)
 {
     PX_VALUE_TYPE_UNKNOWN,

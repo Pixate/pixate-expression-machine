@@ -153,11 +153,4 @@
     return ([types containsIndex:currentLexeme.type]);
 }
 
-#pragma mark - Overrides
-
-- (void)dealloc
-{
-    self->errors = nil;
-}
-
 @end

@@ -33,23 +33,24 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
 
 + (void)initialize
 {
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
-        NSMutableIndexSet *set;
-
-        set = [NSMutableIndexSet indexSet];
+    if (CREATE_ARRAY_SET == nil)
+    {
+        NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
         [set addIndex:EMA_CREATE_ARRAY];
         [set addIndex:EM_RBRACKET];
         CREATE_ARRAY_SET = [[NSIndexSet alloc] initWithIndexSet:set];
-
-        set = [NSMutableIndexSet indexSet];
+    }
+    if (CREATE_OBJECT_SET == nil)
+    {
+        NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
         [set addIndex:EMA_CREATE_OBJECT];
         [set addIndex:EMA_RBRACKET_CURLY];
         CREATE_OBJECT_SET = [[NSIndexSet alloc] initWithIndexSet:set];
-
+    }
+    if (NODE_BUILDER == nil)
+    {
         NODE_BUILDER = [[PXExpressionNodeBuilder alloc] init];
-    });
+    }
 }
 
 - (PXExpressionUnit *)assembleString:(NSString *)source
@@ -463,7 +464,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
     {
         // advance over '('
         [self advance];
-        
+
         // grab number
         [self assertType:EM_NUMBER];
         uint count = [currentLexeme.text intValue];
@@ -574,7 +575,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
     {
         result = [NODE_BUILDER createSetSymbolNode];
     }
-    
+
     return result;
 }
 
@@ -653,7 +654,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
     {
         result = [NODE_BUILDER createGetElementNode];
     }
-    
+
     return result;
 }
 
@@ -966,7 +967,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
         default:
             [self errorWithMessage:@"Unknown simple type. Expted NUMBER, T, F, or STRING"];
     }
-    
+
     return result;
 }
 

@@ -22,14 +22,13 @@ static NSDictionary *METHODS;
 
 + (void)initialize
 {
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
+    if (METHODS == nil)
+    {
         METHODS = @{
             @"length": [[PXStringLengthMethod alloc] init],
             @"substring": [[PXStringSubstringMethod alloc] init]
         };
-    });
+    }
 }
 
 #pragma mark - Initializers

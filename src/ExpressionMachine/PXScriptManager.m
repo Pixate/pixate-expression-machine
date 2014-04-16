@@ -18,18 +18,21 @@
 
 @implementation PXScriptManager
 
+static PXScriptManager *INSTANCE;
+
 #pragma mark - Static Methods
+
++ (void)initialize
+{
+    if (INSTANCE == nil)
+    {
+        INSTANCE = [[PXScriptManager alloc] init];
+    }
+}
 
 + (PXScriptManager *)sharedInstance
 {
-    static dispatch_once_t onceToken;
-    static PXScriptManager *manager;
-
-    dispatch_once(&onceToken, ^{
-        manager = [[PXScriptManager alloc] init];
-    });
-
-    return manager;
+    return INSTANCE;
 }
 
 #pragma mark - Initializers

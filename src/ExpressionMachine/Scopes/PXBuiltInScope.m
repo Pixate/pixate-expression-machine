@@ -23,35 +23,44 @@
 
 @implementation PXBuiltInScope
 
+static id<PXExpressionScope> EMA_SCOPE;
+static id<PXExpressionScope> EM_SCOPE;
+
+#pragma mark - Static Methods
+
++ (void)initialize
+{
+    if (EMA_SCOPE == nil)
+    {
+        PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] initWithGlobalScope:[[PXScope alloc] init]];
+
+        // process built-in assembly file
+        PXExpressionAssembler *assembler = [[PXExpressionAssembler alloc] init];
+        PXExpressionUnit *unit = [assembler assembleString:[PXBuiltInSource emaSource]];
+        [env executeUnit:unit];
+        EMA_SCOPE = unit.scope;
+    }
+    if (EM_SCOPE == nil)
+    {
+        PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] initWithGlobalScope:[[PXScope alloc] init]];
+
+        // process built-in expression file
+        PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+        PXExpressionUnit *unit = [parser compileString:[PXBuiltInSource emSource]];
+        [env executeUnit:unit];
+        EM_SCOPE = unit.scope;
+    }
+}
+
 #pragma mark - Initializers
 
 - (id)init
 {
     if (self = [super init])
     {
-        static id<PXExpressionScope> emaScope;
-        static id<PXExpressionScope> emScope;
-        static dispatch_once_t onceToken;
-
-        dispatch_once(&onceToken, ^{
-            PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] initWithGlobalScope:[[PXScope alloc] init]];
-
-            // process built-in assembly file
-            PXExpressionAssembler *assembler = [[PXExpressionAssembler alloc] init];
-            PXExpressionUnit *unit = [assembler assembleString:[PXBuiltInSource emaSource]];
-            [env executeUnit:unit];
-            emaScope = unit.scope;
-
-            // process built-in expression file
-            PXExpressionParser *parser = [[PXExpressionParser alloc] init];
-            unit = [parser compileString:[PXBuiltInSource emSource]];
-            [env executeUnit:unit];
-            emScope = unit.scope;
-        });
-
         // copy em- and ema-defined built-ins
-        [self copySymbolsFromScope:emaScope];
-        [self copySymbolsFromScope:emScope];
+        [self copySymbolsFromScope:EMA_SCOPE];
+        [self copySymbolsFromScope:EM_SCOPE];
 
         // math operators
         [self setValue:[[PXSinFunction alloc] init] forSymbolName:@"sin"];
