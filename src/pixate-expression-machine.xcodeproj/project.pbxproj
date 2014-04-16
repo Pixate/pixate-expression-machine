@@ -33,6 +33,13 @@
 		0A09BF5F18F10598004780F8 /* PXByteCodeOptimizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A09BF5D18F10598004780F8 /* PXByteCodeOptimizer.h */; };
 		0A09BF6018F10598004780F8 /* PXByteCodeOptimizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A09BF5E18F10598004780F8 /* PXByteCodeOptimizer.m */; };
 		0A09BF6118F10598004780F8 /* PXByteCodeOptimizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A09BF5E18F10598004780F8 /* PXByteCodeOptimizer.m */; };
+		0A22D74F18FF3BD80047CFFB /* PXDisassembleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F93218FF384400C8CB4B /* PXDisassembleCommand.m */; };
+		0A22D75018FF3BDB0047CFFB /* PXExecuteFileCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F93418FF384400C8CB4B /* PXExecuteFileCommand.m */; };
+		0A22D75118FF3BE10047CFFB /* PXDisassembleSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F93E18FF384400C8CB4B /* PXDisassembleSwitch.m */; };
+		0A22D75218FF3BE50047CFFB /* PXExecuteFileSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F94018FF384400C8CB4B /* PXExecuteFileSwitch.m */; };
+		0A22D75318FF3BEA0047CFFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F93718FF384400C8CB4B /* main.m */; };
+		0A22D75418FF3BEC0047CFFB /* PXCommandContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F93918FF384400C8CB4B /* PXCommandContext.m */; };
+		0A22D75518FF3BF00047CFFB /* PXCommandExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F93B18FF384400C8CB4B /* PXCommandExecutor.m */; };
 		0A47254F18F30591001035E2 /* PXByteCodeOptimizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A47254E18F30591001035E2 /* PXByteCodeOptimizerTests.m */; };
 		0A4D1DD518E5A78B00200629 /* PXScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8518E5A78B00200629 /* PXScriptManager.m */; };
 		0A4D1DE418E5A85D00200629 /* PXBuiltInsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1D8A18E5A78B00200629 /* PXBuiltInsTests.m */; };
@@ -109,6 +116,9 @@
 		0A55F92318FF25F400C8CB4B /* PXStringProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F92118FF25F400C8CB4B /* PXStringProperty.m */; };
 		0A55F92418FF25F400C8CB4B /* PXStringProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F92118FF25F400C8CB4B /* PXStringProperty.m */; };
 		0A55F92618FF276F00C8CB4B /* PXExpressionProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A55F92518FF276F00C8CB4B /* PXExpressionProperty.h */; };
+		0A55F94718FF38D900C8CB4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF979DC18E4EED900B442DE /* Foundation.framework */; };
+		0A55F94E18FF38D900C8CB4B /* EMCL.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A55F94D18FF38D900C8CB4B /* EMCL.1 */; };
+		0A55F95218FF398200C8CB4B /* libpixate-expression-machine-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C475B9D18E620C100283A43 /* libpixate-expression-machine-mac.a */; };
 		0ABA0EF818FD77BA00EF8CD3 /* PXArrayFilterMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ABA0EF618FD77BA00EF8CD3 /* PXArrayFilterMethod.h */; };
 		0ABA0EF918FD77BA00EF8CD3 /* PXArrayFilterMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA0EF718FD77BA00EF8CD3 /* PXArrayFilterMethod.m */; };
 		0ABA0EFA18FD77BA00EF8CD3 /* PXArrayFilterMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA0EF718FD77BA00EF8CD3 /* PXArrayFilterMethod.m */; };
@@ -191,6 +201,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0A22D74D18FF3B700047CFFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CF979D118E4EED900B442DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9C475B9C18E620C100283A43;
+			remoteInfo = "pixate-expression-machine-mac";
+		};
 		9C475BAC18E620C100283A43 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9CF979D118E4EED900B442DE /* Project object */;
@@ -208,6 +225,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0A55F94418FF38D900C8CB4B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				0A55F94E18FF38D900C8CB4B /* EMCL.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		9CF979D718E4EED900B442DE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -391,6 +418,24 @@
 		0A55F92018FF25F400C8CB4B /* PXStringProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXStringProperty.h; sourceTree = "<group>"; };
 		0A55F92118FF25F400C8CB4B /* PXStringProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXStringProperty.m; sourceTree = "<group>"; };
 		0A55F92518FF276F00C8CB4B /* PXExpressionProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXExpressionProperty.h; sourceTree = "<group>"; };
+		0A55F93018FF384400C8CB4B /* PXCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXCommand.h; sourceTree = "<group>"; };
+		0A55F93118FF384400C8CB4B /* PXDisassembleCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXDisassembleCommand.h; sourceTree = "<group>"; };
+		0A55F93218FF384400C8CB4B /* PXDisassembleCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXDisassembleCommand.m; sourceTree = "<group>"; };
+		0A55F93318FF384400C8CB4B /* PXExecuteFileCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXExecuteFileCommand.h; sourceTree = "<group>"; };
+		0A55F93418FF384400C8CB4B /* PXExecuteFileCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXExecuteFileCommand.m; sourceTree = "<group>"; };
+		0A55F93718FF384400C8CB4B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0A55F93818FF384400C8CB4B /* PXCommandContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXCommandContext.h; sourceTree = "<group>"; };
+		0A55F93918FF384400C8CB4B /* PXCommandContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXCommandContext.m; sourceTree = "<group>"; };
+		0A55F93A18FF384400C8CB4B /* PXCommandExecutor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXCommandExecutor.h; sourceTree = "<group>"; };
+		0A55F93B18FF384400C8CB4B /* PXCommandExecutor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXCommandExecutor.m; sourceTree = "<group>"; };
+		0A55F93D18FF384400C8CB4B /* PXDisassembleSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXDisassembleSwitch.h; sourceTree = "<group>"; };
+		0A55F93E18FF384400C8CB4B /* PXDisassembleSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXDisassembleSwitch.m; sourceTree = "<group>"; };
+		0A55F93F18FF384400C8CB4B /* PXExecuteFileSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXExecuteFileSwitch.h; sourceTree = "<group>"; };
+		0A55F94018FF384400C8CB4B /* PXExecuteFileSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXExecuteFileSwitch.m; sourceTree = "<group>"; };
+		0A55F94118FF384400C8CB4B /* PXSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXSwitch.h; sourceTree = "<group>"; };
+		0A55F94618FF38D900C8CB4B /* EMCL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EMCL; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A55F94C18FF38D900C8CB4B /* EMCL-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EMCL-Prefix.pch"; sourceTree = "<group>"; };
+		0A55F94D18FF38D900C8CB4B /* EMCL.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = EMCL.1; sourceTree = "<group>"; };
 		0ABA0EF618FD77BA00EF8CD3 /* PXArrayFilterMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXArrayFilterMethod.h; sourceTree = "<group>"; };
 		0ABA0EF718FD77BA00EF8CD3 /* PXArrayFilterMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXArrayFilterMethod.m; sourceTree = "<group>"; };
 		0ABA0EFD18FD77D800EF8CD3 /* PXArrayEveryMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXArrayEveryMethod.h; sourceTree = "<group>"; };
@@ -416,6 +461,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0A55F94318FF38D900C8CB4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A55F95218FF398200C8CB4B /* libpixate-expression-machine-mac.a in Frameworks */,
+				0A55F94718FF38D900C8CB4B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9C475B9A18E620C100283A43 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -568,11 +622,11 @@
 				0A4D1E1918E5AA8800200629 /* PXDoubleProperty.h */,
 				0A4D1E1A18E5AA8800200629 /* PXDoubleProperty.m */,
 				0A4D1E1B18E5AA8800200629 /* PXExpressionExports.h */,
+				0A55F92518FF276F00C8CB4B /* PXExpressionProperty.h */,
 				0A4D1E1C18E5AA8800200629 /* PXObjectValueWrapper.h */,
 				0A4D1E1D18E5AA8800200629 /* PXObjectValueWrapper.m */,
 				0A55F92018FF25F400C8CB4B /* PXStringProperty.h */,
 				0A55F92118FF25F400C8CB4B /* PXStringProperty.m */,
-				0A55F92518FF276F00C8CB4B /* PXExpressionProperty.h */,
 			);
 			path = Bridge;
 			sourceTree = "<group>";
@@ -800,6 +854,54 @@
 			path = Values;
 			sourceTree = "<group>";
 		};
+		0A55F92E18FF384400C8CB4B /* EMCL */ = {
+			isa = PBXGroup;
+			children = (
+				0A55F92F18FF384400C8CB4B /* Commands */,
+				0A55F93C18FF384400C8CB4B /* Switches */,
+				0A55F94B18FF38D900C8CB4B /* Supporting Files */,
+				0A55F94D18FF38D900C8CB4B /* EMCL.1 */,
+				0A55F93718FF384400C8CB4B /* main.m */,
+				0A55F93818FF384400C8CB4B /* PXCommandContext.h */,
+				0A55F93918FF384400C8CB4B /* PXCommandContext.m */,
+				0A55F93A18FF384400C8CB4B /* PXCommandExecutor.h */,
+				0A55F93B18FF384400C8CB4B /* PXCommandExecutor.m */,
+			);
+			path = EMCL;
+			sourceTree = "<group>";
+		};
+		0A55F92F18FF384400C8CB4B /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				0A55F93018FF384400C8CB4B /* PXCommand.h */,
+				0A55F93118FF384400C8CB4B /* PXDisassembleCommand.h */,
+				0A55F93218FF384400C8CB4B /* PXDisassembleCommand.m */,
+				0A55F93318FF384400C8CB4B /* PXExecuteFileCommand.h */,
+				0A55F93418FF384400C8CB4B /* PXExecuteFileCommand.m */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		0A55F93C18FF384400C8CB4B /* Switches */ = {
+			isa = PBXGroup;
+			children = (
+				0A55F93D18FF384400C8CB4B /* PXDisassembleSwitch.h */,
+				0A55F93E18FF384400C8CB4B /* PXDisassembleSwitch.m */,
+				0A55F93F18FF384400C8CB4B /* PXExecuteFileSwitch.h */,
+				0A55F94018FF384400C8CB4B /* PXExecuteFileSwitch.m */,
+				0A55F94118FF384400C8CB4B /* PXSwitch.h */,
+			);
+			path = Switches;
+			sourceTree = "<group>";
+		};
+		0A55F94B18FF38D900C8CB4B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0A55F94C18FF38D900C8CB4B /* EMCL-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		9C475B3218E61E4600283A43 /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,6 +953,7 @@
 				0A4D1D8618E5A78B00200629 /* ExpressionMachineTests */,
 				9C475B9F18E620C100283A43 /* pixate-expression-machine-mac */,
 				9C475BAF18E620C100283A43 /* pixate-expression-machine-macTests */,
+				0A55F92E18FF384400C8CB4B /* EMCL */,
 				9CF979DB18E4EED900B442DE /* Frameworks */,
 				9CF979DA18E4EED900B442DE /* Products */,
 			);
@@ -863,6 +966,7 @@
 				9CF979E918E4EED900B442DE /* pixate-expression-machineTests.xctest */,
 				9C475B9D18E620C100283A43 /* libpixate-expression-machine-mac.a */,
 				9C475BA918E620C100283A43 /* pixate-expression-machine-macTests.xctest */,
+				0A55F94618FF38D900C8CB4B /* EMCL */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -905,6 +1009,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0A55F94518FF38D900C8CB4B /* EMCL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A55F94F18FF38D900C8CB4B /* Build configuration list for PBXNativeTarget "EMCL" */;
+			buildPhases = (
+				0A55F94218FF38D900C8CB4B /* Sources */,
+				0A55F94318FF38D900C8CB4B /* Frameworks */,
+				0A55F94418FF38D900C8CB4B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A22D74E18FF3B700047CFFB /* PBXTargetDependency */,
+			);
+			name = EMCL;
+			productName = EMCL;
+			productReference = 0A55F94618FF38D900C8CB4B /* EMCL */;
+			productType = "com.apple.product-type.tool";
+		};
 		9C475B9C18E620C100283A43 /* pixate-expression-machine-mac */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C475BB718E620C100283A43 /* Build configuration list for PBXNativeTarget "pixate-expression-machine-mac" */;
@@ -1003,6 +1125,7 @@
 				9CF979E818E4EED900B442DE /* pixate-expression-machineTests */,
 				9C475B9C18E620C100283A43 /* pixate-expression-machine-mac */,
 				9C475BA818E620C100283A43 /* pixate-expression-machine-macTests */,
+				0A55F94518FF38D900C8CB4B /* EMCL */,
 			);
 		};
 /* End PBXProject section */
@@ -1069,6 +1192,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0A55F94218FF38D900C8CB4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A22D75318FF3BEA0047CFFB /* main.m in Sources */,
+				0A22D75118FF3BE10047CFFB /* PXDisassembleSwitch.m in Sources */,
+				0A22D75218FF3BE50047CFFB /* PXExecuteFileSwitch.m in Sources */,
+				0A22D74F18FF3BD80047CFFB /* PXDisassembleCommand.m in Sources */,
+				0A22D75518FF3BF00047CFFB /* PXCommandExecutor.m in Sources */,
+				0A22D75018FF3BDB0047CFFB /* PXExecuteFileCommand.m in Sources */,
+				0A22D75418FF3BEC0047CFFB /* PXCommandContext.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9C475B9918E620C100283A43 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1258,6 +1395,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0A22D74E18FF3B700047CFFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9C475B9C18E620C100283A43 /* pixate-expression-machine-mac */;
+			targetProxy = 0A22D74D18FF3B700047CFFB /* PBXContainerItemProxy */;
+		};
 		9C475BAD18E620C100283A43 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9C475B9C18E620C100283A43 /* pixate-expression-machine-mac */;
@@ -1290,6 +1432,33 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0A55F95018FF38D900C8CB4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EMCL/EMCL-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0A55F95118FF38D900C8CB4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EMCL/EMCL-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		9C475BB818E620C100283A43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1505,6 +1674,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0A55F94F18FF38D900C8CB4B /* Build configuration list for PBXNativeTarget "EMCL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A55F95018FF38D900C8CB4B /* Debug */,
+				0A55F95118FF38D900C8CB4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9C475BB718E620C100283A43 /* Build configuration list for PBXNativeTarget "pixate-expression-machine-mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
