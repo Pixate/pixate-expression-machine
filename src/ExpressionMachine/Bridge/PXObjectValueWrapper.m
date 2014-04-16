@@ -1,4 +1,4 @@
-//
+    //
 //  PXObjectValueWrapper.m
 //  pixate-expression-machine
 //
@@ -19,6 +19,8 @@
 #import "PXObjectValue.h"
 #import "PXUndefinedValue.h"
 #import "PXFunctionValueBase.h"
+
+#import "PXExpressionProperty.h"
 
 @interface PXObjectValueWrapper ()
 @property (nonatomic, strong, readonly) id object;
@@ -154,6 +156,7 @@
                                                setterSelector:setterSelector];
 
                 [_properties setObject:property forKey:name];
+                break;
             }
                 
             default:
@@ -196,10 +199,9 @@
     }
     else
     {
-        PXDoubleProperty *property = [_properties objectForKey:name];
-        double result = [property getWithObject:_object];
+        id<PXExpressionProperty> property = [_properties objectForKey:name];
 
-        return [[PXDoubleValue alloc] initWithDouble:result];
+        return [property getExpressionValueFromObject:_object];
     }
 }
 
@@ -207,7 +209,7 @@
 {
     PXDoubleProperty *property = [_properties objectForKey:name];
 
-    [property setValue:value.doubleValue withObject:_object];
+    [property setExpressionValue:value onObject:_object];
 }
 
 #pragma mark - Helper functions

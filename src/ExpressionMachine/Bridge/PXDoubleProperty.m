@@ -7,6 +7,7 @@
 //
 
 #import "PXDoubleProperty.h"
+#import "PXDoubleValue.h"
 
 typedef double (*DoubleGetterImp)(id object, SEL selector);
 typedef void (*DoubleSetterImp)(id object, SEL selector, double value);
@@ -62,6 +63,23 @@ typedef void (*DoubleSetterImp)(id object, SEL selector, double value);
     if (_setterImp)
     {
         (*_setterImp)(object, _setterSelector, value);
+    }
+}
+
+#pragma mark - PXExpressionProperty Implementation
+
+- (id<PXExpressionValue>)getExpressionValueFromObject:(id)object
+{
+    double result = (_getterImp) ? (*_getterImp)(object, _getterSelector) : 0.0;
+
+    return [[PXDoubleValue alloc] initWithDouble:result];
+}
+
+- (void)setExpressionValue:(id<PXExpressionValue>)value onObject:(id)object
+{
+    if (_setterImp)
+    {
+        (*_setterImp)(object, _setterSelector, value.doubleValue);
     }
 }
 

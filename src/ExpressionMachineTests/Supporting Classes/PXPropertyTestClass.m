@@ -10,8 +10,21 @@
 
 @interface PXPropertyTestClass ()
 @property (nonatomic) double length;
+@property (nonatomic) NSString *name;
 @end
 
 @implementation PXPropertyTestClass
+
+- (id)init
+{
+    if (self = [super init])
+    {
+        // set some defaults for testing
+        _name = @"testing";
+        _length = _name.length;
+    }
+
+    return self;
+}
 
 @end

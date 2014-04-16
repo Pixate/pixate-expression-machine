@@ -10,6 +10,7 @@
 #import "PXObjectValueWrapper.h"
 #import "PXPropertyTestClass.h"
 #import "PXDoubleValue.h"
+#import "PXStringValue.h"
 
 @interface PXExpressionPropertyTests : XCTestCase
 
@@ -50,6 +51,31 @@
 
     [wrapper setValue:[[PXDoubleValue alloc] initWithDouble:10.5] forPropertyName:@"length"];
     id<PXExpressionValue> result = [wrapper valueForPropertyName:@"length"];
+
+    NSLog(@"result = %@", result);
+}
+
+- (void)testStringGetter
+{
+    PXPropertyTestClass *object = [[PXPropertyTestClass alloc] init];
+    PXObjectValueWrapper *wrapper = [[PXObjectValueWrapper alloc] initWithObject:object];
+
+    [wrapper addGetterSelector:@selector(name) setterSelector:@selector(setName:) forName:@"name" withType:PX_VALUE_TYPE_STRING];
+
+    id<PXExpressionValue> result = [wrapper valueForPropertyName:@"name"];
+
+    NSLog(@"result = %@", result);
+}
+
+- (void)testStringSetter
+{
+    PXPropertyTestClass *object = [[PXPropertyTestClass alloc] init];
+    PXObjectValueWrapper *wrapper = [[PXObjectValueWrapper alloc] initWithObject:object];
+
+    [wrapper addGetterSelector:@selector(name) setterSelector:@selector(setName:) forName:@"name" withType:PX_VALUE_TYPE_STRING];
+
+    [wrapper setValue:[[PXStringValue alloc] initWithString:@"hello"] forPropertyName:@"name"];
+    id<PXExpressionValue> result = [wrapper valueForPropertyName:@"name"];
 
     NSLog(@"result = %@", result);
 }

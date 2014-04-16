@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Pixate, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "PXExpressionProperty.h"
 
-@interface PXStringProperty : NSString
+@interface PXStringProperty : NSObject <PXExpressionProperty>
 
 - (id)initWithInstance:(id)instance getterName:(NSString *)getterName setterName:(NSString *)setterName;
 - (id)initWithInstance:(id)instance getterSelector:(SEL)getterSelector setterSelector:(SEL)setterSelector;

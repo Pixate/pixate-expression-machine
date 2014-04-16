@@ -7,6 +7,8 @@
 //
 
 #import "PXStringProperty.h"
+#import "PXStringValue.h"
+#import "PXUndefinedValue.h"
 
 typedef NSString * (*StringGetterImp)(id object, SEL selector);
 typedef void (*StringSetterImp)(id object, SEL selector, NSString *value);
@@ -62,6 +64,23 @@ typedef void (*StringSetterImp)(id object, SEL selector, NSString *value);
     if (_setterImp)
     {
         (*_setterImp)(object, _setterSelector, value);
+    }
+}
+
+#pragma mark - PXExpressionProperty Implementation
+
+- (id<PXExpressionValue>)getExpressionValueFromObject:(id)object
+{
+    NSString *result = (_getterImp) ? (*_getterImp)(object, _getterSelector) : nil;
+
+    return (result != nil) ? [[PXStringValue alloc] initWithString:result] : [PXUndefinedValue undefined];
+}
+
+- (void)setExpressionValue:(id<PXExpressionValue>)value onObject:(id)object
+{
+    if (_setterImp)
+    {
+        (*_setterImp)(object, _setterSelector, value.stringValue);
     }
 }
 
