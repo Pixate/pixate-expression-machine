@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 
 #import "PXDoubleProperty.h"
+#import "PXStringProperty.h"
 
 #import "PXBooleanValue.h"
 #import "PXDoubleValue.h"
@@ -144,6 +145,16 @@
                 [_properties setObject:property forKey:name];
                 break;
             }
+
+            case PX_VALUE_TYPE_STRING:
+            {
+                PXStringProperty *property =
+                    [[PXStringProperty alloc] initWithInstance:_object
+                                               getterSelector:getterSelector
+                                               setterSelector:setterSelector];
+
+                [_properties setObject:property forKey:name];
+            }
                 
             default:
                 NSLog(@"Unsupported value type: %lu", (unsigned long)type);
@@ -207,16 +218,19 @@
     {
         NSString *propertyName = [NSString stringWithCString:property_getName(property) encoding:NSUTF8StringEncoding];
         NSString *attributes = [NSString stringWithCString:property_getAttributes(property) encoding:NSUTF8StringEncoding];
+        NSString *getterName = propertyName;
+        NSString *setterName = [NSString stringWithFormat:@"set%@%@:", [[propertyName substringToIndex:1] uppercaseString], [propertyName substringFromIndex:1]];
+        SEL getter = NSSelectorFromString(getterName);
+        SEL setter = NSSelectorFromString(setterName);
 
         // TODO: actually parse attributes so we can get read-only, getter/setter names, etc.
         if ([attributes hasPrefix:@"Td"])
         {
-            NSString *getterName = propertyName;
-            NSString *setterName = [NSString stringWithFormat:@"get%@", [propertyName capitalizedString]];
-            SEL getter = NSSelectorFromString(getterName);
-            SEL setter = NSSelectorFromString(setterName);
-
             [self addGetterSelector:getter setterSelector:setter forName:propertyName withType:PX_VALUE_TYPE_DOUBLE];
+        }
+        else if ([attributes hasPrefix:@"Ts"])
+        {
+            [self addGetterSelector:getter setterSelector:setter forName:propertyName withType:PX_VALUE_TYPE_STRING];
         }
     }
 }
