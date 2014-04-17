@@ -10,9 +10,6 @@
 
 @interface PXDoubleProperty : NSObject <PXExpressionProperty>
 
-- (id)initWithInstance:(id)instance getterName:(NSString *)getterName setterName:(NSString *)setterName;
-- (id)initWithInstance:(id)instance getterSelector:(SEL)getterSelector setterSelector:(SEL)setterSelector;
-
 - (double)getWithObject:(id)object;
 - (void)setValue:(double)value withObject:(id)object;
 

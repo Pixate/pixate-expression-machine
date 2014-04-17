@@ -10,6 +10,9 @@
 
 @protocol PXExpressionProperty <NSObject>
 
+- (id)initWithInstance:(id)instance getterName:(NSString *)getterName setterName:(NSString *)setterName;
+- (id)initWithInstance:(id)instance getterSelector:(SEL)getterSelector setterSelector:(SEL)setterSelector;
+
 - (id<PXExpressionValue>)getExpressionValueFromObject:(id)object;
 - (void)setExpressionValue:(id<PXExpressionValue>)value onObject:(id)object;
 
