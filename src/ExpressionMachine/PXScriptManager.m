@@ -19,8 +19,6 @@
 
 @implementation PXScriptManager
 
-
-
 #pragma mark - Static Methods
 
 + (instancetype)sharedInstance
