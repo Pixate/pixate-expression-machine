@@ -17,18 +17,6 @@ sym SQRT2            = 1.41421356237309504880168872420969808;   // sqrt(2)
 sym ONE_OVER_SQRT2   = 0.707106781186547524400844362104849039;  // 1/sqrt(2)
 
 //
-// Named Color Constants
-//
-sym black    = rgb(  0,   0,   0);
-sym blue     = rgb(  0,   0, 255);
-sym darkGrey = rgb(169, 169, 169);
-sym green    = rgb(  0, 128,   0);
-sym orange   = rgb(255, 165,   0);
-sym red      = rgb(255,   0,   0);
-sym white    = rgb(255, 255, 255);
-sym yellow   = rgb(255, 255,   0);
-
-//
 // The min function returns the smaller of two values
 //
 func min(a, b) {
@@ -111,36 +99,6 @@ func map(value, start1, end1, start2, end2, clampResult=false) {
 }
 
 //
-// Make a shallow copy of an object. The first argument is the object
-// to copy from. If only an object is specified, then all properties
-// will be copied. Otherwise, a list of properties to copy may be
-// specified as the second and greater arguments
-//
-func snapshot() {
-    sym obj = arguments.shift();
-    sym keys = (arguments.length() == 0) ? obj.keys() : arguments;
-    sym result = {};
-
-    keys.forEach(func(key) {
-        result.push(key, obj{key});
-    });
-
-    result;
-}
-
-//
-// URLs
-//
-
-//
-// This function joins whatever values are passed to it. Values are
-// expected to be a strings.
-//
-func url() {
-  arguments.join();
-}
-
-//
 // Geometry Functions
 //
 
@@ -170,98 +128,5 @@ func rect(x, y, width, height) {
     y: y,
     width: width,
     height: height
-  };
-}
-
-//
-// Color Functions
-//
-
-//
-// Create an 'rgba' object using the specified values. The red, green, and blue
-// values are expected to be integers in the closed interval [0,255]. The alpha
-// channel is set to 1.0.
-//
-func rgb(red, green, blue) {
-  {
-    type: 'rgba',
-    red: red,
-    green: green,
-    blue: blue,
-    alpha: 1.0
-  };
-}
-
-//
-// Create an 'rgba' object using the specified values. The red, green, and blue
-// values are expected to be integers in the closed interval [0,255]. The alpha
-// value is expected to be a double in the closed interval [0,1].
-func rgba(red, green, blue, alpha) {
-  {
-    type: 'rgba',
-    red: red,
-    green: green,
-    blue: blue,
-    alpha: alpha
-  };
-}
-
-//
-// Create an 'hsla' object using the specified values. The hue value is expected to
-// be an angle in degrees. Saturation, and lightness values are expected to be
-// doubles in the closed interval [0,1]. The alpha channel is set to 1.0.
-//
-func hsl(hue, saturation, lightness) {
-  {
-    type: 'hsla',
-    hue: hue,
-    saturation: saturation,
-    lightness: lightness,
-    alpha: 1.0
-  };
-}
-
-//
-// Create an 'hsla' object using the specified values. The hue value is expected to
-// be an angle in degrees. Saturation, lightness, and alpha values are expected to
-// be doubles in the closed interval [0,1]
-//
-func hsla(hue, saturation, lightness, alpha) {
-  {
-    type: 'hsla',
-    hue: hue,
-    saturation: saturation,
-    lightness: lightness,
-    alpha: alpha
-  };
-}
-
-//
-// Create an 'hsba' object using the specified values. The hue value is expected to
-// be an angle in degrees. Saturation, and brightness values are expected to be
-// doubles in the closed interval [0,1]. The alpha channel is set to 1.0.
-//
-func hsb(hue, saturation, brightness) {
-  {
-    type: 'hsba',
-    hue: hue,
-    saturation: saturation,
-    brightness: brightness,
-    alpha: 1.0
-  };
-}
-
-//
-// Create an 'hsba' object using the specified values. The hue value is expected to
-// be an angle in degrees. Saturation, brightness, and alpha values are expected to
-// be doubles in the closed interval [0,1]
-//
-func hsba(hue, saturation, brightness, alpha) {
-  {
-    type: 'hsba',
-    hue: hue,
-    saturation: saturation,
-    brightness: brightness,
-    alpha: alpha
   };
 }
