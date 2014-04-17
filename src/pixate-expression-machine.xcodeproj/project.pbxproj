@@ -433,7 +433,7 @@
 		0A55F93F18FF384400C8CB4B /* PXExecuteFileSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXExecuteFileSwitch.h; sourceTree = "<group>"; };
 		0A55F94018FF384400C8CB4B /* PXExecuteFileSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXExecuteFileSwitch.m; sourceTree = "<group>"; };
 		0A55F94118FF384400C8CB4B /* PXSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXSwitch.h; sourceTree = "<group>"; };
-		0A55F94618FF38D900C8CB4B /* EMCL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EMCL; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A55F94618FF38D900C8CB4B /* emcl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = emcl; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A55F94C18FF38D900C8CB4B /* EMCL-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EMCL-Prefix.pch"; sourceTree = "<group>"; };
 		0A55F94D18FF38D900C8CB4B /* EMCL.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = EMCL.1; sourceTree = "<group>"; };
 		0ABA0EF618FD77BA00EF8CD3 /* PXArrayFilterMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXArrayFilterMethod.h; sourceTree = "<group>"; };
@@ -966,7 +966,7 @@
 				9CF979E918E4EED900B442DE /* pixate-expression-machineTests.xctest */,
 				9C475B9D18E620C100283A43 /* libpixate-expression-machine-mac.a */,
 				9C475BA918E620C100283A43 /* pixate-expression-machine-macTests.xctest */,
-				0A55F94618FF38D900C8CB4B /* EMCL */,
+				0A55F94618FF38D900C8CB4B /* emcl */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1024,7 +1024,7 @@
 			);
 			name = EMCL;
 			productName = EMCL;
-			productReference = 0A55F94618FF38D900C8CB4B /* EMCL */;
+			productReference = 0A55F94618FF38D900C8CB4B /* emcl */;
 			productType = "com.apple.product-type.tool";
 		};
 		9C475B9C18E620C100283A43 /* pixate-expression-machine-mac */ = {
@@ -1442,7 +1442,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = emcl;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -1454,7 +1454,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EMCL/EMCL-Prefix.pch";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = emcl;
 				SDKROOT = macosx;
 			};
 			name = Release;
