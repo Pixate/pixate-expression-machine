@@ -9,6 +9,7 @@
 #import "PXScriptManager.h"
 #import "PXByteCodeBuilder.h"
 #import "PXExpressionUnit.h"
+#import "PXBuiltInScope.h"
 
 @interface PXScriptManager ()
 @property (nonatomic, strong) PXExpressionEnvironment *environment;
@@ -18,20 +19,23 @@
 
 @implementation PXScriptManager
 
-static PXScriptManager *INSTANCE;
+
 
 #pragma mark - Static Methods
 
-+ (void)initialize
++ (instancetype)sharedInstance
 {
-    if (INSTANCE == nil)
-    {
-        INSTANCE = [[PXScriptManager alloc] init];
-    }
-}
+    // NOTE: not using dispatch_once so this will compile under GNUstep
+    static PXScriptManager *INSTANCE;
 
-+ (PXScriptManager *)sharedInstance
-{
+    @synchronized(self)
+    {
+        if (INSTANCE == nil)
+        {
+            INSTANCE = [[self alloc] init];
+        }
+    }
+
     return INSTANCE;
 }
 
@@ -41,7 +45,9 @@ static PXScriptManager *INSTANCE;
 {
     if (self = [super init])
     {
-        _environment = [[PXExpressionEnvironment alloc] init];
+        id<PXExpressionScope> scope = [[[self globalScopeClass] alloc] init];
+
+        _environment = [[PXExpressionEnvironment alloc] initWithGlobalScope:scope];
         _compiler = [[PXByteCodeBuilder alloc] init];
         _scriptCache = [[NSCache alloc] init];
         [_scriptCache setCountLimit:100];
@@ -58,6 +64,11 @@ static PXScriptManager *INSTANCE;
 }
 
 #pragma mark - Methods
+
+- (Class)globalScopeClass
+{
+    return [PXBuiltInScope class];
+}
 
 - (id<PXExpressionValue>)evaluate:(NSString *)script withCurrentScope:(id<PXExpressionScope>)scope
 {

@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong, readonly) id<PXExpressionScope> globalScope;
 
-+ (PXScriptManager *)sharedInstance;
++ (instancetype)sharedInstance;
 
 - (id<PXExpressionValue>)evaluate:(NSString *)script withCurrentScope:(id<PXExpressionScope>)scope;
 - (id<PXExpressionValue>)evaluate:(NSString *)script withScopes:(NSArray *)scopes;
