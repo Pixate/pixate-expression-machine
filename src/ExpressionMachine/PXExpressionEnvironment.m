@@ -28,20 +28,21 @@
 
 @implementation PXExpressionEnvironment
 
-static PXInstructionProcessor *PROCESSOR;
-
 #pragma mark - Static Methods
-
-+ (void)initialize
-{
-    if (PROCESSOR == nil)
-    {
-        PROCESSOR = [[PXInstructionProcessor alloc] init];
-    }
-}
 
 + (PXInstructionProcessor *)processor
 {
+    // NOTE: not using dispatch_once so this will compile under GNUstep
+    static PXInstructionProcessor *PROCESSOR;
+
+    @synchronized(self)
+    {
+        if (PROCESSOR == nil)
+        {
+            PROCESSOR = [[PXInstructionProcessor alloc] init];
+        }
+    }
+
     return PROCESSOR;
 }
 
