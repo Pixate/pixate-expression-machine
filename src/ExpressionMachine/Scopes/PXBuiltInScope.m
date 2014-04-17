@@ -32,24 +32,36 @@ static id<PXExpressionScope> EM_SCOPE;
 {
     if (EMA_SCOPE == nil)
     {
-        PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] initWithGlobalScope:[[PXScope alloc] init]];
-
-        // process built-in assembly file
-        PXExpressionAssembler *assembler = [[PXExpressionAssembler alloc] init];
-        PXExpressionUnit *unit = [assembler assembleString:[PXBuiltInSource emaSource]];
-        [env executeUnit:unit];
-        EMA_SCOPE = unit.scope;
+        EMA_SCOPE = [self scopeFromEmaString:[PXBuiltInSource emaSource]];
     }
     if (EM_SCOPE == nil)
     {
-        PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] initWithGlobalScope:[[PXScope alloc] init]];
-
-        // process built-in expression file
-        PXExpressionParser *parser = [[PXExpressionParser alloc] init];
-        PXExpressionUnit *unit = [parser compileString:[PXBuiltInSource emSource]];
-        [env executeUnit:unit];
-        EM_SCOPE = unit.scope;
+        EM_SCOPE = [self scopeFromEmString:[PXBuiltInSource emSource]];
     }
+}
+
++ (id<PXExpressionScope>)scopeFromEmString:(NSString *)source
+{
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] initWithGlobalScope:[[PXScope alloc] init]];
+
+    // process built-in expression file
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    PXExpressionUnit *unit = [parser compileString:source];
+    [env executeUnit:unit];
+
+    return unit.scope;
+}
+
++ (id<PXExpressionScope>)scopeFromEmaString:(NSString *)source
+{
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] initWithGlobalScope:[[PXScope alloc] init]];
+
+    // process built-in assembly file
+    PXExpressionAssembler *assembler = [[PXExpressionAssembler alloc] init];
+    PXExpressionUnit *unit = [assembler assembleString:source];
+    [env executeUnit:unit];
+
+    return unit.scope;
 }
 
 #pragma mark - Initializers
