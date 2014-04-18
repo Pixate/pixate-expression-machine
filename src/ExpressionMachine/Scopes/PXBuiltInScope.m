@@ -26,55 +26,13 @@
 static id<PXExpressionScope> EMA_SCOPE;
 static id<PXExpressionScope> EM_SCOPE;
 
-#pragma mark - Static Methods
-
-+ (void)initialize
-{
-    if (EMA_SCOPE == nil)
-    {
-        EMA_SCOPE = [self scopeFromEmaString:[PXBuiltInSource emaSource]];
-    }
-    if (EM_SCOPE == nil)
-    {
-        EM_SCOPE = [self scopeFromEmString:[PXBuiltInSource emSource]];
-    }
-}
-
-+ (id<PXExpressionScope>)scopeFromEmString:(NSString *)source
-{
-    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] initWithGlobalScope:[[PXScope alloc] init]];
-
-    // process built-in expression file
-    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
-    PXExpressionUnit *unit = [parser compileString:source];
-    [env executeUnit:unit];
-
-    return unit.scope;
-}
-
-+ (id<PXExpressionScope>)scopeFromEmaString:(NSString *)source
-{
-    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] initWithGlobalScope:[[PXScope alloc] init]];
-
-    // process built-in assembly file
-    PXExpressionAssembler *assembler = [[PXExpressionAssembler alloc] init];
-    PXExpressionUnit *unit = [assembler assembleString:source];
-    [env executeUnit:unit];
-
-    return unit.scope;
-}
-
 #pragma mark - Initializers
 
 - (id)init
 {
     if (self = [super init])
     {
-        // copy em- and ema-defined built-ins
-        [self copySymbolsFromScope:EMA_SCOPE];
-        [self copySymbolsFromScope:EM_SCOPE];
-
-        // math operators
+        // math functions
         [self setValue:[[PXSinFunction alloc] init] forSymbolName:@"sin"];
         [self setValue:[[PXCosFunction alloc] init] forSymbolName:@"cos"];
         [self setValue:[[PXPowerFunction alloc] init] forSymbolName:@"pow"];
@@ -88,9 +46,48 @@ static id<PXExpressionScope> EM_SCOPE;
         [self setValue:[[PXShowTopFunction alloc] init] forSymbolName:@"showTop"];
 
         [self setValue:self forSymbolName:@"this"];
+
+        // copy em- and ema-defined built-ins
+        if (EMA_SCOPE == nil)
+        {
+            EMA_SCOPE = [self scopeFromEmaString:[PXBuiltInSource emaSource]];
+        }
+        if (EM_SCOPE == nil)
+        {
+            EM_SCOPE = [self scopeFromEmString:[PXBuiltInSource emSource]];
+        }
+        
+        [self copySymbolsFromScope:EMA_SCOPE];
+        [self copySymbolsFromScope:EM_SCOPE];
     }
 
     return self;
+}
+
+#pragma mark - Methods
+
+- (id<PXExpressionScope>)scopeFromEmString:(NSString *)source
+{
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] initWithGlobalScope:self];
+
+    // process built-in expression file
+    PXExpressionParser *parser = [[PXExpressionParser alloc] init];
+    PXExpressionUnit *unit = [parser compileString:source];
+    [env executeUnit:unit];
+
+    return unit.scope;
+}
+
+- (id<PXExpressionScope>)scopeFromEmaString:(NSString *)source
+{
+    PXExpressionEnvironment *env = [[PXExpressionEnvironment alloc] initWithGlobalScope:self];
+
+    // process built-in assembly file
+    PXExpressionAssembler *assembler = [[PXExpressionAssembler alloc] init];
+    PXExpressionUnit *unit = [assembler assembleString:source];
+    [env executeUnit:unit];
+
+    return unit.scope;
 }
 
 #pragma mark - PXExpressionValue Implementation

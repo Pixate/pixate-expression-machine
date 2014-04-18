@@ -11,7 +11,7 @@
 
 @interface PXBuiltInScope : PXScope <PXExpressionObject>
 
-+ (id<PXExpressionScope>)scopeFromEmaString:(NSString *)source;
-+ (id<PXExpressionScope>)scopeFromEmString:(NSString *)source;
+- (id<PXExpressionScope>)scopeFromEmaString:(NSString *)source;
+- (id<PXExpressionScope>)scopeFromEmString:(NSString *)source;
 
 @end
