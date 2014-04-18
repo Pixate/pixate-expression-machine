@@ -7,8 +7,11 @@
 //
 
 #import "PXObjectValue.h"
+#import "PXExpressionProperty.h"
 
 @interface PXObjectValueWrapper : PXObjectValue
+
+@property (nonatomic, strong, readonly) id object;
 
 - (id)initWithObject:(id)object;
 
@@ -18,6 +21,6 @@
 - (void)addGetterSelector:(SEL)getterSelector
            setterSelector:(SEL)setterSelector
                   forName:(NSString *)name
-                 withType:(PXExpressionValueType)type;
+             withEncoding:(NSString *)encoding;
 
 @end

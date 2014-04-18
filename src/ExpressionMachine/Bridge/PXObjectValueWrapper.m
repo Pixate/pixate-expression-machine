@@ -20,14 +20,40 @@
 #import "PXUndefinedValue.h"
 #import "PXFunctionValueBase.h"
 
-#import "PXExpressionProperty.h"
-
 @interface PXObjectValueWrapper ()
-@property (nonatomic, strong, readonly) id object;
 @property (nonatomic, strong, readonly) NSMutableDictionary *properties;
 @end
 
 @implementation PXObjectValueWrapper
+
+static NSMutableDictionary *PROPERTIES_BY_ENCODING;
+
++ (void)initialize
+{
+    [self addPropertyClass:[PXDoubleProperty class] forEncoding:[NSString stringWithCString:@encode(double) encoding:NSUTF8StringEncoding]];
+    [self addPropertyClass:[PXStringProperty class] forEncoding:[NSString stringWithCString:@encode(NSString) encoding:NSUTF8StringEncoding]];
+}
+
++ (void)addPropertyClass:(Class)class forEncoding:(NSString *)encoding
+{
+    if (PROPERTIES_BY_ENCODING == nil)
+    {
+        PROPERTIES_BY_ENCODING = [[NSMutableDictionary alloc] init];
+    }
+
+    if ([encoding hasPrefix:@"{"])
+    {
+        encoding = [encoding substringWithRange:NSMakeRange(1, encoding.length - 1)];
+
+        NSArray *parts = [encoding componentsSeparatedByString:@"="];
+
+        encoding = parts[0];
+    }
+
+    //NSLog(@"Adding class %@ for encoding '%@'", class.description, encoding);
+
+    PROPERTIES_BY_ENCODING[encoding] = class;
+}
 
 #pragma mark - Initializers
 
@@ -131,37 +157,23 @@
 - (void)addGetterSelector:(SEL)getterSelector
            setterSelector:(SEL)setterSelector
                   forName:(NSString *)name
-                 withType:(PXExpressionValueType)type
+             withEncoding:(NSString *)encoding
 {
     if (name.length > 0)
     {
-        switch (type)
+        Class class = PROPERTIES_BY_ENCODING[encoding];
+
+        if (class != nil)
         {
-            case PX_VALUE_TYPE_DOUBLE:
-            {
-                PXDoubleProperty *property =
-                    [[PXDoubleProperty alloc] initWithInstance:_object
-                                                getterSelector:getterSelector
-                                                setterSelector:setterSelector];
+            id<PXExpressionProperty> property = [[class alloc] initWithInstance:_object
+                                                                 getterSelector:getterSelector
+                                                                 setterSelector:setterSelector];
 
-                [_properties setObject:property forKey:name];
-                break;
-            }
-
-            case PX_VALUE_TYPE_STRING:
-            {
-                PXStringProperty *property =
-                    [[PXStringProperty alloc] initWithInstance:_object
-                                               getterSelector:getterSelector
-                                               setterSelector:setterSelector];
-
-                [_properties setObject:property forKey:name];
-                break;
-            }
-                
-            default:
-                NSLog(@"Unsupported value type: %lu", (unsigned long)type);
-                break;
+            [_properties setObject:property forKey:name];
+        }
+        else
+        {
+            NSLog(@"Unsupported encoding '%@' for property '%@'. Property not wrapped", encoding, name);
         }
     }
 }
@@ -224,16 +236,17 @@
         NSString *setterName = [NSString stringWithFormat:@"set%@%@:", [[propertyName substringToIndex:1] uppercaseString], [propertyName substringFromIndex:1]];
         SEL getter = NSSelectorFromString(getterName);
         SEL setter = NSSelectorFromString(setterName);
+        NSArray *parts = [attributes componentsSeparatedByString:@","];
+        NSString *type = [parts[0] substringFromIndex:1];
 
-        // TODO: actually parse attributes so we can get read-only, getter/setter names, etc.
-        if ([attributes hasPrefix:@"Td"])
+        if ([type hasPrefix:@"@\""])
         {
-            [self addGetterSelector:getter setterSelector:setter forName:propertyName withType:PX_VALUE_TYPE_DOUBLE];
+            type = [type substringWithRange:NSMakeRange(2, type.length - 3)];
         }
-        else if ([attributes hasPrefix:@"T@\"NSString\""])
-        {
-            [self addGetterSelector:getter setterSelector:setter forName:propertyName withType:PX_VALUE_TYPE_STRING];
-        }
+
+        //NSLog(@"type = '%@'", type);
+
+        [self addGetterSelector:getter setterSelector:setter forName:propertyName withEncoding:type];
     }
 }
 

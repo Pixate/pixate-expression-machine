@@ -36,8 +36,9 @@
 {
     PXPropertyTestClass *object = [[PXPropertyTestClass alloc] init];
     PXObjectValueWrapper *wrapper = [[PXObjectValueWrapper alloc] initWithObject:object];
+    NSString *encoding = [NSString stringWithCString:@encode(double) encoding:NSUTF8StringEncoding];
 
-    [wrapper addGetterSelector:@selector(count) setterSelector:@selector(setCount:) forName:@"count" withType:PX_VALUE_TYPE_DOUBLE];
+    [wrapper addGetterSelector:@selector(count) setterSelector:@selector(setCount:) forName:@"count" withEncoding:encoding];
 
     id<PXExpressionValue> result = [wrapper valueForPropertyName:@"count"];
 
@@ -48,8 +49,9 @@
 {
     PXPropertyTestClass *object = [[PXPropertyTestClass alloc] init];
     PXObjectValueWrapper *wrapper = [[PXObjectValueWrapper alloc] initWithObject:object];
+    NSString *encoding = [NSString stringWithCString:@encode(double) encoding:NSUTF8StringEncoding];
 
-    [wrapper addGetterSelector:@selector(count) setterSelector:@selector(setCount:) forName:@"count" withType:PX_VALUE_TYPE_DOUBLE];
+    [wrapper addGetterSelector:@selector(count) setterSelector:@selector(setCount:) forName:@"count" withEncoding:encoding];
 
     [wrapper setValue:[[PXDoubleValue alloc] initWithDouble:10.5] forPropertyName:@"count"];
     id<PXExpressionValue> result = [wrapper valueForPropertyName:@"count"];
@@ -61,8 +63,9 @@
 {
     PXPropertyTestClass *object = [[PXPropertyTestClass alloc] init];
     PXObjectValueWrapper *wrapper = [[PXObjectValueWrapper alloc] initWithObject:object];
+    NSString *encoding = [NSString stringWithCString:@encode(NSString) encoding:NSUTF8StringEncoding];
 
-    [wrapper addGetterSelector:@selector(name) setterSelector:@selector(setName:) forName:@"name" withType:PX_VALUE_TYPE_STRING];
+    [wrapper addGetterSelector:@selector(name) setterSelector:@selector(setName:) forName:@"name" withEncoding:encoding];
 
     id<PXExpressionValue> result = [wrapper valueForPropertyName:@"name"];
 
@@ -73,8 +76,9 @@
 {
     PXPropertyTestClass *object = [[PXPropertyTestClass alloc] init];
     PXObjectValueWrapper *wrapper = [[PXObjectValueWrapper alloc] initWithObject:object];
+    NSString *encoding = [NSString stringWithCString:@encode(NSString) encoding:NSUTF8StringEncoding];
 
-    [wrapper addGetterSelector:@selector(name) setterSelector:@selector(setName:) forName:@"name" withType:PX_VALUE_TYPE_STRING];
+    [wrapper addGetterSelector:@selector(name) setterSelector:@selector(setName:) forName:@"name" withEncoding:encoding];
 
     [wrapper setValue:[[PXStringValue alloc] initWithString:@"hello"] forPropertyName:@"name"];
     id<PXExpressionValue> result = [wrapper valueForPropertyName:@"name"];
