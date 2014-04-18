@@ -219,7 +219,7 @@ static NSMutableDictionary *PROPERTIES_BY_ENCODING;
 
 - (void)setValue:(id<PXExpressionValue>)value forPropertyName:(NSString *)name
 {
-    PXDoubleProperty *property = [_properties objectForKey:name];
+    id<PXExpressionProperty> property = [_properties objectForKey:name];
 
     [property setExpressionValue:value onObject:_object];
 }
