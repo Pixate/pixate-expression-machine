@@ -423,12 +423,20 @@
 
 #pragma mark Boolean
         case EM_INSTRUCTION_BOOLEAN_AND:
-            [env pushBoolean:[env popValue].booleanValue && [env popValue].booleanValue];
+        {
+            BOOL b = [env popValue].booleanValue;
+            BOOL a = [env popValue].booleanValue;
+            [env pushBoolean:a && b];
             break;
+        }
 
         case EM_INSTRUCTION_BOOLEAN_OR:
-            [env pushBoolean:[env popValue].booleanValue || [env popValue].booleanValue];
+        {
+            BOOL b = [env popValue].booleanValue;
+            BOOL a = [env popValue].booleanValue;
+            [env pushBoolean:a || b];
             break;
+        }
 
         case EM_INSTRUCTION_BOOLEAN_NOT:
             [env pushBoolean:![env popValue].booleanValue];
