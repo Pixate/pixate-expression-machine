@@ -86,11 +86,11 @@
     [_symbols enumerateKeysAndObjectsUsingBlock:^(NSString *key, id<PXExpressionValue> value, BOOL *stop) {
         if ([@"this" isEqualToString:key] == false)
         {
-            [parts addObject:[NSString stringWithFormat:@" '%@': %@", key, value.description]];
+            [parts addObject:[NSString stringWithFormat:@" '%@': %@", key, value.stringValue]];
         }
     }];
 
-    return [NSString stringWithFormat:@"{%@ }", [parts componentsJoinedByString:@", "]];
+    return [NSString stringWithFormat:@"{\n  %@\n}", [parts componentsJoinedByString:@"\n  "]];
 }
 
 @end
