@@ -11,7 +11,7 @@
 
 @interface PXObjectValueWrapper : PXObjectValue
 
-@property (nonatomic, strong, readonly) id object;
+@property (nonatomic, weak, readonly) id object;
 
 + (void)addPropertyClass:(Class)class forEncoding:(NSString *)encoding;
 
