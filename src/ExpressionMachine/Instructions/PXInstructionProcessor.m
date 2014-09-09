@@ -422,7 +422,14 @@
             id<PXExpressionValue> b = [env popValue];
             id<PXExpressionValue> a = [env popValue];
             
-            [env pushDouble:(NSInteger)(a.doubleValue) % (NSInteger)(b.doubleValue)];
+            if (b.doubleValue == 0.0)
+            {
+                [env pushDouble:NAN];
+            }
+            else
+            {
+                [env pushDouble:(NSInteger)(a.doubleValue) % (NSInteger)(b.doubleValue)];
+            }
             break;
         }
 
