@@ -416,6 +416,15 @@
             }
             break;
         }
+            
+        case EM_INSTRUCTION_MATH_MODULUS:
+        {
+            id<PXExpressionValue> b = [env popValue];
+            id<PXExpressionValue> a = [env popValue];
+            
+            [env pushDouble:(NSInteger)(a.doubleValue) % (NSInteger)(b.doubleValue)];
+            break;
+        }
 
         case EM_INSTRUCTION_MATH_NEGATE:
             [env pushDouble:-[env popValue].doubleValue];

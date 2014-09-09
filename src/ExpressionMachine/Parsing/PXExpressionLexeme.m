@@ -93,6 +93,7 @@
         case EM_MINUS: return @"MINUS";
         case EM_TIMES: return @"TIMES";
         case EM_DIVIDE: return @"DIVIDE";
+        case EM_MODULUS: return @"MODULUS";
 
         case EM_QUESTION: return @"QUESTION";
         case EM_DOT: return @"DOT";
@@ -126,6 +127,7 @@
         case EMA_SUB: return @"SUB";
         case EMA_MUL: return @"MUL";
         case EMA_DIV: return @"DIV";
+        case EMA_MOD: return @"MOD";
         case EMA_NEG: return @"NEG";
 
         case EMA_MARK: return @"MARK";

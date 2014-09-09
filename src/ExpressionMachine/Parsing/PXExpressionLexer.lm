@@ -66,6 +66,7 @@
 <EMA>"sub"                  { return EMA_SUB; }
 <EMA>"mul"                  { return EMA_MUL; }
 <EMA>"div"                  { return EMA_DIV; }
+<EMA>"mod"                  { return EMA_MOD; }
 <EMA>"neg"                  { return EMA_NEG; }
 
 <EMA>"mark"                 { return EMA_MARK; }
@@ -97,6 +98,7 @@
 <EM>"-"                     { return EM_MINUS; }
 <EM>"*"                     { return EM_TIMES; }
 <EM>"/"                     { return EM_DIVIDE; }
+<EM>"%"                     { return EM_MODULUS; }
 
 <EM>"?"                     { return EM_QUESTION; }
 <EM>";"                     { return EM_SEMICOLON; }

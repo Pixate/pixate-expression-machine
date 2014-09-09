@@ -80,6 +80,7 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
         NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
         [set addIndex:EM_TIMES];
         [set addIndex:EM_DIVIDE];
+        [set addIndex:EM_MODULUS];
         MULTIPLICATIVE_OPERATORS_SET = [[NSIndexSet alloc] initWithIndexSet:set];
     }
     if (ADDITIVE_OPERATORS_SET == nil)
@@ -599,6 +600,10 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
 
             case EM_DIVIDE:
                 result = [NODE_BUILDER createDivisionNode:result rhs:rhs];
+                break;
+                
+            case EM_MODULUS:
+                result = [NODE_BUILDER createModulusNode:result rhs:rhs];
                 break;
 
             default:
