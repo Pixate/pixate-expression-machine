@@ -40,6 +40,7 @@
 - (void)addSubtractInstruction;
 - (void)addMultiplyInstruction;
 - (void)addDivideInstruction;
+- (void)addModulusInstruction;
 - (void)addNegateInstruction;
 
 - (void)addAndInstruction;

@@ -272,6 +272,11 @@ static PXExpressionNodeBuilder *NODE_BUILDER;
             result = [NODE_BUILDER createDivideNode];
             [self advance];
             break;
+            
+        case EMA_MOD:
+            result = [NODE_BUILDER createModulusNode];
+            [self advance];
+            break;
 
         // boolean logic
         case EM_AND:

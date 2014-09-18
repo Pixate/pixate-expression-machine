@@ -444,6 +444,15 @@ static NSIndexSet *PRIMITIVES;
             [builder addDivideInstruction];
             break;
         }
+            
+        case EM_MODULUS:
+        {
+            PXGenericNode *binary = (PXGenericNode *)node;
+            [self emitInstructionsForNode:binary.nodeValue builder:builder scope:scope];
+            [self emitInstructionsForNode:binary.nodeValue2 builder:builder scope:scope];
+            [builder addModulusInstruction];
+            break;
+        }
 
         case EM_DOT:
         {
@@ -650,6 +659,10 @@ static NSIndexSet *PRIMITIVES;
 
         case EMA_DIV:
             [builder addDivideInstruction];
+            break;
+            
+        case EMA_MOD:
+            [builder addModulusInstruction];
             break;
 
         case EMA_NEG:

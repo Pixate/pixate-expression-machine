@@ -180,6 +180,10 @@
         case EM_INSTRUCTION_MATH_DIVISION:
             return @"div";
             break;
+            
+        case EM_INSTRUCTION_MATH_MODULUS:
+            return @"mod";
+            break;
 
         case EM_INSTRUCTION_MATH_NEGATE:
             return @"neg";

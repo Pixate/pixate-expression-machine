@@ -77,6 +77,11 @@
     return [[PXGenericNode alloc] initWithType:EM_DIVIDE lhs:lhs rhs:rhs];
 }
 
+- (PXGenericNode *)createModulusNode:(id<PXExpressionNode>)lhs rhs:(id<PXExpressionNode>)rhs
+{
+    return [[PXGenericNode alloc] initWithType:EM_MODULUS lhs:lhs rhs:rhs];
+}
+
 - (PXGenericNode *)createLogicalAndNode:(id<PXExpressionNode>)lhs rhs:(id<PXExpressionNode>)rhs
 {
     return [[PXGenericNode alloc] initWithType:EM_LOGICAL_AND lhs:lhs rhs:rhs];
@@ -339,6 +344,11 @@
 - (PXGenericNode *)createDivideNode
 {
     return [[PXGenericNode alloc] initWithType:EMA_DIV];
+}
+
+- (PXGenericNode *)createModulusNode
+{
+    return [[PXGenericNode alloc] initWithType:EMA_MOD];
 }
 
 - (PXGenericNode *)createAndNode

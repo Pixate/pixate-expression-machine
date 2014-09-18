@@ -27,6 +27,7 @@
 - (PXGenericNode *)createSubtractionNode:(id<PXExpressionNode>)lhs rhs:(id<PXExpressionNode>)rhs;
 - (PXGenericNode *)createMultiplicationNode:(id<PXExpressionNode>)lhs rhs:(id<PXExpressionNode>)rhs;
 - (PXGenericNode *)createDivisionNode:(id<PXExpressionNode>)lhs rhs:(id<PXExpressionNode>)rhs;
+- (PXGenericNode *)createModulusNode:(id<PXExpressionNode>)lhs rhs:(id<PXExpressionNode>)rhs;
 - (PXGenericNode *)createLogicalAndNode:(id<PXExpressionNode>)lhs rhs:(id<PXExpressionNode>)rhs;
 - (PXGenericNode *)createLogicalOrNode:(id<PXExpressionNode>)lhs rhs:(id<PXExpressionNode>)rhs;
 - (PXGenericNode *)createLessThanNode:(id<PXExpressionNode>)lhs rhs:(id<PXExpressionNode>)rhs;
@@ -84,6 +85,7 @@
 - (PXGenericNode *)createSubtractNode;
 - (PXGenericNode *)createMultiplyNode;
 - (PXGenericNode *)createDivideNode;
+- (PXGenericNode *)createModulusNode;
 - (PXGenericNode *)createAndNode;
 - (PXGenericNode *)createOrNode;
 - (PXGenericNode *)createNotNode;

@@ -416,6 +416,22 @@
             }
             break;
         }
+            
+        case EM_INSTRUCTION_MATH_MODULUS:
+        {
+            id<PXExpressionValue> b = [env popValue];
+            id<PXExpressionValue> a = [env popValue];
+            
+            if (b.doubleValue == 0.0)
+            {
+                [env pushDouble:NAN];
+            }
+            else
+            {
+                [env pushDouble:(NSInteger)(a.doubleValue) % (NSInteger)(b.doubleValue)];
+            }
+            break;
+        }
 
         case EM_INSTRUCTION_MATH_NEGATE:
             [env pushDouble:-[env popValue].doubleValue];

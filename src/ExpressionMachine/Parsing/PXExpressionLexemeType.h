@@ -62,6 +62,7 @@ enum yytokentype {
     EM_MINUS,
     EM_TIMES,
     EM_DIVIDE,
+    EM_MODULUS,
 
     EM_QUESTION,
     EM_DOT,
@@ -94,6 +95,7 @@ enum yytokentype {
     EMA_SUB,
     EMA_MUL,
     EMA_DIV,
+    EMA_MOD,
     EMA_NEG,
 
     EMA_MARK,

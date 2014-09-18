@@ -163,6 +163,11 @@
     [self addInstruction:[[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_MATH_DIVISION]];
 }
 
+- (void)addModulusInstruction
+{
+    [self addInstruction:[[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_MATH_MODULUS]];
+}
+
 - (void)addNegateInstruction
 {
     [self addInstruction:[[PXExpressionInstruction alloc] initWithType:EM_INSTRUCTION_MATH_NEGATE]];

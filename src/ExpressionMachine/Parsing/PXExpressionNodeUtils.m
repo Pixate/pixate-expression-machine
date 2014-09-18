@@ -314,6 +314,10 @@
             case EM_DIVIDE:
                 name = @"/";
                 break;
+                
+            case EM_MODULUS:
+                name = @"%";
+                break;
 
             case EM_DOT:
                 [writer printWithNewLine:@"."];
@@ -485,6 +489,10 @@
 
             case EMA_DIV:
                 name = @"div";
+                break;
+                
+            case EMA_MOD:
+                name = @"mod";
                 break;
                 
             case EMA_NEG:
